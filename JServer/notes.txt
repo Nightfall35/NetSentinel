@@ -1,8 +1,18 @@
 Current server limitations :
-handles only 1 client (never loops again after accept )
-blocking i/o   will halt while waiting for data (no async behavior )
-no error recovery when client freezes so does the server
+handles only 1 client (never loops again after accept )                        ~~Resolved ~~
+blocking i/o   will halt while waiting for data (no async behavior )           ~~Resolved~~
+no error recovery when client freezes so does the server                       ~~partial~~
 no protocol   just echos raw text
+threading with no bound limit (will risk resource exhaustion)
+communication model(per client echo only)                                     ~~no longer the case~~
+security and robustness(no auth ,encryption ,or input validation)
+no graceful shut down
+limited error recovery
+console only logging 
+no metrics
+hard coded port 
+minimal shared state(will make it hard to add broadcasting and private messaging)
+
 
 key concepts 
 serversocket     - incoming client connection 
@@ -29,3 +39,5 @@ plans to switch to NIO
 | Selectors | Monitor multiple channels (like `select()` in C) |
 
 plans to add logging system.
+
+
