@@ -1,0 +1,4 @@
+[2025-06-17 02:24:11] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-17 02:24:11] [35mServer awaiting connection...[0m

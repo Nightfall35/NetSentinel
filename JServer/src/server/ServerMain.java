@@ -6,25 +6,31 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ServerMain {
+       private static final String RESET ="\u001B[0m";
+       private static final String RED ="\u001B[31m";
+       private static final String GREEN ="\u001B[32m";
+       private static final String PURPLE ="\u001B[35m";
+
+
        public static Map<String, ClientHandler> clients =new ConcurrentHashMap<>();
 
        public static void main(String[] args) throws InterruptedException {
 	      int port =9999;
-	      System.out.println("Server initialized\nAcquiring port...\nport obtained : "+port+"...");
+	      ServerLogger.log(PURPLE+"Server initialized\nAcquiring port...\nport obtained : "+port+"..."+RESET);
 	      
 	      try(ServerSocket server = new ServerSocket(port)) {
-                  System.out.println("Server awaiting connection...");
+                  ServerLogger.log(PURPLE+"Server awaiting connection..."+RESET);
                   while(true){
 	               Socket client =server.accept();
                        
-		       System.out.println("Client connection established: "+client.getInetAddress());
+		        ServerLogger.log(GREEN+"Client connection established: "+client.getInetAddress()+RESET);
 		  
                        Thread clients= new Thread(new ClientHandler(client));
-                       clients.setName("Client-"+client.getInetAddress());
+                       clients.setName(GREEN+"Client-"+client.getInetAddress()+RESET);
                        clients.start();
                    }
               }catch(IOException e){
-                   System.out.println("Server error:"+e.getMessage());
+                    ServerLogger.log(RED+"Server error:"+e.getMessage()+RESET);
               }
 	}
 }

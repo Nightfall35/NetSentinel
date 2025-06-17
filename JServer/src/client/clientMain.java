@@ -7,6 +7,12 @@ import org.json.JSONObject;
 
 
 public class clientMain {
+      private static final String RESET ="\u001B[0m";
+      private static final String GREEN ="\u001B[90m";
+      private static final String RED ="\u001B[91m";
+      private static final String BLACK ="\u001B[90m";
+
+
       public static void main(String[] args) {
              String host ="localhost";
              int port = 9999;
@@ -17,21 +23,22 @@ public class clientMain {
                  PrintWriter out=new PrintWriter(socket.getOutputStream(), true);
                  Scanner scanner =new Scanner(System.in);
                  ){
-                       System.out.println("Connected to server!");
+                       System.out.println(RED+"Connected to server!"+GREEN);
                       
                          
                         JSONObject login =new JSONObject();
                         login.put("type","login");
                         login.put("username","cypher"); // need to update for userinput here !!!!
                         login.put("from" , "cypher");
+                        
                         out.println(login.toString());
 
 
                         String serverResponse = in.readLine();
-                        System.out.println("Server: "+ serverResponse);
+                        System.out.println(GREEN+"Server: "+ serverResponse+RESET);
 
                         while(true) {
-                               System.out.print("> ");
+                               System.out.print(BLACK+"> "+RESET);
                                String msg = scanner.nextLine();
 
                                if (msg.equalsIgnoreCase("exit")) break;
@@ -39,16 +46,17 @@ public class clientMain {
                                JSONObject message = new JSONObject();
                                message.put("type","broadcast");
                                message.put("message", msg);
+                               message.put("body",msg);
 
                                out.println(message.toString());
 
                                String reply =in.readLine();
                                if(reply != null) {
-                                      System.out.println("Server: " +reply);
+                                      System.out.println(GREEN+"Server: " +reply+RESET);
                                }
                          }
                   }catch(IOException e) {
-                        System.out.println("Connection error: "+e.getMessage());
+                        System.out.println(RED+"Connection error: "+e.getMessage()+RESET);
                   }
               }
 }

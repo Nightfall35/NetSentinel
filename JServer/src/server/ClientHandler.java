@@ -44,7 +44,7 @@ public class ClientHandler implements Runnable {
 
                        }                      
                  }catch (IOException e) {
-                      System.out.println("Connection with client: "+client.getInetAddress() +"closed");
+                       ServerLogger.log("Connection with client: "+client.getInetAddress() +"closed");
                  }finally{
                       try{
                               if(username != null)
