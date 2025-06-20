@@ -6,24 +6,31 @@ import org.json.JSONObject;
 
 
 public class ClientHandler implements Runnable {
+        private String username ="Anonymous";
         private Socket client;
         private PrintWriter out;
-        private String username;
+    
 	
-	public ClientHandler(Socket client) {
+	public ClientHandler(Socket client) throws SocketException  {
               this.client=client;
+              client.setSoTimeout(60000);
         }
 
         @Override
-        public void run() {
+        public void run(){
                try(
                   BufferedReader in =new BufferedReader(
                      new InputStreamReader(client.getInputStream()));
-                  PrintWriter out =new PrintWriter(
+                  PrintWriter writer =new PrintWriter(
                      client.getOutputStream(),true)
                 ) {
-                      this.out =out;
+                      this.out =writer;
+
+
+
                       String input;
+
+
                       while ((input = in.readLine()) != null) { 
 			JSONObject message =new JSONObject(input);
                         String type =message.getString("type");
@@ -38,33 +45,44 @@ public class ClientHandler implements Runnable {
                              case "broadcast":
                                  handleBroadcast(message);
                                  break;
+                             case "ping":
+                                 JSONObject pong = new JSONObject();
+                                 pong.put("type","pong");
+                                 send(pong.toString());
+ 
+                                 ServerLogger.log("Ping reeceived from [" + username + "] - replied with pong");
+                                 break;
+
                              default:
                                  sendError("Unknown message type"+ type);
                          }
 
                        }                      
                  }catch (IOException e) {
-                       ServerLogger.log("Connection with client: "+client.getInetAddress() +"closed");
+                       ServerLogger.log("Connection with client: "+client.getInetAddress() +" timed out due to inactivity");
                  }finally{
-                      try{
-                              if(username != null)
-			          ServerMain.clients.remove(username);
-          
-                              client.close();
-                      }catch(IOException e) {
-                            //ignore
-                      }
+                     if(username != null) {
+                        ServerMain.clients.remove(username);
+                        ServerLogger.log("[" + username + "] disconnected");
+                     }
+                     try{
+                         client.close();
+                    }catch(IOException ignore) {}
                  }
            }
            
            private void handleLogin(JSONObject message) {
-                  this.username =message.getString("from");
+                  String newUsername =message.getString("from");
                  
-                  if(ServerMain.clients.containsKey(username)) {
-                       sendError("username already taken .");
-                  }else{
-                       ServerMain.clients.put(username,this);
-                       sendInfo("Login successful as" +username);
+                  synchronized(ServerMain.clients) {
+                              if(ServerMain.clients.containsKey(username)) {
+                                 sendError("username already taken .");
+                               }else{
+                                  this.username =newUsername;
+                                  ServerMain.clients.put(username,this);
+                                  ServerLogger.log("[" +username+"] logged in from " +client.getInetAddress());
+                                  sendInfo("Login successful as" +username);
+                               }
                   }
            }
 
@@ -80,6 +98,9 @@ public class ClientHandler implements Runnable {
                          reply.put("from", username);
                          reply.put("body", body);
                          recipient.send(reply.toString());
+
+                         ServerLogger.log("private message from [" +username + "] to [" + to + "]: " +body);
+     
                     }else{
                          sendError("user '" +to+"' not found.");
                     }
@@ -99,6 +120,8 @@ public class ClientHandler implements Runnable {
                                handler.send(broadcastMsg.toString());
                        }
                    }
+                  
+                   ServerLogger.log("Broadcast from ["+ username + "] " +body );
             }
 
             //Utility Methods below 
@@ -107,17 +130,20 @@ public class ClientHandler implements Runnable {
                  out.println(json);
             }
 
-            private void sendError(String errorMsg){
-                    JSONObject error = new JSONObject();
-                    error.put("type", "error");
-                    error.put("body",errorMsg);
-                    send(error.toString());
+            private void sendError(String msg){
+                    sendJSON("error",msg);
+
             }
 
-            private void sendInfo(String infoMsg) {
-                  JSONObject info = new JSONObject();
-                  info.put("type","info");
-                  info.put("body", infoMsg);
-                  send(info.toString());
+            private void sendInfo(String msg){
+                  sendJSON("info",msg);
+
+            }
+
+            private void sendJSON(String type, String body) {
+                 JSONObject response = new JSONObject();
+                 response.put("type",type);
+                 if(body != null) response.put("body",body);
+                 send(response.toString());
             }
 }

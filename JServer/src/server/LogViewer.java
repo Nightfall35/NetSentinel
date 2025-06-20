@@ -16,12 +16,15 @@ public class LogViewer {
                    }
 
                    Thread.sleep(1000);
+
+
                    if(logFile.length() < lastLength) {
                        reader.close();
                        Thread.sleep(1000);
                   }
 
                   lastLength =logFile.length();
+
                 }
          }catch(Exception e) {
               e.printStackTrace();

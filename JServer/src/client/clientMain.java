@@ -23,22 +23,23 @@ public class clientMain {
                  PrintWriter out=new PrintWriter(socket.getOutputStream(), true);
                  Scanner scanner =new Scanner(System.in);
                  ){
-                       System.out.println(RED+"Connected to server!"+GREEN);
+                       System.out.println(GREEN+"Connected to server!"+RESET);
+
+                       System.out.println(GREEN+"Enter Username: "+ RESET);
+                       String username = scanner.nextLine();
                       
                          
                         JSONObject login =new JSONObject();
                         login.put("type","login");
-                        login.put("username","cypher"); // need to update for userinput here !!!!
-                        login.put("from" , "cypher");
-                        
+                        login.put("username",username); 
                         out.println(login.toString());
-
+                        
 
                         String serverResponse = in.readLine();
                         System.out.println(GREEN+"Server: "+ serverResponse+RESET);
 
                         while(true) {
-                               System.out.print(BLACK+"> "+RESET);
+                               System.out.print(GREEN+"> "+RESET);
                                String msg = scanner.nextLine();
 
                                if (msg.equalsIgnoreCase("exit")) break;
@@ -46,9 +47,11 @@ public class clientMain {
                                JSONObject message = new JSONObject();
                                message.put("type","broadcast");
                                message.put("message", msg);
-                               message.put("body",msg);
-
+                               
+                               
+                               out.println("{\"type\":\"ping\"}");
                                out.println(message.toString());
+                               
 
                                String reply =in.readLine();
                                if(reply != null) {

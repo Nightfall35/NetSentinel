@@ -20,6 +20,8 @@ public class ServerMain {
 	      
 	      try(ServerSocket server = new ServerSocket(port)) {
                   ServerLogger.log(PURPLE+"Server awaiting connection..."+RESET);
+
+
                   while(true){
 	               Socket client =server.accept();
                        

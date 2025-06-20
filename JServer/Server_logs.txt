@@ -2,3 +2,19 @@
 Acquiring port...
 port obtained : 9999...[0m
 [2025-06-17 02:24:11] [35mServer awaiting connection...[0m
+[2025-06-20 04:01:39] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-20 04:01:39] [35mServer awaiting connection...[0m
+[2025-06-20 04:01:49] [32mClient connection established: /127.0.0.1[0m
+[2025-06-20 04:01:49] [cypher] logged in from /127.0.0.1
+[2025-06-20 04:01:56] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-06-20 04:01:56] [cypher] disconnected
+[2025-06-20 04:02:24] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-20 04:02:25] [35mServer awaiting connection...[0m
+[2025-06-20 04:03:06] [32mClient connection established: /127.0.0.1[0m
+[2025-06-20 04:03:07] [cypher] logged in from /127.0.0.1
+[2025-06-20 04:03:22] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-06-20 04:03:22] [cypher] disconnected
