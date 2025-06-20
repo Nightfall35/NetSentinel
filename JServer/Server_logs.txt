@@ -18,3 +18,21 @@ port obtained : 9999...[0m
 [2025-06-20 04:03:07] [cypher] logged in from /127.0.0.1
 [2025-06-20 04:03:22] Connection with client: /127.0.0.1 timed out due to inactivity
 [2025-06-20 04:03:22] [cypher] disconnected
+[2025-06-20 07:20:50] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-20 07:20:50] [35mServer awaiting connection...[0m
+[2025-06-20 07:21:31] [32mClient connection established: /127.0.0.1[0m
+[2025-06-20 07:21:37] [Anonymous] disconnected
+[2025-06-20 07:29:23] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-20 07:29:23] [35mServer awaiting connection...[0m
+[2025-06-20 07:29:27] [32mClient connection established: /127.0.0.1[0m
+[2025-06-20 07:29:32] [cypher] logged in from /127.0.0.1
+[2025-06-20 07:29:57] [32mClient connection established: /127.0.0.1[0m
+[2025-06-20 07:30:07] [ishmale] logged in from /127.0.0.1
+[2025-06-20 07:30:08] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-06-20 07:30:08] [ishmale] disconnected
+[2025-06-20 07:30:16] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-06-20 07:30:16] [cypher] disconnected

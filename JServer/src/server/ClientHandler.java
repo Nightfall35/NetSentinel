@@ -72,23 +72,28 @@ public class ClientHandler implements Runnable {
            }
            
            private void handleLogin(JSONObject message) {
-                  String newUsername =message.getString("from");
+                String requestedUsername =message.optString("username",message.optString("from" ,null));
+
+                if(requestedUsername == null || requestedUsername.isEmpty()) {
+                   sendError ("Username is required.");
+                   return;
+                }
                  
                   synchronized(ServerMain.clients) {
-                              if(ServerMain.clients.containsKey(username)) {
+                              if(ServerMain.clients.containsKey(requestedUsername)) {
                                  sendError("username already taken .");
                                }else{
-                                  this.username =newUsername;
+                                  this.username =requestedUsername;
                                   ServerMain.clients.put(username,this);
                                   ServerLogger.log("[" +username+"] logged in from " +client.getInetAddress());
-                                  sendInfo("Login successful as" +username);
+                                  sendInfo("Login successful as " +username);
                                }
                   }
            }
 
            private void handlePrivateMessage(JSONObject message) {
-                   String to =message.getString("to");
-                   String body =message.getString("body");
+                   String to =message.optString("to");
+                   String body =message.optString("body");
 
 
                    ClientHandler recipient =ServerMain.clients.get(to);
@@ -108,7 +113,7 @@ public class ClientHandler implements Runnable {
  
  
            private void  handleBroadcast(JSONObject message) {
-                   String body =message.getString("body");
+                   String body =message.optString("body");
        
                    JSONObject broadcastMsg = new JSONObject();
                    broadcastMsg.put("type", "broadcast");
