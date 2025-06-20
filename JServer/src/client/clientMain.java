@@ -26,7 +26,16 @@ public class clientMain {
                        System.out.println(GREEN+"Connected to server!"+RESET);
 
                        System.out.println(GREEN+"Enter Username: "+ RESET);
-                       String username = scanner.nextLine();
+                       String username = scanner.nextLine().trim();
+ 
+                       while(username.isEmpty()){
+                              System.out.println(RED + "!!!!USERNAME CANNOT BE EMPTY!!!!"+RESET);
+                              username =scanner.nextLine().trim();
+                       }
+
+                       System.out.println("Type your message and press ENTER");
+                       System.out.println("Type 'exit' to quit");
+           
                       
                          
                         JSONObject login =new JSONObject();
@@ -43,6 +52,11 @@ public class clientMain {
                                String msg = scanner.nextLine();
 
                                if (msg.equalsIgnoreCase("exit")) break;
+                               if(msg.trim().isEmpty()){ System.out.println(RED+"Message cannot be empty."+RESET);
+                                  continue;
+                               }
+
+
 
                                JSONObject message = new JSONObject();
                                message.put("type","broadcast");
@@ -55,7 +69,24 @@ public class clientMain {
 
                                String reply =in.readLine();
                                if(reply != null) {
-                                      System.out.println(GREEN+"Server: " +reply+RESET);
+                                      JSONObject json =new JSONObject(reply);
+                                      String type =json.optString("type");
+
+                                      switch(type) {
+                                             case "broadcast":
+                                                System.out.println("[Broadcast from " +json.optString("form") + "] "+json.optString("body"));
+                                                break;
+                                             case "message":
+                                                 System.out.println("[private from " +json.optString("form") + "] "+json.optString("body"));
+                                                 break;
+                                             case "info":
+                                             case "error":
+                                                   System.out.println("[" +type.toUpperCase()+json.optString("body"));
+                                                   break;
+                                             default:
+                                                   System.out.println("[Server] "+reply);
+                                     }
+
                                }
                          }
                   }catch(IOException e) {
