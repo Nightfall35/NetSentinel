@@ -25,9 +25,6 @@ public class ClientHandler implements Runnable {
                      client.getOutputStream(),true)
                 ) {
                       this.out =writer;
-
-
-
                       String input;
 
 
@@ -52,7 +49,9 @@ public class ClientHandler implements Runnable {
  
                                  ServerLogger.log("Ping reeceived from [" + username + "] - replied with pong");
                                  break;
-
+                             case "beacon_request":
+                                 handleBeaconRequest();
+                                 break;
                              default:
                                  sendError("Unknown message type"+ type);
                          }
@@ -128,6 +127,19 @@ public class ClientHandler implements Runnable {
                   
                    ServerLogger.log("Broadcast from ["+ username + "] " +body );
             }
+     
+            private void handleBeaconRequest() {
+                 try(BufferedReader reader = new BufferedReader(new FileReader("public_ip.txt"))) {
+                     String ip=reader.readLine().trim();
+                     JSONObject beacon = new JSONObject();
+                     beacon.put("type","beacon");
+                     beacon.put("public_ip",ip);
+                     send(beacon.toString());
+                     ServerLogger.log("sent beacon to [" +username +"]: " +ip);
+                  }catch(IOException e) {
+                     sendError("Failed to read public ip.");
+                  }
+             }
 
             //Utility Methods below 
             

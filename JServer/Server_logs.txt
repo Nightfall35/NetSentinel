@@ -36,3 +36,40 @@ port obtained : 9999...[0m
 [2025-06-20 07:30:08] [ishmale] disconnected
 [2025-06-20 07:30:16] Connection with client: /127.0.0.1 timed out due to inactivity
 [2025-06-20 07:30:16] [cypher] disconnected
+[2025-06-25 04:32:56] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-25 04:32:56] [35mServer awaiting connection...[0m
+[2025-06-25 04:33:39] [32mDeploying Beacon......[0m
+[2025-06-27 05:48:54] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 05:48:54] [35mServer awaiting connection...[0m
+[2025-06-27 05:51:43] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 05:51:43] [35mServer awaiting connection...[0m
+[2025-06-27 05:56:59] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 05:56:59] [35mServer awaiting connection...[0m
+[2025-06-27 06:00:51] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 06:00:51] [31mServer error:Address already in use: bind[0m
+[2025-06-27 06:01:11] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 06:01:11] [35mServer awaiting connection...[0m
+[2025-06-27 06:01:27] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 06:01:27] [35mServer awaiting connection...[0m
+[2025-06-27 06:18:09] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 06:18:09] [35mServer awaiting connection...[0m
+[2025-06-27 06:20:34] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 06:20:34] [35mServer awaiting connection...[0m
