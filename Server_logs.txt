@@ -1,0 +1,87 @@
+[2025-06-17 02:24:11] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-17 02:24:11] [35mServer awaiting connection...[0m
+[2025-06-20 04:01:39] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-20 04:01:39] [35mServer awaiting connection...[0m
+[2025-06-20 04:01:49] [32mClient connection established: /127.0.0.1[0m
+[2025-06-20 04:01:49] [cypher] logged in from /127.0.0.1
+[2025-06-20 04:01:56] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-06-20 04:01:56] [cypher] disconnected
+[2025-06-20 04:02:24] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-20 04:02:25] [35mServer awaiting connection...[0m
+[2025-06-20 04:03:06] [32mClient connection established: /127.0.0.1[0m
+[2025-06-20 04:03:07] [cypher] logged in from /127.0.0.1
+[2025-06-20 04:03:22] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-06-20 04:03:22] [cypher] disconnected
+[2025-06-20 07:20:50] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-20 07:20:50] [35mServer awaiting connection...[0m
+[2025-06-20 07:21:31] [32mClient connection established: /127.0.0.1[0m
+[2025-06-20 07:21:37] [Anonymous] disconnected
+[2025-06-20 07:29:23] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-20 07:29:23] [35mServer awaiting connection...[0m
+[2025-06-20 07:29:27] [32mClient connection established: /127.0.0.1[0m
+[2025-06-20 07:29:32] [cypher] logged in from /127.0.0.1
+[2025-06-20 07:29:57] [32mClient connection established: /127.0.0.1[0m
+[2025-06-20 07:30:07] [ishmale] logged in from /127.0.0.1
+[2025-06-20 07:30:08] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-06-20 07:30:08] [ishmale] disconnected
+[2025-06-20 07:30:16] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-06-20 07:30:16] [cypher] disconnected
+[2025-06-25 04:32:56] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-25 04:32:56] [35mServer awaiting connection...[0m
+[2025-06-25 04:33:39] [32mDeploying Beacon......[0m
+[2025-06-27 05:48:54] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 05:48:54] [35mServer awaiting connection...[0m
+[2025-06-27 05:51:43] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 05:51:43] [35mServer awaiting connection...[0m
+[2025-06-27 05:56:59] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 05:56:59] [35mServer awaiting connection...[0m
+[2025-06-27 06:00:51] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 06:00:51] [31mServer error:Address already in use: bind[0m
+[2025-06-27 06:01:11] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 06:01:11] [35mServer awaiting connection...[0m
+[2025-06-27 06:01:27] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 06:01:27] [35mServer awaiting connection...[0m
+[2025-06-27 06:18:09] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 06:18:09] [35mServer awaiting connection...[0m
+[2025-06-27 06:20:34] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-27 06:20:34] [35mServer awaiting connection...[0m
+[2025-06-29 00:58:00] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-29 00:58:00] [35mServer awaiting connection...[0m
+[2025-06-29 01:33:25] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-29 01:33:25] [35mServer awaiting connection...[0m
+[2025-06-29 01:37:07] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-06-29 01:37:07] [35mServer awaiting connection...[0m
