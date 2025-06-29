@@ -1,0 +1,43 @@
+Current server limitations :
+handles only 1 client (never loops again after accept )                        ~~Resolved ~~
+blocking i/o   will halt while waiting for data (no async behavior )           ~~Resolved~~
+no error recovery when client freezes so does the server                       ~~partial~~
+no protocol   just echos raw text
+threading with no bound limit (will risk resource exhaustion)
+communication model(per client echo only)                                     ~~no longer the case~~
+security and robustness(no auth ,encryption ,or input validation)
+no graceful shut down
+limited error recovery
+console only logging 
+no metrics
+hard coded port 
+minimal shared state(will make it hard to add broadcasting and private messaging)
+
+
+key concepts 
+serversocket     - incoming client connection 
+socket           - single client connection object
+BufferedReader   - reads text line- by- line from the client
+PrintWriter      - sends text line by line to client 
+try-with-resource - Automatically closes socket
+Thread.sleep      - add simulated delay 
+
+
+| Class          | Role                   | Use For                                        |
+| -------------- | ---------------------- | ---------------------------------------------- |
+| `InputStream`  | Base for reading bytes | `FileInputStream`, `Socket.getInputStream()`   |
+| `OutputStream` | Base for writing bytes | `FileOutputStream`, `Socket.getOutputStream()` |
+| `Reader`       | Base for reading chars | `InputStreamReader`, `BufferedReader`          |
+| `Writer`       | Base for writing chars | `PrintWriter`, `BufferedWriter`                |
+
+
+plans to switch to NIO
+| Feature   | Description                                      |
+| --------- | ------------------------------------------------ |
+| Channels  | Like a bidirectional stream                      |
+| Buffers   | Like an array but with state (pos/limit)         |
+| Selectors | Monitor multiple channels (like `select()` in C) |
+
+plans to add logging system.
+
+

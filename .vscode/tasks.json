@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build C file",
+      "type": "shell",
+      "command": "gcc",
+      "args": ["-g", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run C executable",
+      "type": "shell",
+      "command": "${fileDirname}/${fileBasenameNoExtension}",
+      "dependsOn": "Build C file",
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}
