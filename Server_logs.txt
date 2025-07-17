@@ -1305,3 +1305,35 @@ port obtained : 9999...[0m
 [2025-07-17 03:08:25] [*] Beacon sent 
 [2025-07-17 03:08:27] [*] Beacon sent 
 [2025-07-17 03:08:29] [*] Beacon sent 
+[2025-07-17 03:55:01] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-17 03:55:01] [35mServer awaiting connection...[0m
+[2025-07-17 04:03:00] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-17 04:03:00] [*] Beacon sent 
+[2025-07-17 04:03:03] [*] Beacon sent 
+[2025-07-17 04:03:05] [*] Beacon sent 
+[2025-07-17 04:03:07] [*] Beacon sent 
+[2025-07-17 04:03:09] [*] Beacon sent 
+[2025-07-17 04:03:09] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-17 04:03:09] [35mServer awaiting connection...[0m
+[2025-07-17 04:03:11] [*] Beacon sent 
+[2025-07-17 04:03:13] [*] Beacon sent 
+[2025-07-17 04:03:15] [*] Beacon sent 
+[2025-07-17 04:03:17] [*] Beacon sent 
+[2025-07-17 04:03:19] [*] Beacon sent 
+[2025-07-17 04:03:21] [*] Beacon sent 
+[2025-07-17 04:03:21] [32mDeploying Beacon......[0m
+[2025-07-17 04:03:23] [*] Beacon sent 
+[2025-07-17 04:03:25] [*] Beacon sent 
+[2025-07-17 04:03:26] [ta] logged in from /172.16.0.223
+[2025-07-17 04:03:26] sent beacon to [ta]: 41.63.1.95
+[2025-07-17 04:03:27] [*] Beacon sent 
+[2025-07-17 04:03:28] Broadcast from [ta] hey
+[2025-07-17 04:03:29] [*] Beacon sent 
+[2025-07-17 04:03:31] [*] Beacon sent 
+[2025-07-17 04:03:33] [*] Beacon sent 
+[2025-07-17 04:03:35] [*] Beacon sent 
+[2025-07-17 04:03:37] [*] Beacon sent 
