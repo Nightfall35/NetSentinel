@@ -23,6 +23,7 @@ public class clientMain {
             String serverIp = waitForBeacon(); 
             if (serverIp != null) {
                 startClient(serverIp);
+
                 break; // Exit loop after successful connection
             } else {
                 System.out.println(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET);
@@ -31,6 +32,7 @@ public class clientMain {
                 } catch (InterruptedException ignore) {}
             }
         }
+        
     }
 
     private static String waitForBeacon() {
@@ -102,8 +104,35 @@ public class clientMain {
                     System.out.println(GREEN + "↪ Server Public IP: " + beacon.optString("public_ip") + RESET);
                 }
             }
-
-            // Message loop
+         
+            Thread listenerThread = new Thread(() -> {
+    try {
+        String line;
+        while ((line = in.readLine()) != null) {
+            JSONObject json = new JSONObject(line);
+            String type = json.optString("type");
+            switch (type) {
+                case "broadcast":
+                    System.out.println("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
+                    break;
+                case "message":
+                    System.out.println("[Private from " + json.optString("from") + "] " + json.optString("body"));
+                    break;
+                case "info":
+                case "error":
+                    System.out.println("[" + type.toUpperCase() + "] " + json.optString("body"));
+                    break;
+                default:
+                    System.out.println("[Server] " + line);
+            }
+        }
+    } catch (IOException e) {
+        System.out.println("Connection lost: " + e.getMessage());
+    }
+});
+listenerThread.setDaemon(true);
+listenerThread.start();
+            // Message oop
             while (true) {
                 System.out.print(GREEN + "> " + RESET);
                 String msg = scanner.nextLine();
