@@ -9,6 +9,7 @@ import java.net.DatagramSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.Scanner;
+// Add the following import at the top of your file
 import org.json.JSONObject;
 
 public class clientMain {
