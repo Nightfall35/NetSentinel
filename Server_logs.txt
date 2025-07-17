@@ -1337,3 +1337,527 @@ port obtained : 9999...[0m
 [2025-07-17 04:03:33] [*] Beacon sent 
 [2025-07-17 04:03:35] [*] Beacon sent 
 [2025-07-17 04:03:37] [*] Beacon sent 
+[2025-07-17 04:05:43] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-17 04:05:43] [35mServer awaiting connection...[0m
+[2025-07-17 04:05:46] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-17 04:05:46] [*] Beacon sent 
+[2025-07-17 04:05:48] [*] Beacon sent 
+[2025-07-17 04:05:50] [*] Beacon sent 
+[2025-07-17 04:05:52] [*] Beacon sent 
+[2025-07-17 04:05:54] [*] Beacon sent 
+[2025-07-17 04:05:56] [*] Beacon sent 
+[2025-07-17 04:05:58] [*] Beacon sent 
+[2025-07-17 04:06:00] [*] Beacon sent 
+[2025-07-17 04:06:02] [*] Beacon sent 
+[2025-07-17 04:06:02] [32mDeploying Beacon......[0m
+[2025-07-17 04:06:04] [*] Beacon sent 
+[2025-07-17 04:06:06] [*] Beacon sent 
+[2025-07-17 04:06:07] [Cypher] logged in from /172.16.0.223
+[2025-07-17 04:06:07] sent beacon to [Cypher]: 41.63.1.95
+[2025-07-17 04:06:08] [*] Beacon sent 
+[2025-07-17 04:06:10] [*] Beacon sent 
+[2025-07-17 04:06:12] [*] Beacon sent 
+[2025-07-17 04:06:14] [*] Beacon sent 
+[2025-07-17 04:06:16] [*] Beacon sent 
+[2025-07-17 04:06:18] [*] Beacon sent 
+[2025-07-17 04:06:18] [32mDeploying Beacon......[0m
+[2025-07-17 04:06:20] [*] Beacon sent 
+[2025-07-17 04:06:22] [*] Beacon sent 
+[2025-07-17 04:06:23] [Phantombit] logged in from /172.16.0.223
+[2025-07-17 04:06:23] sent beacon to [Phantombit]: 41.63.1.95
+[2025-07-17 04:06:24] [*] Beacon sent 
+[2025-07-17 04:06:26] Broadcast from [Phantombit] hey
+[2025-07-17 04:06:26] [*] Beacon sent 
+[2025-07-17 04:06:28] [*] Beacon sent 
+[2025-07-17 04:06:30] [*] Beacon sent 
+[2025-07-17 04:06:32] [*] Beacon sent 
+[2025-07-17 04:06:34] [*] Beacon sent 
+[2025-07-17 04:06:36] [*] Beacon sent 
+[2025-07-17 04:06:38] [*] Beacon sent 
+[2025-07-17 04:06:40] [*] Beacon sent 
+[2025-07-17 04:06:42] [*] Beacon sent 
+[2025-07-17 04:06:42] [32mDeploying Beacon......[0m
+[2025-07-17 04:06:44] [*] Beacon sent 
+[2025-07-17 04:06:45] Connection with client: /172.16.0.223 timed out due to inactivity
+[2025-07-17 04:06:45] [Anonymous] disconnected
+[2025-07-17 04:06:46] [*] Beacon sent 
+[2025-07-17 04:06:48] [*] Beacon sent 
+[2025-07-17 04:06:50] [*] Beacon sent 
+[2025-07-17 04:06:52] [*] Beacon sent 
+[2025-07-17 04:06:54] [*] Beacon sent 
+[2025-07-17 04:06:57] [*] Beacon sent 
+[2025-07-17 04:06:59] [*] Beacon sent 
+[2025-07-17 04:07:01] [*] Beacon sent 
+[2025-07-17 04:07:03] [*] Beacon sent 
+[2025-07-17 04:07:16] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-17 04:07:16] [*] Beacon sent 
+[2025-07-17 04:07:18] [*] Beacon sent 
+[2025-07-17 04:07:20] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-17 04:07:20] [35mServer awaiting connection...[0m
+[2025-07-17 04:07:20] [*] Beacon sent 
+[2025-07-17 04:07:22] [*] Beacon sent 
+[2025-07-17 04:07:24] [*] Beacon sent 
+[2025-07-17 04:07:24] [32mDeploying Beacon......[0m
+[2025-07-17 04:07:26] [*] Beacon sent 
+[2025-07-17 04:07:28] [*] Beacon sent 
+[2025-07-17 04:07:30] [*] Beacon sent 
+[2025-07-17 04:07:32] [*] Beacon sent 
+[2025-07-17 04:07:34] [*] Beacon sent 
+[2025-07-17 04:07:35] [cypher] logged in from /172.16.0.223
+[2025-07-17 04:07:35] sent beacon to [cypher]: 41.63.1.95
+[2025-07-17 04:07:36] [*] Beacon sent 
+[2025-07-17 04:07:38] [*] Beacon sent 
+[2025-07-17 04:07:40] [*] Beacon sent 
+[2025-07-17 04:07:42] [*] Beacon sent 
+[2025-07-17 04:07:42] [32mDeploying Beacon......[0m
+[2025-07-17 04:07:44] [*] Beacon sent 
+[2025-07-17 04:07:46] [*] Beacon sent 
+[2025-07-17 04:07:48] [*] Beacon sent 
+[2025-07-17 04:07:50] [*] Beacon sent 
+[2025-07-17 04:07:53] [*] Beacon sent 
+[2025-07-17 04:07:55] [*] Beacon sent 
+[2025-07-17 04:07:57] [*] Beacon sent 
+[2025-07-17 04:07:59] [*] Beacon sent 
+[2025-07-17 04:08:01] [*] Beacon sent 
+[2025-07-17 04:08:03] [*] Beacon sent 
+[2025-07-17 04:08:05] [*] Beacon sent 
+[2025-07-17 04:08:05] [32mDeploying Beacon......[0m
+[2025-07-17 04:08:07] [*] Beacon sent 
+[2025-07-17 04:08:09] [*] Beacon sent 
+[2025-07-17 04:08:09] [phantombit] logged in from /172.16.0.223
+[2025-07-17 04:08:09] sent beacon to [phantombit]: 41.63.1.95
+[2025-07-17 04:08:11] [*] Beacon sent 
+[2025-07-17 04:08:12] Broadcast from [phantombit] hey
+[2025-07-17 04:08:13] [*] Beacon sent 
+[2025-07-17 04:08:15] [*] Beacon sent 
+[2025-07-17 04:08:17] [*] Beacon sent 
+[2025-07-17 04:08:19] [*] Beacon sent 
+[2025-07-17 04:08:21] [*] Beacon sent 
+[2025-07-17 04:08:21] Broadcast from [phantombit] message
+[2025-07-17 04:08:23] [*] Beacon sent 
+[2025-07-17 04:08:25] [*] Beacon sent 
+[2025-07-17 04:08:27] [*] Beacon sent 
+[2025-07-17 04:08:29] [*] Beacon sent 
+[2025-07-17 04:08:31] [*] Beacon sent 
+[2025-07-17 04:08:33] [*] Beacon sent 
+[2025-07-17 04:08:35] [*] Beacon sent 
+[2025-07-17 04:08:35] Connection with client: /172.16.0.223 timed out due to inactivity
+[2025-07-17 04:08:35] [cypher] disconnected
+[2025-07-17 04:08:37] [*] Beacon sent 
+[2025-07-17 04:08:39] [*] Beacon sent 
+[2025-07-17 04:08:41] [*] Beacon sent 
+[2025-07-17 04:08:43] Connection with client: /172.16.0.223 timed out due to inactivity
+[2025-07-17 04:08:43] [Anonymous] disconnected
+[2025-07-17 04:08:43] [*] Beacon sent 
+[2025-07-17 04:08:45] [*] Beacon sent 
+[2025-07-17 04:08:47] [*] Beacon sent 
+[2025-07-17 04:08:49] [*] Beacon sent 
+[2025-07-17 04:08:51] [*] Beacon sent 
+[2025-07-17 04:08:53] [*] Beacon sent 
+[2025-07-17 04:08:55] [*] Beacon sent 
+[2025-07-17 04:08:57] [*] Beacon sent 
+[2025-07-17 04:08:59] [*] Beacon sent 
+[2025-07-17 04:09:01] [*] Beacon sent 
+[2025-07-17 04:09:03] [*] Beacon sent 
+[2025-07-17 04:09:05] [*] Beacon sent 
+[2025-07-17 04:09:07] [*] Beacon sent 
+[2025-07-17 04:09:09] [*] Beacon sent 
+[2025-07-17 04:09:11] [*] Beacon sent 
+[2025-07-17 04:09:13] [*] Beacon sent 
+[2025-07-17 04:09:15] [*] Beacon sent 
+[2025-07-17 04:09:17] [*] Beacon sent 
+[2025-07-17 04:09:19] [*] Beacon sent 
+[2025-07-17 04:09:21] Connection with client: /172.16.0.223 timed out due to inactivity
+[2025-07-17 04:09:21] [phantombit] disconnected
+[2025-07-17 04:09:21] [*] Beacon sent 
+[2025-07-17 04:09:23] [*] Beacon sent 
+[2025-07-17 04:09:25] [*] Beacon sent 
+[2025-07-17 04:09:27] [*] Beacon sent 
+[2025-07-17 04:09:29] [*] Beacon sent 
+[2025-07-17 04:09:31] [*] Beacon sent 
+[2025-07-17 04:09:33] [*] Beacon sent 
+[2025-07-17 04:09:35] [*] Beacon sent 
+[2025-07-17 04:09:37] [*] Beacon sent 
+[2025-07-17 04:09:39] [*] Beacon sent 
+[2025-07-17 04:09:41] [*] Beacon sent 
+[2025-07-17 04:09:43] [*] Beacon sent 
+[2025-07-17 04:09:45] [*] Beacon sent 
+[2025-07-17 04:09:47] [*] Beacon sent 
+[2025-07-17 04:09:49] [*] Beacon sent 
+[2025-07-17 04:09:51] [*] Beacon sent 
+[2025-07-17 04:09:53] [*] Beacon sent 
+[2025-07-17 04:09:55] [*] Beacon sent 
+[2025-07-17 04:09:57] [*] Beacon sent 
+[2025-07-17 04:09:59] [*] Beacon sent 
+[2025-07-17 04:10:01] [*] Beacon sent 
+[2025-07-17 04:10:03] [*] Beacon sent 
+[2025-07-17 04:10:05] [*] Beacon sent 
+[2025-07-17 04:10:07] [*] Beacon sent 
+[2025-07-17 04:10:09] [*] Beacon sent 
+[2025-07-17 04:10:11] [*] Beacon sent 
+[2025-07-17 04:10:13] [*] Beacon sent 
+[2025-07-17 04:10:15] [*] Beacon sent 
+[2025-07-17 04:10:17] [*] Beacon sent 
+[2025-07-17 04:10:19] [*] Beacon sent 
+[2025-07-17 04:10:21] [*] Beacon sent 
+[2025-07-17 04:10:23] [*] Beacon sent 
+[2025-07-17 04:10:25] [*] Beacon sent 
+[2025-07-17 04:10:27] [*] Beacon sent 
+[2025-07-17 04:10:29] [*] Beacon sent 
+[2025-07-17 04:10:31] [*] Beacon sent 
+[2025-07-17 04:10:33] [*] Beacon sent 
+[2025-07-17 04:10:35] [*] Beacon sent 
+[2025-07-17 04:10:37] [*] Beacon sent 
+[2025-07-17 04:10:39] [*] Beacon sent 
+[2025-07-17 04:10:41] [*] Beacon sent 
+[2025-07-17 04:10:43] [*] Beacon sent 
+[2025-07-17 04:10:45] [*] Beacon sent 
+[2025-07-17 04:10:48] [*] Beacon sent 
+[2025-07-17 04:10:50] [*] Beacon sent 
+[2025-07-17 04:10:52] [*] Beacon sent 
+[2025-07-17 04:10:54] [*] Beacon sent 
+[2025-07-17 04:10:56] [*] Beacon sent 
+[2025-07-17 04:10:58] [*] Beacon sent 
+[2025-07-17 04:11:00] [*] Beacon sent 
+[2025-07-17 04:11:02] [*] Beacon sent 
+[2025-07-17 04:11:04] [*] Beacon sent 
+[2025-07-17 04:11:06] [*] Beacon sent 
+[2025-07-17 04:11:08] [*] Beacon sent 
+[2025-07-17 04:11:10] [*] Beacon sent 
+[2025-07-17 04:11:12] [*] Beacon sent 
+[2025-07-17 04:11:14] [*] Beacon sent 
+[2025-07-17 04:11:16] [*] Beacon sent 
+[2025-07-17 04:11:18] [*] Beacon sent 
+[2025-07-17 04:11:20] [*] Beacon sent 
+[2025-07-17 04:11:22] [*] Beacon sent 
+[2025-07-17 04:11:24] [*] Beacon sent 
+[2025-07-17 04:11:26] [*] Beacon sent 
+[2025-07-17 04:11:28] [*] Beacon sent 
+[2025-07-17 04:11:30] [*] Beacon sent 
+[2025-07-17 04:11:32] [*] Beacon sent 
+[2025-07-17 04:11:34] [*] Beacon sent 
+[2025-07-17 04:11:36] [*] Beacon sent 
+[2025-07-17 04:11:38] [*] Beacon sent 
+[2025-07-17 04:11:40] [*] Beacon sent 
+[2025-07-17 04:11:42] [*] Beacon sent 
+[2025-07-17 04:11:44] [*] Beacon sent 
+[2025-07-17 04:11:46] [*] Beacon sent 
+[2025-07-17 04:11:48] [*] Beacon sent 
+[2025-07-17 04:11:50] [*] Beacon sent 
+[2025-07-17 04:11:52] [*] Beacon sent 
+[2025-07-17 04:11:54] [*] Beacon sent 
+[2025-07-17 04:11:56] [*] Beacon sent 
+[2025-07-17 04:11:58] [*] Beacon sent 
+[2025-07-17 04:12:00] [*] Beacon sent 
+[2025-07-17 04:12:02] [*] Beacon sent 
+[2025-07-17 04:12:04] [*] Beacon sent 
+[2025-07-17 04:12:06] [*] Beacon sent 
+[2025-07-17 04:12:08] [*] Beacon sent 
+[2025-07-17 04:12:10] [*] Beacon sent 
+[2025-07-17 04:12:12] [*] Beacon sent 
+[2025-07-17 04:12:14] [*] Beacon sent 
+[2025-07-17 04:12:16] [*] Beacon sent 
+[2025-07-17 04:12:18] [*] Beacon sent 
+[2025-07-17 04:12:20] [*] Beacon sent 
+[2025-07-17 04:12:22] [*] Beacon sent 
+[2025-07-17 04:12:24] [*] Beacon sent 
+[2025-07-17 04:12:26] [*] Beacon sent 
+[2025-07-17 04:12:28] [*] Beacon sent 
+[2025-07-17 04:12:30] [*] Beacon sent 
+[2025-07-17 04:12:32] [*] Beacon sent 
+[2025-07-17 04:12:34] [*] Beacon sent 
+[2025-07-17 04:12:36] [*] Beacon sent 
+[2025-07-17 04:12:38] [*] Beacon sent 
+[2025-07-17 04:12:40] [*] Beacon sent 
+[2025-07-17 04:12:42] [*] Beacon sent 
+[2025-07-17 04:12:44] [*] Beacon sent 
+[2025-07-17 04:12:46] [*] Beacon sent 
+[2025-07-17 04:12:48] [*] Beacon sent 
+[2025-07-17 04:12:50] [*] Beacon sent 
+[2025-07-17 04:12:52] [*] Beacon sent 
+[2025-07-17 04:12:54] [*] Beacon sent 
+[2025-07-17 04:12:56] [*] Beacon sent 
+[2025-07-17 04:12:58] [*] Beacon sent 
+[2025-07-17 04:13:00] [*] Beacon sent 
+[2025-07-17 04:13:02] [*] Beacon sent 
+[2025-07-17 04:13:04] [*] Beacon sent 
+[2025-07-17 04:13:06] [*] Beacon sent 
+[2025-07-17 04:13:08] [*] Beacon sent 
+[2025-07-17 04:13:10] [*] Beacon sent 
+[2025-07-17 04:13:12] [*] Beacon sent 
+[2025-07-17 04:13:14] [*] Beacon sent 
+[2025-07-17 04:13:14] [32mDeploying Beacon......[0m
+[2025-07-17 04:13:16] [*] Beacon sent 
+[2025-07-17 04:13:18] [*] Beacon sent 
+[2025-07-17 04:13:20] [*] Beacon sent 
+[2025-07-17 04:13:22] [*] Beacon sent 
+[2025-07-17 04:13:24] [*] Beacon sent 
+[2025-07-17 04:13:26] [*] Beacon sent 
+[2025-07-17 04:13:26] [32mDeploying Beacon......[0m
+[2025-07-17 04:13:28] [*] Beacon sent 
+[2025-07-17 04:13:31] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-17 04:13:31] [35mServer awaiting connection...[0m
+[2025-07-17 04:14:54] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-17 04:14:54] [35mServer awaiting connection...[0m
+[2025-07-17 04:15:10] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-17 04:15:10] [*] Beacon sent 
+[2025-07-17 04:15:12] [*] Beacon sent 
+[2025-07-17 04:15:14] [*] Beacon sent 
+[2025-07-17 04:15:16] [*] Beacon sent 
+[2025-07-17 04:15:18] [*] Beacon sent 
+[2025-07-17 04:15:20] [*] Beacon sent 
+[2025-07-17 04:15:20] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-17 04:15:20] [*] Beacon sent 
+[2025-07-17 04:15:22] [*] Beacon sent 
+[2025-07-17 04:15:22] [*] Beacon sent 
+[2025-07-17 04:15:24] [*] Beacon sent 
+[2025-07-17 04:15:24] [*] Beacon sent 
+[2025-07-17 04:15:26] [*] Beacon sent 
+[2025-07-17 04:15:26] [*] Beacon sent 
+[2025-07-17 04:15:28] [*] Beacon sent 
+[2025-07-17 04:15:28] [*] Beacon sent 
+[2025-07-17 04:15:30] [*] Beacon sent 
+[2025-07-17 04:15:30] [*] Beacon sent 
+[2025-07-17 04:15:32] [*] Beacon sent 
+[2025-07-17 04:15:32] [*] Beacon sent 
+[2025-07-17 04:15:33] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-17 04:15:33] [*] Beacon sent 
+[2025-07-17 04:15:34] [*] Beacon sent 
+[2025-07-17 04:15:34] [*] Beacon sent 
+[2025-07-17 04:15:35] [*] Beacon sent 
+[2025-07-17 04:15:36] [*] Beacon sent 
+[2025-07-17 04:15:36] [*] Beacon sent 
+[2025-07-17 04:15:37] [*] Beacon sent 
+[2025-07-17 04:15:38] [*] Beacon sent 
+[2025-07-17 04:15:38] [*] Beacon sent 
+[2025-07-17 04:15:39] [*] Beacon sent 
+[2025-07-17 04:15:40] [*] Beacon sent 
+[2025-07-17 04:15:40] [*] Beacon sent 
+[2025-07-17 04:15:41] [*] Beacon sent 
+[2025-07-17 04:15:42] [*] Beacon sent 
+[2025-07-17 04:15:42] [*] Beacon sent 
+[2025-07-17 04:15:43] [*] Beacon sent 
+[2025-07-17 04:15:44] [*] Beacon sent 
+[2025-07-17 04:15:44] [*] Beacon sent 
+[2025-07-17 04:15:45] [*] Beacon sent 
+[2025-07-17 04:15:46] [*] Beacon sent 
+[2025-07-17 04:15:46] [*] Beacon sent 
+[2025-07-17 04:15:47] [*] Beacon sent 
+[2025-07-17 04:15:48] [*] Beacon sent 
+[2025-07-17 04:21:47] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-17 04:21:47] [35mServer awaiting connection...[0m
+[2025-07-17 04:22:20] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-17 04:22:20] [35mServer awaiting connection...[0m
+[2025-07-17 04:22:25] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-17 04:22:25] [*] Beacon sent 
+[2025-07-17 04:22:27] [*] Beacon sent 
+[2025-07-17 04:22:29] [*] Beacon sent 
+[2025-07-17 04:22:31] [*] Beacon sent 
+[2025-07-17 04:22:31] [32mDeploying Beacon......[0m
+[2025-07-17 04:22:33] [*] Beacon sent 
+[2025-07-17 04:22:35] [*] Beacon sent 
+[2025-07-17 04:22:36] [Elijah] logged in from /172.16.0.223
+[2025-07-17 04:22:36] sent beacon to [Elijah]: 41.63.1.95
+[2025-07-17 04:22:37] [*] Beacon sent 
+[2025-07-17 04:22:39] [*] Beacon sent 
+[2025-07-17 04:22:41] Broadcast from [Elijah] hello 
+[2025-07-17 04:22:41] [*] Beacon sent 
+[2025-07-17 04:22:43] [*] Beacon sent 
+[2025-07-17 04:22:45] [*] Beacon sent 
+[2025-07-17 04:22:47] [*] Beacon sent 
+[2025-07-17 04:22:49] [*] Beacon sent 
+[2025-07-17 04:22:51] [*] Beacon sent 
+[2025-07-17 04:22:53] [*] Beacon sent 
+[2025-07-17 04:22:55] [*] Beacon sent 
+[2025-07-17 04:22:57] [*] Beacon sent 
+[2025-07-17 04:22:59] [*] Beacon sent 
+[2025-07-17 04:23:01] [*] Beacon sent 
+[2025-07-17 04:23:03] [*] Beacon sent 
+[2025-07-17 04:23:05] [*] Beacon sent 
+[2025-07-17 04:23:07] [*] Beacon sent 
+[2025-07-17 04:23:09] [*] Beacon sent 
+[2025-07-17 04:23:11] [*] Beacon sent 
+[2025-07-17 04:23:11] [32mDeploying Beacon......[0m
+[2025-07-17 04:23:13] [*] Beacon sent 
+[2025-07-17 04:23:14] [phantom] logged in from /172.16.0.223
+[2025-07-17 04:23:14] sent beacon to [phantom]: 41.63.1.95
+[2025-07-17 04:23:15] [*] Beacon sent 
+[2025-07-17 04:23:17] [*] Beacon sent 
+[2025-07-17 04:23:19] [*] Beacon sent 
+[2025-07-17 04:23:20] Broadcast from [phantom] hello
+[2025-07-17 04:23:21] [*] Beacon sent 
+[2025-07-17 04:23:23] [*] Beacon sent 
+[2025-07-17 04:23:25] [*] Beacon sent 
+[2025-07-17 04:23:27] [*] Beacon sent 
+[2025-07-17 04:23:29] [*] Beacon sent 
+[2025-07-17 04:23:31] [*] Beacon sent 
+[2025-07-17 04:23:33] [*] Beacon sent 
+[2025-07-17 04:23:35] [*] Beacon sent 
+[2025-07-17 04:23:37] [*] Beacon sent 
+[2025-07-17 04:23:40] [*] Beacon sent 
+[2025-07-17 04:23:41] Connection with client: /172.16.0.223 timed out due to inactivity
+[2025-07-17 04:23:41] [Elijah] disconnected
+[2025-07-17 04:23:42] [*] Beacon sent 
+[2025-07-17 04:23:44] [*] Beacon sent 
+[2025-07-17 04:23:46] [*] Beacon sent 
+[2025-07-17 04:23:48] [*] Beacon sent 
+[2025-07-17 04:23:50] [*] Beacon sent 
+[2025-07-17 04:23:52] [*] Beacon sent 
+[2025-07-17 04:23:54] [*] Beacon sent 
+[2025-07-17 04:23:56] [*] Beacon sent 
+[2025-07-17 04:23:58] [*] Beacon sent 
+[2025-07-17 04:24:00] [*] Beacon sent 
+[2025-07-17 04:24:02] [*] Beacon sent 
+[2025-07-17 04:24:04] [*] Beacon sent 
+[2025-07-17 04:24:06] [*] Beacon sent 
+[2025-07-17 04:24:08] [*] Beacon sent 
+[2025-07-17 04:24:10] [*] Beacon sent 
+[2025-07-17 04:24:12] [*] Beacon sent 
+[2025-07-17 04:24:14] [*] Beacon sent 
+[2025-07-17 04:24:16] [*] Beacon sent 
+[2025-07-17 04:24:18] [*] Beacon sent 
+[2025-07-17 04:24:20] [*] Beacon sent 
+[2025-07-17 04:24:20] Connection with client: /172.16.0.223 timed out due to inactivity
+[2025-07-17 04:24:20] [phantom] disconnected
+[2025-07-17 04:24:22] [*] Beacon sent 
+[2025-07-17 04:24:24] [*] Beacon sent 
+[2025-07-17 04:24:26] [*] Beacon sent 
+[2025-07-17 04:24:28] [*] Beacon sent 
+[2025-07-17 04:24:30] [*] Beacon sent 
+[2025-07-17 04:24:32] [*] Beacon sent 
+[2025-07-17 04:24:34] [*] Beacon sent 
+[2025-07-17 04:24:36] [*] Beacon sent 
+[2025-07-17 04:24:38] [*] Beacon sent 
+[2025-07-17 04:24:40] [*] Beacon sent 
+[2025-07-17 04:24:42] [*] Beacon sent 
+[2025-07-17 04:24:44] [*] Beacon sent 
+[2025-07-17 04:24:46] [*] Beacon sent 
+[2025-07-17 04:24:48] [*] Beacon sent 
+[2025-07-17 04:24:50] [*] Beacon sent 
+[2025-07-17 04:24:52] [*] Beacon sent 
+[2025-07-17 04:24:54] [*] Beacon sent 
+[2025-07-17 04:24:56] [*] Beacon sent 
+[2025-07-17 04:24:58] [*] Beacon sent 
+[2025-07-17 04:25:00] [*] Beacon sent 
+[2025-07-17 04:25:02] [*] Beacon sent 
+[2025-07-17 04:25:04] [*] Beacon sent 
+[2025-07-17 04:25:06] [*] Beacon sent 
+[2025-07-17 04:25:08] [*] Beacon sent 
+[2025-07-17 04:25:10] [*] Beacon sent 
+[2025-07-17 04:25:12] [*] Beacon sent 
+[2025-07-17 04:25:14] [*] Beacon sent 
+[2025-07-17 04:25:16] [*] Beacon sent 
+[2025-07-17 04:25:18] [*] Beacon sent 
+[2025-07-17 04:25:20] [*] Beacon sent 
+[2025-07-17 04:25:22] [*] Beacon sent 
+[2025-07-17 04:25:24] [*] Beacon sent 
+[2025-07-17 04:25:26] [*] Beacon sent 
+[2025-07-17 04:25:28] [*] Beacon sent 
+[2025-07-17 04:25:30] [*] Beacon sent 
+[2025-07-17 04:25:32] [*] Beacon sent 
+[2025-07-17 04:25:34] [*] Beacon sent 
+[2025-07-17 04:25:36] [*] Beacon sent 
+[2025-07-17 04:25:38] [*] Beacon sent 
+[2025-07-17 04:25:40] [*] Beacon sent 
+[2025-07-17 04:25:42] [*] Beacon sent 
+[2025-07-17 04:25:44] [*] Beacon sent 
+[2025-07-17 04:25:46] [*] Beacon sent 
+[2025-07-17 04:25:48] [*] Beacon sent 
+[2025-07-17 04:25:50] [*] Beacon sent 
+[2025-07-17 04:25:52] [*] Beacon sent 
+[2025-07-17 04:25:54] [*] Beacon sent 
+[2025-07-17 04:25:56] [*] Beacon sent 
+[2025-07-17 04:25:58] [*] Beacon sent 
+[2025-07-17 04:26:00] [*] Beacon sent 
+[2025-07-17 04:26:02] [*] Beacon sent 
+[2025-07-17 04:26:04] [*] Beacon sent 
+[2025-07-17 04:26:06] [*] Beacon sent 
+[2025-07-17 04:26:08] [*] Beacon sent 
+[2025-07-17 04:26:10] [*] Beacon sent 
+[2025-07-17 04:26:12] [*] Beacon sent 
+[2025-07-17 04:26:14] [*] Beacon sent 
+[2025-07-17 04:26:16] [*] Beacon sent 
+[2025-07-17 04:26:18] [*] Beacon sent 
+[2025-07-17 04:26:20] [*] Beacon sent 
+[2025-07-17 04:26:22] [*] Beacon sent 
+[2025-07-17 04:26:24] [*] Beacon sent 
+[2025-07-17 04:26:26] [*] Beacon sent 
+[2025-07-17 04:26:28] [*] Beacon sent 
+[2025-07-17 04:26:30] [*] Beacon sent 
+[2025-07-17 04:30:00] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-17 04:30:00] [35mServer awaiting connection...[0m
+[2025-07-17 04:30:08] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-17 04:30:08] [*] Beacon sent 
+[2025-07-17 04:30:10] [*] Beacon sent 
+[2025-07-17 04:30:12] [*] Beacon sent 
+[2025-07-17 04:30:14] [*] Beacon sent 
+[2025-07-17 04:30:16] [*] Beacon sent 
+[2025-07-17 04:30:17] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-17 04:30:17] [*] Beacon sent 
+[2025-07-17 04:30:18] [*] Beacon sent 
+[2025-07-17 04:30:19] [*] Beacon sent 
+[2025-07-17 04:30:20] [*] Beacon sent 
+[2025-07-17 04:30:21] [*] Beacon sent 
+[2025-07-17 04:30:22] [*] Beacon sent 
+[2025-07-17 04:31:27] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-17 04:31:28] [*] Beacon sent 
+[2025-07-17 04:31:28] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-17 04:31:28] [35mServer awaiting connection...[0m
+[2025-07-17 04:31:30] [*] Beacon sent 
+[2025-07-17 04:31:30] [32mDeploying Beacon......[0m
+[2025-07-17 04:31:32] [*] Beacon sent 
+[2025-07-17 04:31:34] [*] Beacon sent 
+[2025-07-17 04:31:36] [*] Beacon sent 
+[2025-07-17 04:31:38] [*] Beacon sent 
+[2025-07-17 04:31:40] [*] Beacon sent 
+[2025-07-17 04:31:42] [*] Beacon sent 
+[2025-07-17 04:31:44] [*] Beacon sent 
+[2025-07-17 04:31:46] [*] Beacon sent 
+[2025-07-17 04:31:48] [*] Beacon sent 
+[2025-07-17 04:31:50] [*] Beacon sent 
+[2025-07-17 04:31:52] [*] Beacon sent 
+[2025-07-17 04:31:54] [*] Beacon sent 
+[2025-07-17 04:31:56] [*] Beacon sent 
+[2025-07-17 04:31:56] [32mDeploying Beacon......[0m
+[2025-07-17 04:31:58] [*] Beacon sent 
+[2025-07-17 04:31:59] [cypher] logged in from /172.16.0.223
+[2025-07-17 04:31:59] sent beacon to [cypher]: 41.63.1.95
+[2025-07-17 04:32:00] [*] Beacon sent 
+[2025-07-17 04:32:02] [*] Beacon sent 
+[2025-07-17 04:32:04] [*] Beacon sent 
+[2025-07-17 04:32:06] [*] Beacon sent 
+[2025-07-17 04:32:07] sent beacon to [Anonymous]: 41.63.1.95
+[2025-07-17 04:32:08] [*] Beacon sent 
+[2025-07-17 04:32:10] [*] Beacon sent 
+[2025-07-17 04:32:11] Broadcast from [Anonymous] phantom
+[2025-07-17 04:32:12] [*] Beacon sent 
+[2025-07-17 04:32:14] [*] Beacon sent 
+[2025-07-17 04:32:16] [*] Beacon sent 
+[2025-07-17 04:32:18] [*] Beacon sent 
+[2025-07-17 04:32:20] [*] Beacon sent 
+[2025-07-17 04:32:21] Broadcast from [cypher] hey 
+[2025-07-17 04:32:22] [*] Beacon sent 
+[2025-07-17 04:32:24] [*] Beacon sent 
+[2025-07-17 04:32:26] [*] Beacon sent 
+[2025-07-17 04:32:28] [*] Beacon sent 
+[2025-07-17 04:32:30] [*] Beacon sent 
+[2025-07-17 04:32:32] [*] Beacon sent 
+[2025-07-17 04:32:34] [*] Beacon sent 
+[2025-07-17 04:32:36] [*] Beacon sent 
+[2025-07-17 04:32:38] [*] Beacon sent 
