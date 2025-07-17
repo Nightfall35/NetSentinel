@@ -1,5 +1,12 @@
 package server;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
 public class BeaconBroadcaster {
 
     private static final int CLIENT_BEACON_PORT =8888;
@@ -24,7 +31,7 @@ public class BeaconBroadcaster {
             InetAddress clientAddress = InetAddress.getByName("255.255.255.255");
 
             String beaconJson= String.format( 
-                "{\"type\":\"beacon\",\"public_ip\":\|:\"%s\",\"tcp_port\":9999}",beaconIp
+                "{\"type\":\"beacon\", \"public_ip\":\":\"%s\",\"tcp_port\":9999}",beaconIp
                 );
 
             byte[] buffer = beaconJson.getBytes();
