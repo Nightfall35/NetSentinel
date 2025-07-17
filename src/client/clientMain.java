@@ -1,14 +1,19 @@
 package client;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.Scanner;
-import org.json.JSONObject;
 
 public class clientMain {
 
     private static final String RESET = "\u001B[0m";
-    private static final String GREEN = "\u001B[90m";
+    private static final String GREEN = "\u002B[90m";
     private static final String RED = "\u001B[91m";
 
     public static void main(String[] args) {
@@ -27,27 +32,29 @@ public class clientMain {
     }
 
     private static String waitForBeacon() {
-        int beaconPort = 8888;
-        System.out.println(GREEN + "[*] Waiting for beacon on port " + beaconPort + "..." + RESET);
+            try(DatagramSocket socket = new DatagramSocket(8888)){
+            socket.setSoTimeout(10000);
+            byte[] buffer = new byte[1024];
+            DatagramPacket packet = new DatagramPacket(buffer , buffer.length);
 
-        try (ServerSocket beaconSocket = new ServerSocket(beaconPort)) {
-            beaconSocket.setSoTimeout(30000); // wait 30 seconds max
-            Socket beacon = beaconSocket.accept();
-            BufferedReader in = new BufferedReader(new InputStreamReader(beacon.getInputStream()));
-            String ip = in.readLine();
-            beacon.close();
-            if (ip == null || ip.isEmpty()) {
-                System.out.println(RED + "[!] Empty beacon received!" + RESET);
-                return null;
+
+            System.out.println(GREEN + "[*] Listening for UDP beacon on port 8888..." + RESET);
+            socket.receive(packet);
+
+ 
+            String beacon = new String(packet.getData(), 0, packet.getLength());
+            String senderIp = packet.getAddress().getHostAddress();
+
+            System.out.println(GREEN + "[*] Beacon received from " + senderIp + ": " + beacon + RESET);
+
+             return senderIp;
+            }catch(SocketTimeoutException e) {
+                 System.out.println(RED + "[!] Beacon timed out. " + RESET);
+                 return null;
+            }catch(IOException e) {
+                 System.out.println(RED+"[!] Error receiving beacon: " + e.getMessage() + RESET);
+                 return null;
             }
-            System.out.println(GREEN + "[+] Beacon received: " + ip + RESET);
-            return ip.trim();
-        } catch (SocketTimeoutException ste) {
-            System.out.println(RED + "[!] Beacon timeout: no pulse received." + RESET);
-        } catch (IOException e) {
-            System.out.println(RED + "[!] Error receiving beacon: " + e.getMessage() + RESET);
-        }
-        return null;
     }
 
     private static void startClient(String host) {
