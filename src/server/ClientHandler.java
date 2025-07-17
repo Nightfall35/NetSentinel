@@ -1,7 +1,14 @@
 package server;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.SocketException;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 
@@ -52,6 +59,9 @@ public class ClientHandler implements Runnable {
                              case "beacon_request":
                                  handleBeaconRequest();
                                  break;
+                            case "list_users":
+                                  handleListUsers();
+                                  break;
                              default:
                                  sendError("Unknown message type"+ type);
                          }
@@ -68,6 +78,16 @@ public class ClientHandler implements Runnable {
                          client.close();
                     }catch(IOException ignore) {}
                  }
+           }
+
+           private void handleListUsers() {
+                 JSONObject userList=new JSONArray(ServerMain.clients.keyset());
+                    JSONObject response =new JSONObject();
+                    response.put("type", "user_list");
+                    response.put("users", userList);
+                    send(response.toString());
+
+                    ServerLogger.log("Sent user list to [" + username + "]");
            }
            
            private void handleLogin(JSONObject message) {

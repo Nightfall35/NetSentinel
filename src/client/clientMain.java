@@ -9,7 +9,7 @@ import java.net.DatagramSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.Scanner;
-// Add the following import at the top of your file
+
 import org.json.JSONObject;
 
 public class clientMain {
@@ -90,7 +90,7 @@ public class clientMain {
             }
             System.out.println(GREEN + "[Server] " + loginResponse + RESET);
 
-            // Optional: ask for beacon confirmation
+            
             JSONObject beaconRequest = new JSONObject();
             beaconRequest.put("type", "beacon_request");
             out.println(beaconRequest.toString());
@@ -114,16 +114,28 @@ public class clientMain {
                     continue;
                 }
 
-                // Ping
-                JSONObject ping = new JSONObject();
-                ping.put("type", "ping");
-                out.println(ping.toString());
+               if(msg.startsWith("/")) {
+                    String[] parts =msg.split("",3);
+                    if(parts.length<3){
+                        System.out.println(RED + "Invalid command format. Use /command args" + RESET);
+                        continue;
+                    }
 
-                // Send broadcast
-                JSONObject broadcast = new JSONObject();
-                broadcast.put("type", "broadcast");
-                broadcast.put("body", msg);
-                out.println(broadcast.toString());
+                    JSONObject pm=new JSONObject();
+                    pm.put("type", "message");
+                    pm.put("to", parts[1]);
+                    pm.put("body", parts[2]);
+                    out.println(pm.toString());
+                    } else if (msg.equalsIgnoreCase("/list_users")) {
+                    JSONObject listUsers = new JSONObject();
+                    listUsers.put("type", "list_users");
+                    out.println(listUsers.toString());
+                    } else {
+                        JSONObject broadcast = new JSONObject();
+                        broadcast.put("type", "broadcast");
+                        broadcast.put("body", msg);
+                        out.println(broadcast.toString());
+                    }
 
                 // Expect 2 responses (ping + broadcast), tolerate timeouts
                 for (int i = 0; i < 2; i++) {
