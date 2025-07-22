@@ -1,11 +1,12 @@
 package server;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.List;
-import java.util.ArrayList;
 
 
 public class ServerMain {
@@ -36,24 +37,30 @@ public class ServerMain {
        }
 
        public static void main(String[] args) throws InterruptedException {
-	      int port =9999;
-	      ServerLogger.log(PURPLE+"Server initialized\nAcquiring port...\nport obtained : "+port+"..."+RESET);
-	      
-	      try(ServerSocket server = new ServerSocket(port)) {
-                  ServerLogger.log(PURPLE+"Server awaiting connection..."+RESET);
+           int port = 9999;
+           ServerLogger.log(PURPLE + "Server initialized\nAcquiring port...\nport obtained : " + port + "..." + RESET);
 
+           // shutdown hook for graceful client disconnect
+           Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+               ServerLogger.log(PURPLE + "\n[!] Server shutting down. Disconnecting all clients..." + RESET);
+               for (ClientHandler ch : clients.values()) {
+                   ch.disconnect();
+               }
+           }));
 
-                  while(true){
-	               Socket client =server.accept();
-                       ServerLogger.log(GREEN+"Deploying Beacon......"+RESET);
-          
-                  
-                       Thread clients= new Thread(new ClientHandler(client));
-                       clients.setName(GREEN+"Client-"+client.getInetAddress()+RESET);
-                       clients.start();
-                   }
-              }catch(IOException e){
-                    ServerLogger.log(RED+"Server error:"+e.getMessage()+RESET);
-              }
-	}
+           try (ServerSocket server = new ServerSocket(port)) {
+               ServerLogger.log(PURPLE + "Server awaiting connection..." + RESET);
+
+               while (true) {
+                   Socket client = server.accept();
+                   ServerLogger.log(GREEN + "Deploying Beacon......" + RESET);
+
+                   Thread clientThread = new Thread(new ClientHandler(client));
+                   clientThread.setName(GREEN + "Client-" + client.getInetAddress() + RESET);
+                   clientThread.start();
+               }
+           } catch (IOException e) {
+               ServerLogger.log(RED + "Server error:" + e.getMessage() + RESET);
+           }
+       }
 }

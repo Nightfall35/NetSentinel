@@ -18,6 +18,17 @@ public class clientMain {
     private static final String GREEN = "\u002B[90m";
     private static final String RED = "\u001B[91m";
 
+    private synchronized static void typeWritter(String message){
+        for(int i=0;i<message.length();i++){
+            System.out.print(message.charAt(i));
+            try {
+                Thread.sleep(60);   
+            } catch (InterruptedException e) {
+                System.out.println("failure on typewritter thread " + e.getMessage());
+            } 
+            
+        }
+    }
     public static void main(String[] args) {
         while (true) {
             String serverIp = waitForBeacon(); 
@@ -26,7 +37,7 @@ public class clientMain {
 
                 break; // Exit loop after successful connection
             } else {
-                System.out.println(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET);
+                typeWritter(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET);
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException ignore) {}
@@ -42,21 +53,21 @@ public class clientMain {
             DatagramPacket packet = new DatagramPacket(buffer , buffer.length);
 
 
-            System.out.println(GREEN + "[*] Listening for UDP beacon on port 8888..." + RESET);
+            typeWritter(GREEN + "[*] Listening for UDP beacon on port 8888..." + RESET);
             socket.receive(packet);
 
  
             String beacon = new String(packet.getData(), 0, packet.getLength());
             String senderIp = packet.getAddress().getHostAddress();
 
-            System.out.println(GREEN + "[*] Beacon received from " + senderIp + ": " + beacon + RESET);
+            typeWritter(GREEN + "[*] Beacon received from " + senderIp + ": " + beacon + RESET);
 
              return senderIp;
             }catch(SocketTimeoutException e) {
-                 System.out.println(RED + "[!] Beacon timed out. " + RESET);
+                 typeWritter(RED + "[!] Beacon timed out. " + RESET);
                  return null;
             }catch(IOException e) {
-                 System.out.println(RED+"[!] Error receiving beacon: " + e.getMessage() + RESET);
+                typeWritter(RED+"[!] Error receiving beacon: " + e.getMessage() + RESET);
                  return null;
             }
     }
@@ -68,15 +79,15 @@ public class clientMain {
             Socket socket = new Socket(host, port);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            Scanner scanner = new Scanner(System.in)
+            Scanner scanner = new Scanner(System.in) // not closed , clossing it would close the System.in for whole jvm
         ) {
-            System.out.println(GREEN + "[*] Connected to server at " + host + RESET);
+            typeWritter(GREEN + "[*] Connected to server at " + host + RESET);
 
             // Login
-            System.out.print(GREEN + "Enter username: " + RESET);
+            typeWritter(GREEN + "Enter username: " + RESET);
             String username = scanner.nextLine().trim();
             while (username.isEmpty()) {
-                System.out.println(RED + "Username cannot be empty!" + RESET);
+                typeWritter(RED + "Username cannot be empty!" + RESET);
                 username = scanner.nextLine().trim();
             }
 
@@ -87,7 +98,7 @@ public class clientMain {
 
             String loginResponse = in.readLine();
             if (loginResponse == null) {
-                System.out.println(RED + "[!] No login response received." + RESET);
+                typeWritter(RED + "[!] No login response received." + RESET);
                 return;
             }
             System.out.println(GREEN + "[Server] " + loginResponse + RESET);
@@ -101,7 +112,7 @@ public class clientMain {
             if (beaconReply != null) {
                 JSONObject beacon = new JSONObject(beaconReply);
                 if ("beacon".equals(beacon.optString("type"))) {
-                    System.out.println(GREEN + "↪ Server Public IP: " + beacon.optString("public_ip") + RESET);
+                    typeWritter(GREEN + "↪ Server Public IP: " + beacon.optString("public_ip") + RESET);
                 }
             }
          
@@ -113,40 +124,40 @@ public class clientMain {
             String type = json.optString("type");
             switch (type) {
                 case "broadcast":
-                    System.out.println("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
+                    typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
                     break;
                 case "message":
-                    System.out.println("[Private from " + json.optString("from") + "] " + json.optString("body"));
+                    typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"));
                     break;
                 case "info":
                 case "error":
-                    System.out.println("[" + type.toUpperCase() + "] " + json.optString("body"));
+                    typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"));
                     break;
                 default:
-                    System.out.println("[Server] " + line);
+                    typeWritter("[Server] " + line);
             }
         }
     } catch (IOException e) {
-        System.out.println("Connection lost: " + e.getMessage());
+        typeWritter("Connection lost: " + e.getMessage());
     }
 });
 listenerThread.setDaemon(true);
 listenerThread.start();
             // Message oop
             while (true) {
-                System.out.print(GREEN + "> " + RESET);
+                typeWritter(GREEN + "> " + RESET);
                 String msg = scanner.nextLine();
 
                 if (msg.equalsIgnoreCase("exit")) break;
                 if (msg.trim().isEmpty()) {
-                    System.out.println(RED + "Message cannot be empty." + RESET);
+                    typeWritter(RED + "Message cannot be empty." + RESET);
                     continue;
                 }
 
                if(msg.startsWith("/")) {
-                    String[] parts =msg.split("",3);
+                    String[] parts =msg.split(" ",3);
                     if(parts.length<3){
-                        System.out.println(RED + "Invalid command format. Use /command args" + RESET);
+                        typeWritter(RED + "Invalid command format. Use /command args" + RESET);
                         continue;
                     }
 
@@ -166,7 +177,7 @@ listenerThread.start();
                         out.println(broadcast.toString());
                     }
 
-                // Expect 2 responses (ping + broadcast), tolerate timeouts
+                // Expects 2 responses (ping + broadcast), tolerate timeouts
                 for (int i = 0; i < 2; i++) {
                     try {
                         socket.setSoTimeout(3000);
@@ -178,26 +189,26 @@ listenerThread.start();
 
                         switch (type) {
                             case "broadcast":
-                                System.out.println("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
+                                typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
                                 break;
                             case "message":
-                                System.out.println("[Private from " + json.optString("from") + "] " + json.optString("body"));
+                                typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"));
                                 break;
                             case "info":
                             case "error":
-                                System.out.println("[" + type.toUpperCase() + "] " + json.optString("body"));
+                                typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"));
                                 break;
                             default:
-                                System.out.println("[Server] " + reply);
+                                typeWritter("[Server] " + reply);
                         }
                     } catch (SocketTimeoutException ste) {
-                        // Skip if server doesn't send a reply
+                        //skip
                     }
                 }
             }
 
         } catch (IOException e) {
-            System.out.println(RED + "[!] Connection to server failed: " + e.getMessage() + RESET);
+            typeWritter(RED + "[!] Connection to server failed: " + e.getMessage() + RESET);
         }
     }
 }

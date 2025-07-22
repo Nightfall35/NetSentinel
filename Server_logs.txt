@@ -1879,3 +1879,133 @@ port obtained : 9999...[0m
 [2025-07-17 04:33:10] [*] Beacon sent 
 [2025-07-17 04:33:11] Connection with client: /172.16.0.223 timed out due to inactivity
 [2025-07-17 04:33:11] [Anonymous] disconnected
+[2025-07-22 04:41:07] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-22 04:41:07] [*] Beacon sent 
+[2025-07-22 04:41:09] [*] Beacon sent 
+[2025-07-22 04:41:09] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-22 04:41:09] [35mServer awaiting connection...[0m
+[2025-07-22 04:41:11] [*] Beacon sent 
+[2025-07-22 04:41:13] [*] Beacon sent 
+[2025-07-22 04:41:15] [*] Beacon sent 
+[2025-07-22 04:41:17] [*] Beacon sent 
+[2025-07-22 04:41:19] [*] Beacon sent 
+[2025-07-22 04:41:21] [*] Beacon sent 
+[2025-07-22 04:41:23] [*] Beacon sent 
+[2025-07-22 04:41:23] [32mDeploying Beacon......[0m
+[2025-07-22 04:41:25] [*] Beacon sent 
+[2025-07-22 04:41:27] [*] Beacon sent 
+[2025-07-22 04:41:29] [*] Beacon sent 
+[2025-07-22 04:41:31] [*] Beacon sent 
+[2025-07-22 04:41:33] [*] Beacon sent 
+[2025-07-22 04:41:35] [*] Beacon sent 
+[2025-07-22 04:41:36] [Ishmael Tembo] logged in from /172.16.49.118
+[2025-07-22 04:41:36] sent beacon to [Ishmael Tembo]: 41.63.1.95
+[2025-07-22 04:41:37] [*] Beacon sent 
+[2025-07-22 04:41:39] [*] Beacon sent 
+[2025-07-22 04:41:41] [*] Beacon sent 
+[2025-07-22 04:41:43] [*] Beacon sent 
+[2025-07-22 04:41:45] [*] Beacon sent 
+[2025-07-22 04:41:47] [*] Beacon sent 
+[2025-07-22 04:41:49] [*] Beacon sent 
+[2025-07-22 04:41:51] [*] Beacon sent 
+[2025-07-22 04:41:53] [*] Beacon sent 
+[2025-07-22 04:41:55] [*] Beacon sent 
+[2025-07-22 04:41:57] [*] Beacon sent 
+[2025-07-22 04:41:59] [*] Beacon sent 
+[2025-07-22 04:41:59] [32mDeploying Beacon......[0m
+[2025-07-22 04:42:01] [*] Beacon sent 
+[2025-07-22 04:42:03] [*] Beacon sent 
+[2025-07-22 04:42:05] [*] Beacon sent 
+[2025-07-22 04:42:07] [*] Beacon sent 
+[2025-07-22 04:42:09] [*] Beacon sent 
+[2025-07-22 04:42:11] [*] Beacon sent 
+[2025-07-22 04:42:13] [*] Beacon sent 
+[2025-07-22 04:42:15] [*] Beacon sent 
+[2025-07-22 04:42:17] [*] Beacon sent 
+[2025-07-22 04:42:19] [*] Beacon sent 
+[2025-07-22 04:42:21] [*] Beacon sent 
+[2025-07-22 04:42:23] [*] Beacon sent 
+[2025-07-22 04:42:25] [*] Beacon sent 
+[2025-07-22 04:42:27] [*] Beacon sent 
+[2025-07-22 04:42:29] [*] Beacon sent 
+[2025-07-22 04:42:31] [*] Beacon sent 
+[2025-07-22 04:42:33] [*] Beacon sent 
+[2025-07-22 04:42:35] [*] Beacon sent 
+[2025-07-22 04:42:36] Connection with client: /172.16.49.118 timed out due to inactivity
+[2025-07-22 04:42:36] [Ishmael Tembo] disconnected
+[2025-07-22 04:42:37] [*] Beacon sent 
+[2025-07-22 04:42:39] [*] Beacon sent 
+[2025-07-22 04:42:41] [*] Beacon sent 
+[2025-07-22 04:42:43] [*] Beacon sent 
+[2025-07-22 04:42:45] [*] Beacon sent 
+[2025-07-22 04:42:47] [*] Beacon sent 
+[2025-07-22 04:42:49] [*] Beacon sent 
+[2025-07-22 04:42:51] [*] Beacon sent 
+[2025-07-22 04:42:53] [*] Beacon sent 
+[2025-07-22 04:42:55] [*] Beacon sent 
+[2025-07-22 04:42:57] [*] Beacon sent 
+[2025-07-22 04:42:59] [*] Beacon sent 
+[2025-07-22 04:43:00] Connection with client: /172.16.49.118 timed out due to inactivity
+[2025-07-22 04:43:00] [Anonymous] disconnected
+[2025-07-22 04:43:01] [*] Beacon sent 
+[2025-07-22 04:43:03] [*] Beacon sent 
+[2025-07-22 04:43:05] [*] Beacon sent 
+[2025-07-22 04:43:07] [*] Beacon sent 
+[2025-07-22 04:43:09] [*] Beacon sent 
+[2025-07-22 04:43:11] [*] Beacon sent 
+[2025-07-22 04:43:13] [*] Beacon sent 
+[2025-07-22 04:43:16] [*] Beacon sent 
+[2025-07-22 04:43:18] [*] Beacon sent 
+[2025-07-22 04:43:20] [*] Beacon sent 
+[2025-07-22 04:43:22] [*] Beacon sent 
+[2025-07-22 04:43:24] [*] Beacon sent 
+[2025-07-22 04:43:26] [*] Beacon sent 
+[2025-07-22 04:43:28] [*] Beacon sent 
+[2025-07-22 04:43:30] [*] Beacon sent 
+[2025-07-22 04:43:32] [*] Beacon sent 
+[2025-07-22 04:43:34] [*] Beacon sent 
+[2025-07-22 04:43:36] [*] Beacon sent 
+[2025-07-22 04:43:38] [*] Beacon sent 
+[2025-07-22 04:43:40] [*] Beacon sent 
+[2025-07-22 04:43:42] [*] Beacon sent 
+[2025-07-22 04:43:44] [*] Beacon sent 
+[2025-07-22 04:43:46] [*] Beacon sent 
+[2025-07-22 04:43:48] [*] Beacon sent 
+[2025-07-22 04:43:50] [*] Beacon sent 
+[2025-07-22 04:43:52] [*] Beacon sent 
+[2025-07-22 04:43:54] [*] Beacon sent 
+[2025-07-22 04:43:56] [*] Beacon sent 
+[2025-07-22 04:43:58] [*] Beacon sent 
+[2025-07-22 04:44:00] [*] Beacon sent 
+[2025-07-22 04:44:02] [*] Beacon sent 
+[2025-07-22 04:44:04] [*] Beacon sent 
+[2025-07-22 04:44:06] [*] Beacon sent 
+[2025-07-22 04:44:08] [*] Beacon sent 
+[2025-07-22 04:44:10] [*] Beacon sent 
+[2025-07-22 04:44:12] [*] Beacon sent 
+[2025-07-22 04:44:14] [*] Beacon sent 
+[2025-07-22 04:44:16] [*] Beacon sent 
+[2025-07-22 04:44:18] [*] Beacon sent 
+[2025-07-22 04:44:20] [*] Beacon sent 
+[2025-07-22 04:44:22] [*] Beacon sent 
+[2025-07-22 04:44:24] [*] Beacon sent 
+[2025-07-22 04:44:26] [*] Beacon sent 
+[2025-07-22 04:44:28] [*] Beacon sent 
+[2025-07-22 04:44:30] [*] Beacon sent 
+[2025-07-22 04:44:32] [*] Beacon sent 
+[2025-07-22 04:44:34] [*] Beacon sent 
+[2025-07-22 04:44:36] [*] Beacon sent 
+[2025-07-22 04:44:38] [*] Beacon sent 
+[2025-07-22 04:44:40] [*] Beacon sent 
+[2025-07-22 04:44:42] [*] Beacon sent 
+[2025-07-22 04:44:44] [*] Beacon sent 
+[2025-07-22 04:44:46] [*] Beacon sent 
+[2025-07-22 04:44:48] [*] Beacon sent 
+[2025-07-22 04:44:50] [*] Beacon sent 
+[2025-07-22 04:44:52] [*] Beacon sent 
+[2025-07-22 04:44:54] [*] Beacon sent 
+[2025-07-22 04:44:56] [*] Beacon sent 
+[2025-07-22 04:44:58] [*] Beacon sent 
+[2025-07-22 04:45:00] [*] Beacon sent 

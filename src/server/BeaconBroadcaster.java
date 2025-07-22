@@ -20,7 +20,7 @@ public class BeaconBroadcaster {
             beaconIp =reader.readLine().trim();
 
         }catch(IOException e) {
-           ServerLogger.log("Failed to read public ip from file");
+           ServerLogger.log("Failed to read public ip from file public .txt is probably missing or empty. run public ip batch file to create it");
            return;
         }
 
@@ -31,7 +31,7 @@ public class BeaconBroadcaster {
             InetAddress clientAddress = InetAddress.getByName("255.255.255.255");
 
             String beaconJson= String.format( 
-                "{\"type\":\"beacon\", \"public_ip\":\":\"%s\",\"tcp_port\":9999}",beaconIp
+                "{\"type\":\"beacon\", \"public_ip\"\":\"%s\",\"tcp_port\":9999}",beaconIp
                 );
 
             byte[] buffer = beaconJson.getBytes();
@@ -42,7 +42,11 @@ public class BeaconBroadcaster {
            
                    try {
                        Thread.sleep(PULSE_INTERVAL_MS);
-                   }catch(InterruptedException ignored) {}
+                   }catch(InterruptedException ignored) {
+                    ignored.getMessage();
+                     ServerLogger.log("[!] Beacon pulse interrupted, continuing to send beacons...");
+                     break;
+                   }
                 }
 
          }catch (IOException e) {

@@ -81,7 +81,7 @@ public class ClientHandler implements Runnable {
            }
 
            private void handleListUsers() {
-                 JSONObject userList=new JSONArray(ServerMain.clients.keyset());
+                 JSONArray userList=new JSONArray(ServerMain.clients.keyset());
                     JSONObject response =new JSONObject();
                     response.put("type", "user_list");
                     response.put("users", userList);
@@ -93,7 +93,7 @@ public class ClientHandler implements Runnable {
            private void handleLogin(JSONObject message) {
                 String requestedUsername =message.optString("username",message.optString("from" ,null));
 
-                if(requestedUsername == null || requestedUsername.isEmpty()) {
+                if(requestedUsername == null || requestedUsername.trim().isEmpty())  {
                    sendError ("Username is required.");
                    return;
                 }
@@ -157,13 +157,15 @@ public class ClientHandler implements Runnable {
                      send(beacon.toString());
                      ServerLogger.log("sent beacon to [" +username +"]: " +ip);
                   }catch(IOException e) {
-                     sendError("Failed to read public ip.");
+                     sendError("Failed to read public ip.it is either missing or empty. run public ip batch file to create it");
                   }
              }
  
              public void disconnect() {
                  try{
                         client.close();
+                        ServerMain.clients.remove(username);
+                        ServerLogger.log("[" + username + "] disconnected");
                  }catch(IOException e) {
                         e.printStackTrace();
                  }
