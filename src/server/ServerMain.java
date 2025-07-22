@@ -23,6 +23,7 @@ public class ServerMain {
        // 
        public static Map<String, String> passwords = new ConcurrentHashMap<>();
        public static Map<String, ClientHandler> clients =new ConcurrentHashMap<>();
+       public static final Object CLIENTS_LOCK =new Object();
 
        public static void broadcastMessage(String message) {
               for(ClientHandler ch : clients.values()) {

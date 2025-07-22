@@ -115,7 +115,7 @@ public class ClientHandler implements Runnable {
                     return;
                 }
 
-                synchronized (server.ServerMain.clients) {
+                synchronized (server.ServerMain.CLIENTS_LOCK) {
                     if (server.ServerMain.clients.containsKey(requestedUsername)) {
                         sendError("Username already taken.");
                     } else {
