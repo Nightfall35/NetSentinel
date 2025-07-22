@@ -1,16 +1,9 @@
 package client;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.util.Scanner;
-
-import org.json.JSONObject;
 
 public class clientMain {
 
@@ -118,33 +111,42 @@ public class clientMain {
          
             Thread listenerThread = new Thread(() -> {
     try {
-        String line;
-        while ((line = in.readLine()) != null) {
-            JSONObject json = new JSONObject(line);
-            String type = json.optString("type");
-            switch (type) {
-                case "broadcast":
-                    typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
-                    break;
-                case "message":
-                    typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"));
-                    break;
-                case "info":
-                case "error":
-                    typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"));
-                    break;
-                default:
-                    typeWritter("[Server] " + line);
+
+        try (
+            Socket socket = new Socket(host, port);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            Scanner scanner = new Scanner(System.in)
+        ) {
+            typeWritter(GREEN + "[*] Connected to server at " + host + RESET);
+
+            // Login
+            typeWritter(GREEN + "Enter username: " + RESET);
+            String username = scanner.nextLine().trim();
+            while (username.isEmpty()) {
+                typeWritter(RED + "Username cannot be empty!" + RESET);
+                username = scanner.nextLine().trim();
             }
-        }
-    } catch (IOException e) {
-        typeWritter("Connection lost: " + e.getMessage());
-    }
-});
-listenerThread.setDaemon(true);
-listenerThread.start();
-            // Message oop
-            while (true) {
+
+            typeWritter(GREEN + "Enter password: " + RESET);
+            String password = scanner.nextLine();
+            while (password.isEmpty()) {
+                typeWritter(RED + "Password cannot be empty!" + RESET);
+                password = scanner.nextLine();
+            }
+
+            JSONObject login = new JSONObject();
+            login.put("type", "login");
+            login.put("username", username);
+            login.put("password", password);
+            out.println(login.toString());
+
+            String loginResponse = in.readLine();
+            if (loginResponse == null) {
+                typeWritter(RED + "[!] No login response received." + RESET);
+                return;
+            }
+            System.out.println(GREEN + "[Server] " + loginResponse + RESET);
                 typeWritter(GREEN + "> " + RESET);
                 String msg = scanner.nextLine();
 
