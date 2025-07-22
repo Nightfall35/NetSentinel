@@ -18,11 +18,11 @@ public class clientMain {
     private static final String GREEN = "\u002B[90m";
     private static final String RED = "\u001B[91m";
 
-    private static void typeWritter(String message){
+    private synchronized static void typeWritter(String message){
         for(int i=0;i<message.length();i++){
             System.out.print(message.charAt(i));
             try {
-                Thread.sleep(50);   
+                Thread.sleep(60);   
             } catch (InterruptedException e) {
                 System.out.println("failure on typewritter thread " + e.getMessage());
             } 
@@ -79,7 +79,7 @@ public class clientMain {
             Socket socket = new Socket(host, port);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            Scanner scanner = new Scanner(System.in)
+            Scanner scanner = new Scanner(System.in) // not closed , clossing it would close the System.in for whole jvm
         ) {
             typeWritter(GREEN + "[*] Connected to server at " + host + RESET);
 
@@ -155,7 +155,7 @@ listenerThread.start();
                 }
 
                if(msg.startsWith("/")) {
-                    String[] parts =msg.split("",3);
+                    String[] parts =msg.split(" ",3);
                     if(parts.length<3){
                         typeWritter(RED + "Invalid command format. Use /command args" + RESET);
                         continue;
