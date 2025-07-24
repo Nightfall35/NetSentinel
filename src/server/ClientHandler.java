@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class ClientHandler implements Runnable {
         private String username ="Anonymous";
-        private Socket client;
+        private final Socket client;
         private PrintWriter out;
     
     
@@ -81,7 +81,7 @@ public class ClientHandler implements Runnable {
            }
 
            private void handleListUsers() {
-                 JSONArray userList=new JSONArray(ServerMain.clients.keyset());
+                 JSONArray userList=new JSONArray(ServerMain.clients.keySet());
                     JSONObject response =new JSONObject();
                     response.put("type", "user_list");
                     response.put("users", userList);

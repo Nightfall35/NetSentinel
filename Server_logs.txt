@@ -2072,3 +2072,78 @@ port obtained : 9999...[0m
 [2025-07-22 05:32:57] [*] Beacon sent 
 [2025-07-22 05:32:59] [*] Beacon sent 
 [2025-07-22 05:33:01] [*] Beacon sent 
+[2025-07-24 03:11:18] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-07-24 03:11:18] [31m[!] Failed to load user credentials: users.txt (The system cannot find the file specified)[0m
+[2025-07-24 03:11:18] [35mServer awaiting connection...[0m
+[2025-07-24 03:11:28] [*] Starting UDP beacon pulses to all clients every 2S...
+[2025-07-24 03:11:28] [*] Beacon sent 
+[2025-07-24 03:11:30] [*] Beacon sent 
+[2025-07-24 03:11:32] [*] Beacon sent 
+[2025-07-24 03:11:34] [*] Beacon sent 
+[2025-07-24 03:11:36] [*] Beacon sent 
+[2025-07-24 03:11:38] [*] Beacon sent 
+[2025-07-24 03:11:40] [*] Beacon sent 
+[2025-07-24 03:11:42] [*] Beacon sent 
+[2025-07-24 03:11:44] [*] Beacon sent 
+[2025-07-24 03:11:44] [32mDeploying Beacon......[0m
+[2025-07-24 03:11:46] [*] Beacon sent 
+[2025-07-24 03:11:48] [*] Beacon sent 
+[2025-07-24 03:11:50] [*] Beacon sent 
+[2025-07-24 03:11:52] [*] Beacon sent 
+[2025-07-24 03:11:54] [*] Beacon sent 
+[2025-07-24 03:11:54] sent beacon to [Anonymous]: 41.63.1.95
+[2025-07-24 03:11:56] [*] Beacon sent 
+[2025-07-24 03:11:58] [*] Beacon sent 
+[2025-07-24 03:12:00] [*] Beacon sent 
+[2025-07-24 03:12:02] [*] Beacon sent 
+[2025-07-24 03:12:04] [*] Beacon sent 
+[2025-07-24 03:12:05] Broadcast from [Anonymous] hey 
+[2025-07-24 03:12:06] [*] Beacon sent 
+[2025-07-24 03:12:08] [*] Beacon sent 
+[2025-07-24 03:12:10] [*] Beacon sent 
+[2025-07-24 03:12:12] [*] Beacon sent 
+[2025-07-24 03:12:14] [*] Beacon sent 
+[2025-07-24 03:12:16] [*] Beacon sent 
+[2025-07-24 03:12:18] [*] Beacon sent 
+[2025-07-24 03:12:20] [*] Beacon sent 
+[2025-07-24 03:12:22] [*] Beacon sent 
+[2025-07-24 03:12:24] [*] Beacon sent 
+[2025-07-24 03:12:26] [*] Beacon sent 
+[2025-07-24 03:12:28] [*] Beacon sent 
+[2025-07-24 03:12:30] [*] Beacon sent 
+[2025-07-24 03:12:32] [*] Beacon sent 
+[2025-07-24 03:12:34] [*] Beacon sent 
+[2025-07-24 03:12:36] [32mDeploying Beacon......[0m
+[2025-07-24 03:12:36] [*] Beacon sent 
+[2025-07-24 03:12:38] [*] Beacon sent 
+[2025-07-24 03:12:40] [*] Beacon sent 
+[2025-07-24 03:12:42] [*] Beacon sent 
+[2025-07-24 03:12:44] [*] Beacon sent 
+[2025-07-24 03:12:46] [*] Beacon sent 
+[2025-07-24 03:12:48] [*] Beacon sent 
+[2025-07-24 03:12:50] [*] Beacon sent 
+[2025-07-24 03:12:52] [*] Beacon sent 
+[2025-07-24 03:12:54] [*] Beacon sent 
+[2025-07-24 03:12:56] [*] Beacon sent 
+[2025-07-24 03:12:58] [*] Beacon sent 
+[2025-07-24 03:13:00] [*] Beacon sent 
+[2025-07-24 03:13:02] [*] Beacon sent 
+[2025-07-24 03:13:03] sent beacon to [Anonymous]: 41.63.1.95
+[2025-07-24 03:13:04] [*] Beacon sent 
+[2025-07-24 03:13:05] Connection with client: /10.119.103.200 timed out due to inactivity
+[2025-07-24 03:13:05] [Anonymous] disconnected
+[2025-07-24 03:13:06] [*] Beacon sent 
+[2025-07-24 03:13:08] [*] Beacon sent 
+[2025-07-24 03:13:10] [*] Beacon sent 
+[2025-07-24 03:13:12] [*] Beacon sent 
+[2025-07-24 03:13:14] [*] Beacon sent 
+[2025-07-24 03:13:16] [*] Beacon sent 
+[2025-07-24 03:13:17] Broadcast from [Anonymous] hey
+[2025-07-24 03:13:18] [*] Beacon sent 
+[2025-07-24 03:13:20] [*] Beacon sent 
+[2025-07-24 03:13:22] [*] Beacon sent 
+[2025-07-24 03:13:24] [*] Beacon sent 
+[2025-07-24 03:13:26] [*] Beacon sent 
+[2025-07-24 03:13:28] [*] Beacon sent 
