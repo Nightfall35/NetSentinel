@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class clientMain {
 
     private static final String RESET = "\u001B[0m";
-    private static final String GREEN = "\u002B[90m";
+    private static final String GREEN = "\u002B[92m";
     private static final String RED = "\u001B[91m";
 
     private synchronized static void typeWritter(String message){
@@ -167,3 +167,18 @@ while (true) {
         }
     }
 }
+
+        } catch (IOException e) {
+            typeWritter(RED + "[!] Error connecting to server: " + e.getMessage() + RESET);
+        } finally {
+            typeWritter(GREEN + "[*] Connection closed." + RESET);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                typeWritter(RED + "[!] Error during sleep: " + e.getMessage() + RESET);
+            }
+            System.exit(0);
+        }
+    } // end of startClient method
+}
+             
