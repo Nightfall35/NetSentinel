@@ -17,8 +17,8 @@ public class ClientHandler implements Runnable {
         private Socket client;
         private PrintWriter out;
     
-	
-	public ClientHandler(Socket client) throws SocketException  {
+    
+    public ClientHandler(Socket client) throws SocketException  {
               this.client=client;
               client.setSoTimeout(60000);
         }
@@ -36,7 +36,7 @@ public class ClientHandler implements Runnable {
 
 
                       while ((input = in.readLine()) != null) { 
-			JSONObject message =new JSONObject(input);
+            JSONObject message =new JSONObject(input);
                         String type =message.getString("type");
                         
                         switch(type) {
@@ -66,7 +66,7 @@ public class ClientHandler implements Runnable {
                                  sendError("Unknown message type"+ type);
                          }
 
-                       }                      
+                        }
                  }catch (IOException e) {
                        ServerLogger.log("Connection with client: "+client.getInetAddress() +" timed out due to inactivity");
                  }finally{
@@ -91,23 +91,40 @@ public class ClientHandler implements Runnable {
            }
            
            private void handleLogin(JSONObject message) {
-                String requestedUsername =message.optString("username",message.optString("from" ,null));
+                String requestedUsername = message.optString("username", message.optString("from", null));
+                String password = message.optString("password", null);
 
-                if(requestedUsername == null || requestedUsername.trim().isEmpty())  {
-                   sendError ("Username is required.");
-                   return;
+                if (requestedUsername == null || requestedUsername.trim().isEmpty()) {
+                    sendError("Username is required.");
+                    return;
                 }
-                 
-                  synchronized(ServerMain.clients) {
-                              if(ServerMain.clients.containsKey(requestedUsername)) {
-                                 sendError("username already taken .");
-                               }else{
-                                  this.username =requestedUsername;
-                                  ServerMain.clients.put(username,this);
-                                  ServerLogger.log("[" +username+"] logged in from " +client.getInetAddress());
-                                  sendInfo("Login successful as " +username);
-                               }
-                  }
+                if (password == null || password.isEmpty()) {
+                    sendError("Password is required.");
+                    return;
+                }
+
+                // Checks if credentials match 
+                String expectedHash = server.ServerMain.passwords.get(requestedUsername);
+                String providedHash = server.ServerMain.hashPassword(password);
+                if (expectedHash == null) {
+                    sendError("User does not exist.");
+                    return;
+                }
+                if (!expectedHash.equals(providedHash)) {
+                    sendError("Invalid password.");
+                    return;
+                }
+
+                synchronized (server.ServerMain.CLIENTS_LOCK) {
+                    if (server.ServerMain.clients.containsKey(requestedUsername)) {
+                        sendError("Username already taken.");
+                    } else {
+                        this.username = requestedUsername;
+                        server.ServerMain.clients.put(username, this);
+                        ServerLogger.log("[" + username + "] logged in from " + client.getInetAddress());
+                        sendInfo("Login successful as " + username);
+                    }
+                }
            }
 
            private void handlePrivateMessage(JSONObject message) {
