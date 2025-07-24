@@ -4,14 +4,13 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketTimeoutException;
-import java.io.InputStreamReader;
 import java.io.BufferedReader;
-import java.util.Scanner;
+import java.net.*;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.Socket;
-
-
+import java.util.Scanner;
 import org.json.JSONObject;
+
 public class clientMain {
 
     private static final String RESET = "\u001B[0m";
@@ -51,8 +50,6 @@ public class clientMain {
             socket.setSoTimeout(10000);
             byte[] buffer = new byte[1024];
             DatagramPacket packet = new DatagramPacket(buffer , buffer.length);
-
-
             typeWritter(GREEN + "[*] Listening for UDP beacon on port 8888..." + RESET);
             socket.receive(packet);
 
@@ -96,12 +93,12 @@ public class clientMain {
             login.put("username", username);
             out.println(login.toString());
 
-            String loginResp = in.readLine();
-            if (loginResp == null) {
+            String loginResponse = in.readLine();
+            if (loginResponse == null) {
                 typeWritter(RED + "[!] No login response received." + RESET);
                 return;
             }
-            System.out.println(GREEN + "[Server] " + loginResp + RESET);
+            System.out.println(GREEN + "[Server] " + loginResponse + RESET);
 
             
             JSONObject beaconRequest = new JSONObject();
@@ -157,7 +154,7 @@ public class clientMain {
                 typeWritter(GREEN + "> " + RESET);
                 String msg = scanner.nextLine();
 
-                if (msg.equalsIgnoreCase("exit")) return;
+                if (msg.equalsIgnoreCase("exit")) break;
                 if (msg.trim().isEmpty()) {
                     typeWritter(RED + "Message cannot be empty." + RESET);
                     continue;
