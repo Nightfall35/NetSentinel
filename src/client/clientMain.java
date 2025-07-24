@@ -93,14 +93,13 @@ public class clientMain {
             login.put("username", username);
             out.println(login.toString());
 
-            String loginResponse = in.readLine();
-            if (loginResponse == null) {
+            String loginReply = in.readLine();
+            if (loginReply == null) {
                 typeWritter(RED + "[!] No login response received." + RESET);
                 return;
             }
-            System.out.println(GREEN + "[Server] " + loginResponse + RESET);
+            System.out.println(GREEN + "[Server] " + loginReply + RESET);
 
-            
             JSONObject beaconRequest = new JSONObject();
             beaconRequest.put("type", "beacon_request");
             out.println(beaconRequest.toString());
@@ -113,108 +112,58 @@ public class clientMain {
                 }
             }
          
-            Thread listenerThread = new Thread(() -> {
-    try {
+// Main client loop for sending messages
+while (true) {
+    typeWritter(GREEN + "> " + RESET);
+    String msg = scanner.nextLine();
 
-        try (
-            Socket socket = new Socket(host, port);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            Scanner scanner = new Scanner(System.in)
-        ) {
-            typeWritter(GREEN + "[*] Connected to server at " + host + RESET);
+    if (msg.equalsIgnoreCase("exit")) break;
+    if (msg.trim().isEmpty()) {
+        typeWritter(RED + "Message cannot be empty." + RESET);
+        continue;
+    }
 
-            // Login
-            typeWritter(GREEN + "Enter username: " + RESET);
-            String username = scanner.nextLine().trim();
-            while (username.isEmpty()) {
-                typeWritter(RED + "Username cannot be empty!" + RESET);
-                username = scanner.nextLine().trim();
+    if (msg.startsWith("/")) {
+        String[] parts = msg.split(" ", 3);
+        if (parts.length < 3) {
+            typeWritter(RED + "Invalid command format. Use /command args" + RESET);
+            continue;
+        }
+
+        JSONObject pm = new JSONObject();
+        pm.put("type", "message");
+        pm.put("to", parts[1]);
+        pm.put("body", parts[2]);
+        out.println(pm.toString());
+    } else if (msg.equalsIgnoreCase("/list_users")) {
+        JSONObject listUsers = new JSONObject();
+        listUsers.put("type", "list_users");
+        out.println(listUsers.toString());
+    } else {
+        JSONObject broadcast = new JSONObject();
+        broadcast.put("type", "broadcast");
+        broadcast.put("body", msg);
+        out.println(broadcast.toString());
+    }
+
+    // Expects 2 responses (ping + broadcast), tolerate timeouts
+    for (int i = 0; i < 2; i++) {
+        try {
+            socket.setSoTimeout(3000);
+            String reply = in.readLine();
+            if (reply == null) continue;
+
+            JSONObject json = new JSONObject(reply);
+            String type = json.optString("type");
+
+            switch (type) {
+                case "broadcast" -> typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
+                case "message" -> typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"));
+                case "info", "error" -> typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"));
+                default -> typeWritter("[Server] " + reply);
             }
-
-            typeWritter(GREEN + "Enter password: " + RESET);
-            String password = scanner.nextLine();
-            while (password.isEmpty()) {
-                typeWritter(RED + "Password cannot be empty!" + RESET);
-                password = scanner.nextLine();
-            }
-
-            JSONObject login = new JSONObject();
-            login.put("type", "login");
-            login.put("username", username);
-            login.put("password", password);
-            out.println(login.toString());
-
-            String loginResponse = in.readLine();
-            if (loginResponse == null) {
-                typeWritter(RED + "[!] No login response received." + RESET);
-                return;
-            }
-            System.out.println(GREEN + "[Server] " + loginResponse + RESET);
-                typeWritter(GREEN + "> " + RESET);
-                String msg = scanner.nextLine();
-
-                if (msg.equalsIgnoreCase("exit")) break;
-                if (msg.trim().isEmpty()) {
-                    typeWritter(RED + "Message cannot be empty." + RESET);
-                    continue;
-                }
-
-               if(msg.startsWith("/")) {
-                    String[] parts =msg.split(" ",3);
-                    if(parts.length<3){
-                        typeWritter(RED + "Invalid command format. Use /command args" + RESET);
-                        continue;
-                    }
-
-                    JSONObject pm=new JSONObject();
-                    pm.put("type", "message");
-                    pm.put("to", parts[1]);
-                    pm.put("body", parts[2]);
-                    out.println(pm.toString());
-                    } else if (msg.equalsIgnoreCase("/list_users")) {
-                    JSONObject listUsers = new JSONObject();
-                    listUsers.put("type", "list_users");
-                    out.println(listUsers.toString());
-                    } else {
-                        JSONObject broadcast = new JSONObject();
-                        broadcast.put("type", "broadcast");
-                        broadcast.put("body", msg);
-                        out.println(broadcast.toString());
-                    }
-
-                // Expects 2 responses (ping + broadcast), tolerate timeouts
-                for (int i = 0; i < 2; i++) {
-                    try {
-                        socket.setSoTimeout(3000);
-                        String reply = in.readLine();
-                        if (reply == null) continue;
-
-                        JSONObject json = new JSONObject(reply);
-                        String type = json.optString("type");
-
-                        switch (type) {
-                            case "broadcast":
-                                typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
-                                break;
-                            case "message":
-                                typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"));
-                                break;
-                            case "info":
-                            case "error":
-                                typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"));
-                                break;
-                            default:
-                                typeWritter("[Server] " + reply);
-                        }
-                    } catch (SocketTimeoutException ste) {
-                        //skip
-                    }
-                }
-            }
-
-        } catch (IOException e) {
-            typeWritter(RED + "[!] Connection to server failed: " + e.getMessage() + RESET);
+        } catch (SocketTimeoutException ste) {
+            //skip
         }
     }
 }
