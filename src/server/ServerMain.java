@@ -1,6 +1,7 @@
 package server;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -45,7 +46,7 @@ public class ServerMain {
        public static void main(String[] args) throws InterruptedException {
            int port = 9999;
            ServerLogger.log(PURPLE + "Server initialized\nAcquiring port...\nport obtained : " + port + "..." + RESET);
-
+           usersFile(GREEN + "users.txt" + RESET);
            // Load user credentials from file
            loadUserCredentials("users.txt");
 
@@ -108,5 +109,24 @@ public class ServerMain {
            } catch (NoSuchAlgorithmException e) {
                throw new RuntimeException("SHA-256 not supported", e);
            }
-       }
+        }
+
+        private static void usersFile(String filename) {
+            try {
+                File file =new File(filename);
+                if(!file.exists()) {
+                    file.createNewFile();
+                    ServerLogger.log(GREEN + "User credentials file created: " + filename + RESET);
+                } else {
+                    ServerLogger.log(GREEN + "User credentials file already exists: " + filename + RESET);
+                }
+                if(file.exists()) {
+                    ServerLogger.log(GREEN + "User credentials file found: " + filename + RESET);
+                } else {
+                    ServerLogger.log(RED + "[!] User credentials file not found: " + filename + RESET);
+                }
+            } catch (Exception e) {
+                ServerLogger.log(RED + "[!] Error creating or checking user credentials file: " + e.getMessage() + RESET);
+            }
+        }
 }

@@ -2,6 +2,7 @@ package server;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -90,42 +91,59 @@ public class ClientHandler implements Runnable {
                     ServerLogger.log("Sent user list to [" + username + "]");
            }
            
-           private void handleLogin(JSONObject message) {
+         private void handleLogin(JSONObject message) {
                 String requestedUsername = message.optString("username", message.optString("from", null));
-                String password = message.optString("password", null);
+                 String password = message.optString("password", null);
 
                 if (requestedUsername == null || requestedUsername.trim().isEmpty()) {
-                    sendError("Username is required.");
+                     sendError("Username is required.");
                     return;
                 }
                 if (password == null || password.isEmpty()) {
                     sendError("Password is required.");
-                    return;
+                     return;
                 }
 
-                // Checks if credentials match 
-                String expectedHash = server.ServerMain.passwords.get(requestedUsername);
-                String providedHash = server.ServerMain.hashPassword(password);
-                if (expectedHash == null) {
-                    sendError("User does not exist.");
-                    return;
-                }
-                if (!expectedHash.equals(providedHash)) {
-                    sendError("Invalid password.");
-                    return;
-                }
+                String expectedHash = ServerMain.passwords.get(requestedUsername);
+                String providedHash = ServerMain.hashPassword(password);
 
-                synchronized (server.ServerMain.CLIENTS_LOCK) {
-                    if (server.ServerMain.clients.containsKey(requestedUsername)) {
-                        sendError("Username already taken.");
-                    } else {
-                        this.username = requestedUsername;
-                        server.ServerMain.clients.put(username, this);
-                        ServerLogger.log("[" + username + "] logged in from " + client.getInetAddress());
-                        sendInfo("Login successful as " + username);
-                    }
+               synchronized (ServerMain.CLIENTS_LOCK) {
+               if (expectedHash == null) {
+            // User does not exist - register new user
+                try {
+                    appendUserToFile(requestedUsername, providedHash);
+                    ServerMain.passwords.put(requestedUsername, providedHash);
+                    this.username = requestedUsername;
+                    ServerMain.clients.put(username, this);
+                    ServerLogger.log("[" + username + "] registered and logged in from " + client.getInetAddress());
+                    sendInfo("Registration and login successful as " + username);
+                } catch (IOException e) {
+                    sendError("Failed to register new user: " + e.getMessage());
                 }
-           }
+            } else {
+            // User exists - check password
+            if (!expectedHash.equals(providedHash)) {
+                sendError("Invalid password.");
+                return;
+            }
+            if (ServerMain.clients.containsKey(requestedUsername)) {
+                sendError("Username already taken.");
+                return;
+            }
+            this.username = requestedUsername;
+            ServerMain.clients.put(username, this);
+            ServerLogger.log("[" + username + "] logged in from " + client.getInetAddress());
+            sendInfo("Login successful as " + username);
+        }
+    }
+}
+
+private void appendUserToFile(String username, String hashedPassword) throws IOException {
+    try (FileWriter fw = new FileWriter("users.txt", true);
+         PrintWriter pw = new PrintWriter(fw)) {
+        pw.println(username + ":" + hashedPassword);
+    }
+}
 
            private void handlePrivateMessage(JSONObject message) {
                    String to =message.optString("to");

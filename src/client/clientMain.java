@@ -1,14 +1,15 @@
 package client;
 
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.SocketTimeoutException;
 import java.io.BufferedReader;
-import java.net.*;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.Scanner;
+
 import org.json.JSONObject;
 
 public class clientMain {
@@ -83,6 +84,12 @@ public class clientMain {
             // Login
             typeWritter(GREEN + "Enter username: " + RESET);
             String username = scanner.nextLine().trim();
+            typeWritter(GREEN + "Enter password: " + RESET);
+	    String password =scanner.nextLine().trim();
+	    while(password.isEmpty()) {
+		typeWritter(GREEN + "password cannot be empty " + RESET );
+		password=scanner.nextLine().trim();
+	    }
             while (username.isEmpty()) {
                 typeWritter(RED + "Username cannot be empty!" + RESET);
                 username = scanner.nextLine().trim();
@@ -91,6 +98,9 @@ public class clientMain {
             JSONObject login = new JSONObject();
             login.put("type", "login");
             login.put("username", username);
+            login.put("password",password);
+            typeWritter(GREEN + "[*] Logging in as " + username + RESET);
+            typeWritter(GREEN + "↪ Sending login request..." + RESET);
             out.println(login.toString());
 
             String loginReply = in.readLine();
