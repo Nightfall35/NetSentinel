@@ -10,7 +10,7 @@ import java.net.InetAddress;
 public class BeaconBroadcaster {
 
     private static final int CLIENT_BEACON_PORT =8888;
-    private static final int PULSE_INTERVAL_MS=2000;
+    private static final int PULSE_INTERVAL_MS=10000;
 
     public static void main(String[] args) {
         
