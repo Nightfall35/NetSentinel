@@ -3897,3 +3897,150 @@ port obtained : 9999...[0m
 [2025-08-03 23:59:41] [*] Beacon sent 
 [2025-08-03 23:59:43] [*] Beacon sent 
 [2025-08-03 23:59:45] [*] Beacon sent 
+[2025-08-03 23:59:47] [*] Beacon sent 
+[2025-08-03 23:59:49] [*] Beacon sent 
+[2025-08-03 23:59:51] [*] Beacon sent 
+[2025-08-03 23:59:53] [*] Beacon sent 
+[2025-08-03 23:59:55] [*] Beacon sent 
+[2025-08-03 23:59:57] [*] Beacon sent 
+[2025-08-03 23:59:59] [*] Beacon sent 
+[2025-08-04 00:00:01] [*] Beacon sent 
+[2025-08-04 00:00:03] [*] Beacon sent 
+[2025-08-04 00:00:05] [*] Beacon sent 
+[2025-08-04 00:00:07] [*] Beacon sent 
+[2025-08-04 00:00:09] [*] Beacon sent 
+[2025-08-04 00:00:11] [*] Beacon sent 
+[2025-08-04 00:00:13] [*] Beacon sent 
+[2025-08-04 00:00:15] [*] Beacon sent 
+[2025-08-04 00:00:17] [*] Beacon sent 
+[2025-08-04 00:00:19] [*] Beacon sent 
+[2025-08-04 00:00:21] [*] Beacon sent 
+[2025-08-04 00:00:23] [*] Beacon sent 
+[2025-08-04 00:00:25] [*] Beacon sent 
+[2025-08-04 00:00:27] [*] Beacon sent 
+[2025-08-04 00:00:29] [*] Beacon sent 
+[2025-08-04 00:00:31] [*] Beacon sent 
+[2025-08-04 00:00:33] [*] Beacon sent 
+[2025-08-04 00:00:35] [*] Beacon sent 
+[2025-08-04 00:00:37] [*] Beacon sent 
+[2025-08-04 00:00:39] [*] Beacon sent 
+[2025-08-04 00:00:41] [*] Beacon sent 
+[2025-08-04 00:00:43] [*] Beacon sent 
+[2025-08-04 00:00:45] [*] Beacon sent 
+[2025-08-04 00:00:47] [*] Beacon sent 
+[2025-08-04 00:00:49] [*] Beacon sent 
+[2025-08-04 00:00:51] [*] Beacon sent 
+[2025-08-04 00:00:53] [*] Beacon sent 
+[2025-08-04 00:00:55] [*] Beacon sent 
+[2025-08-04 00:00:57] [*] Beacon sent 
+[2025-08-04 00:00:59] [*] Beacon sent 
+[2025-08-04 00:01:01] [*] Beacon sent 
+[2025-08-04 00:01:03] [*] Beacon sent 
+[2025-08-04 00:01:05] [*] Beacon sent 
+[2025-08-04 00:01:07] [*] Beacon sent 
+[2025-08-04 00:01:09] [*] Beacon sent 
+[2025-08-04 00:01:11] [*] Beacon sent 
+[2025-08-04 00:01:13] [*] Beacon sent 
+[2025-08-04 00:01:15] [*] Beacon sent 
+[2025-08-04 00:01:17] [*] Beacon sent 
+[2025-08-04 00:01:19] [*] Beacon sent 
+[2025-08-04 00:01:21] [*] Beacon sent 
+[2025-08-04 00:01:23] [*] Beacon sent 
+[2025-08-04 00:01:25] [*] Beacon sent 
+[2025-08-04 00:01:27] [*] Beacon sent 
+[2025-08-04 00:01:29] [*] Beacon sent 
+[2025-08-04 00:01:31] [*] Beacon sent 
+[2025-08-04 00:01:33] [*] Beacon sent 
+[2025-08-04 00:01:35] [*] Beacon sent 
+[2025-08-04 00:01:37] [*] Beacon sent 
+[2025-08-04 00:01:39] [*] Beacon sent 
+[2025-08-04 00:01:41] [*] Beacon sent 
+[2025-08-04 00:01:43] [*] Beacon sent 
+[2025-08-04 00:01:45] [*] Beacon sent 
+[2025-08-04 00:01:47] [*] Beacon sent 
+[2025-08-04 00:01:49] [*] Beacon sent 
+[2025-08-04 00:01:51] [*] Beacon sent 
+[2025-08-04 00:01:53] [*] Beacon sent 
+[2025-08-04 00:01:55] [*] Beacon sent 
+[2025-08-04 00:01:57] [*] Beacon sent 
+[2025-08-04 00:01:59] [*] Beacon sent 
+[2025-08-04 00:02:01] [*] Beacon sent 
+[2025-08-04 00:02:03] [*] Beacon sent 
+[2025-08-04 00:02:05] [*] Beacon sent 
+[2025-08-04 00:02:07] [*] Beacon sent 
+[2025-08-04 00:02:09] [*] Beacon sent 
+[2025-08-04 00:02:11] [*] Beacon sent 
+[2025-08-04 00:02:13] [*] Beacon sent 
+[2025-08-04 00:02:16] [*] Beacon sent 
+[2025-08-04 00:02:18] [*] Beacon sent 
+[2025-08-04 00:02:20] [*] Beacon sent 
+[2025-08-04 00:02:22] [*] Beacon sent 
+[2025-08-04 00:02:24] [*] Beacon sent 
+[2025-08-04 00:02:26] [*] Beacon sent 
+[2025-08-04 00:02:28] [*] Beacon sent 
+[2025-08-04 00:02:30] [*] Beacon sent 
+[2025-08-04 00:02:32] [*] Beacon sent 
+[2025-08-04 00:02:34] [*] Beacon sent 
+[2025-08-04 00:02:36] [*] Beacon sent 
+[2025-08-04 00:02:38] [*] Beacon sent 
+[2025-08-04 00:02:40] [*] Beacon sent 
+[2025-08-04 00:02:42] [*] Beacon sent 
+[2025-08-04 00:02:44] [*] Beacon sent 
+[2025-08-04 00:02:46] [*] Beacon sent 
+[2025-08-04 00:02:48] [*] Beacon sent 
+[2025-08-04 00:02:50] [*] Beacon sent 
+[2025-08-04 00:02:52] [*] Beacon sent 
+[2025-08-04 00:02:54] [*] Beacon sent 
+[2025-08-04 00:02:56] [*] Beacon sent 
+[2025-08-04 00:02:58] [*] Beacon sent 
+[2025-08-04 00:03:00] [*] Beacon sent 
+[2025-08-04 00:03:02] [*] Beacon sent 
+[2025-08-04 00:03:04] [*] Beacon sent 
+[2025-08-04 00:03:06] [*] Beacon sent 
+[2025-08-04 00:03:08] [*] Beacon sent 
+[2025-08-04 00:03:10] [*] Beacon sent 
+[2025-08-04 00:03:12] [*] Beacon sent 
+[2025-08-04 00:03:14] [*] Beacon sent 
+[2025-08-04 00:03:16] [*] Beacon sent 
+[2025-08-04 00:03:18] [*] Beacon sent 
+[2025-08-04 00:03:20] [*] Beacon sent 
+[2025-08-04 00:03:22] [*] Beacon sent 
+[2025-08-04 00:03:24] [*] Beacon sent 
+[2025-08-04 00:03:26] [*] Beacon sent 
+[2025-08-04 00:03:28] [*] Beacon sent 
+[2025-08-04 00:03:30] [*] Beacon sent 
+[2025-08-04 00:03:32] [*] Beacon sent 
+[2025-08-04 00:03:34] [*] Beacon sent 
+[2025-08-04 00:03:36] [*] Beacon sent 
+[2025-08-04 00:03:38] [*] Beacon sent 
+[2025-08-04 00:04:41] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-08-04 00:04:41] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-08-04 00:04:41] [31m[!] Failed to load user credentials: users.txt (The system cannot find the file specified)[0m
+[2025-08-04 00:04:42] [35mServer awaiting connection...[0m
+[2025-08-04 00:05:54] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-08-04 00:05:54] [*] Beacon sent 
+[2025-08-04 00:06:04] [*] Beacon sent 
+[2025-08-04 00:06:11] [32mDeploying Beacon......[0m
+[2025-08-04 00:06:14] [*] Beacon sent 
+[2025-08-04 00:06:24] [*] Beacon sent 
+[2025-08-04 00:06:25] [Vito] registered and logged in from /192.168.56.1
+[2025-08-04 00:06:25] sent beacon to [Vito]: 41.63.1.124
+[2025-08-04 00:06:34] [*] Beacon sent 
+[2025-08-04 00:06:44] [*] Beacon sent 
+[2025-08-04 00:06:51] [32mDeploying Beacon......[0m
+[2025-08-04 00:06:54] [*] Beacon sent 
+[2025-08-04 00:07:04] [*] Beacon sent 
+[2025-08-04 00:07:09] [Cypher] registered and logged in from /192.168.56.1
+[2025-08-04 00:07:09] sent beacon to [Cypher]: 41.63.1.124
+[2025-08-04 00:07:13] private message from [Vito] to [Cypher]: Whats up 
+[2025-08-04 00:07:14] [*] Beacon sent 
+[2025-08-04 00:07:24] [*] Beacon sent 
+[2025-08-04 00:07:34] [*] Beacon sent 
+[2025-08-04 00:07:35] Broadcast from [Vito] hey 
+[2025-08-04 00:07:44] [*] Beacon sent 
+[2025-08-04 00:07:47] Connection with client: /192.168.56.1 timed out due to inactivity
+[2025-08-04 00:07:47] [Cypher] disconnected
+[2025-08-04 00:07:49] Connection with client: /192.168.56.1 timed out due to inactivity
+[2025-08-04 00:07:49] [Vito] disconnected

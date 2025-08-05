@@ -21,6 +21,7 @@ public class clientMain {
     private synchronized static void typeWritter(String message){
         for(int i=0;i<message.length();i++){
             System.out.print(message.charAt(i));
+	    
             try {
                 Thread.sleep(60);   
             } catch (InterruptedException e) {
@@ -28,6 +29,7 @@ public class clientMain {
             } 
             
         }
+	System.out.println("\n");
     }
     public static void main(String[] args) {
         while (true) {
