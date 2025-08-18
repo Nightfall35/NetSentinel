@@ -4044,3 +4044,29 @@ port obtained : 9999...[0m
 [2025-08-04 00:07:47] [Cypher] disconnected
 [2025-08-04 00:07:49] Connection with client: /192.168.56.1 timed out due to inactivity
 [2025-08-04 00:07:49] [Vito] disconnected
+[2025-08-18 05:08:07] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-08-18 05:08:07] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-08-18 05:08:07] [32mLoaded 2 user(s) from credentials file.[0m
+[2025-08-18 05:08:07] [35mServer awaiting connection...[0m
+[2025-08-18 05:08:17] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-08-18 05:08:17] [*] Beacon sent 
+[2025-08-18 05:08:27] [*] Beacon sent 
+[2025-08-18 05:08:37] [*] Beacon sent 
+[2025-08-18 05:08:47] [*] Beacon sent 
+[2025-08-18 05:08:57] [*] Beacon sent 
+[2025-08-18 05:09:07] [*] Beacon sent 
+[2025-08-18 05:09:17] [*] Beacon sent 
+[2025-08-18 05:09:27] [*] Beacon sent 
+[2025-08-18 05:09:35] [32mDeploying Beacon......[0m
+[2025-08-18 05:09:37] [*] Beacon sent 
+[2025-08-18 05:09:47] [*] Beacon sent 
+[2025-08-18 05:09:56] [Elijah] registered and logged in from /172.16.0.228
+[2025-08-18 05:09:56] sent beacon to [Elijah]: 41.63.1.124
+[2025-08-18 05:09:57] [*] Beacon sent 
+[2025-08-18 05:10:07] Broadcast from [Elijah] nice
+[2025-08-18 05:10:07] [*] Beacon sent 
+[2025-08-18 05:10:13] Connection with client: /172.16.0.228 timed out due to inactivity
+[2025-08-18 05:10:13] [Elijah] disconnected
+[2025-08-18 05:10:17] [*] Beacon sent 
