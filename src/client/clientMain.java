@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class clientMain {
 
     private static final String RESET = "\u001B[0m";
-    private static final String GREEN = "\u002B[92m";
+    private static final String GREEN = "\u001B[92m";
     private static final String RED = "\u001B[91m";
 
     private synchronized static void typeWritter(String message){
@@ -161,7 +161,7 @@ while (true) {
     // Expects 2 responses (ping + broadcast), tolerate timeouts
     for (int i = 0; i < 2; i++) {
         try {
-            socket.setSoTimeout(3000);
+           socket.setSoTimeout(30000);
             String reply = in.readLine();
             if (reply == null) continue;
 

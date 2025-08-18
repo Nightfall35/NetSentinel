@@ -21,7 +21,7 @@ public class ClientHandler implements Runnable {
     
     public ClientHandler(Socket client) throws SocketException  {
               this.client=client;
-              client.setSoTimeout(60000);
+              client.setSoTimeout(6000000);
         }
 
         @Override
