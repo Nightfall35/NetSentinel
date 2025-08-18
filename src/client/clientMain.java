@@ -9,8 +9,11 @@ import java.net.DatagramSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.Scanner;
+import java.util.Base64;
+import java.io.FileOutputStream;
 
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class clientMain {
 
@@ -74,123 +77,205 @@ public class clientMain {
 
     private static void startClient(String host) {
         int port = 9999;
+        int retryCount = 0;
+        final int MAX_RETRIES = 5;
+        final long INITIAL_BACKOFF_MS = 1000; // 1 second
 
-        try (
-            Socket socket = new Socket(host, port);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            Scanner scanner = new Scanner(System.in) // not closed , clossing it would close the System.in for whole jvm
-        ) {
-            typeWritter(GREEN + "[*] Connected to server at " + host + RESET);
+        while (retryCount < MAX_RETRIES) {
+            try (
+                Socket socket = new Socket(host, port);
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                Scanner scanner = new Scanner(System.in)
+            ) {
+                typeWritter(GREEN + "[*] Connected to server at " + host + RESET);
 
-            // Login
-            typeWritter(GREEN + "Enter username: " + RESET);
-            String username = scanner.nextLine().trim();
-            typeWritter(GREEN + "Enter password: " + RESET);
-	    String password =scanner.nextLine().trim();
-	    while(password.isEmpty()) {
-		typeWritter(GREEN + "password cannot be empty " + RESET );
-		password=scanner.nextLine().trim();
-	    }
-            while (username.isEmpty()) {
-                typeWritter(RED + "Username cannot be empty!" + RESET);
-                username = scanner.nextLine().trim();
-            }
-
-            JSONObject login = new JSONObject();
-            login.put("type", "login");
-            login.put("username", username);
-            login.put("password",password);
-            typeWritter(GREEN + "[*] Logging in as " + username + RESET);
-            typeWritter(GREEN + "↪ Sending login request..." + RESET);
-            out.println(login.toString());
-
-            String loginReply = in.readLine();
-            if (loginReply == null) {
-                typeWritter(RED + "[!] No login response received." + RESET);
-                return;
-            }
-            System.out.println(GREEN + "[Server] " + loginReply + RESET);
-
-            JSONObject beaconRequest = new JSONObject();
-            beaconRequest.put("type", "beacon_request");
-            out.println(beaconRequest.toString());
-
-            String beaconReply = in.readLine();
-            if (beaconReply != null) {
-                JSONObject beacon = new JSONObject(beaconReply);
-                if ("beacon".equals(beacon.optString("type"))) {
-                    typeWritter(GREEN + "↪ Server Public IP: " + beacon.optString("public_ip") + RESET);
+                // Login
+                typeWritter(GREEN + "Enter username: " + RESET);
+                String username = scanner.nextLine().trim();
+                typeWritter(GREEN + "Enter password: " + RESET);
+                String password = scanner.nextLine().trim();
+                while (password.isEmpty()) {
+                    typeWritter(GREEN + "password cannot be empty " + RESET);
+                    password = scanner.nextLine().trim();
                 }
+                while (username.isEmpty()) {
+                    typeWritter(RED + "Username cannot be empty!" + RESET);
+                    username = scanner.nextLine().trim();
+                }
+
+                JSONObject login = new JSONObject();
+                login.put("type", "login");
+                login.put("username", username);
+                login.put("password", password);
+                typeWritter(GREEN + "[*] Logging in as " + username + RESET);
+                typeWritter(GREEN + "↪ Sending login request..." + RESET);
+                out.println(login.toString());
+
+                String loginReply = in.readLine();
+                if (loginReply == null) {
+                    typeWritter(RED + "[!] No login response received." + RESET);
+                    return;
+                }
+                System.out.println(GREEN + "[Server] " + loginReply + RESET);
+
+                JSONObject beaconRequest = new JSONObject();
+                beaconRequest.put("type", "beacon_request");
+                out.println(beaconRequest.toString());
+
+                String beaconReply = in.readLine();
+                if (beaconReply != null) {
+                    JSONObject beacon = new JSONObject(beaconReply);
+                    if ("beacon".equals(beacon.optString("type"))) {
+                        typeWritter(GREEN + "↪ Server Public IP: " + beacon.optString("public_ip") + RESET);
+                    }
+                }
+
+                // Heartbeat thread
+                Thread heartbeatThread = new Thread(() -> {
+                    while (true) {
+                        try {
+                            Thread.sleep(10000); // Every 10 seconds
+                            JSONObject ping = new JSONObject();
+                            ping.put("type", "ping");
+                            out.println(ping.toString());
+                        } catch (InterruptedException e) {
+                            break; // Stop on interrupt
+                        }
+                    }
+                });
+                heartbeatThread.start();
+
+                // Main client loop for sending messages
+                while (true) {
+                    typeWritter(GREEN + "> " + RESET);
+                    String msg = scanner.nextLine();
+
+                    if (msg.equalsIgnoreCase("exit")) {
+                        heartbeatThread.interrupt();
+                        break;
+                    }
+                    if (msg.trim().isEmpty()) {
+                        typeWritter(RED + "Message cannot be empty." + RESET);
+                        continue;
+                    }
+
+                    if (msg.startsWith("/")) {
+                        String[] parts = msg.split(" ", 3);
+                        if (parts.length < 3 && !parts[0].equals("/list_users") && !parts[0].equals("/list_books") && !parts[0].equals("/my_rentals")) {
+                            typeWritter(RED + "Invalid command format. Use /command args" + RESET);
+                            continue;
+                        }
+
+                        if (parts[0].equals("/rent") && parts.length >= 2) {
+                            JSONObject req = new JSONObject();
+                            req.put("type", "rent");
+                            req.put("book_id", Integer.parseInt(parts[1]));
+                            out.println(req.toString());
+                        } else if (parts[0].equals("/return") && parts.length >= 2) {
+                            JSONObject req = new JSONObject();
+                            req.put("type", "return");
+                            req.put("book_id", Integer.parseInt(parts[1]));
+                            out.println(req.toString());
+                        } else if (parts[0].equals("/download") && parts.length >= 2) {
+                            JSONObject req = new JSONObject();
+                            req.put("type", "download");
+                            req.put("book_id", Integer.parseInt(parts[1]));
+                            out.println(req.toString());
+                        } else if (msg.equalsIgnoreCase("/list_books")) {
+                            JSONObject req = new JSONObject();
+                            req.put("type", "list_books");
+                            out.println(req.toString());
+                        } else if (msg.equalsIgnoreCase("/my_rentals")) {
+                            JSONObject req = new JSONObject();
+                            req.put("type", "my_rentals");
+                            out.println(req.toString());
+                        } else if (msg.equalsIgnoreCase("/list_users")) {
+                            JSONObject listUsers = new JSONObject();
+                            listUsers.put("type", "list_users");
+                            out.println(listUsers.toString());
+                        } else {
+                            JSONObject pm = new JSONObject();
+                            pm.put("type", "message");
+                            pm.put("to", parts[1]);
+                            pm.put("body", parts[2]);
+                            out.println(pm.toString());
+                        }
+                    } else {
+                        JSONObject broadcast = new JSONObject();
+                        broadcast.put("type", "broadcast");
+                        broadcast.put("body", msg);
+                        out.println(broadcast.toString());
+                    }
+
+                    // Expects responses, tolerate timeouts
+                    for (int i = 0; i < 2; i++) {
+                        try {
+                            socket.setSoTimeout(3000);
+                            String reply = in.readLine();
+                            if (reply == null) continue;
+
+                            JSONObject json = new JSONObject(reply);
+                            String type = json.optString("type");
+
+                            switch (type) {
+                                case "broadcast" -> typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
+                                case "message" -> typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"));
+                                case "info", "error" -> typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"));
+                                case "user_list" -> {
+                                    JSONArray users = json.getJSONArray("users");
+                                    typeWritter(GREEN + "Active users: " + users.toString() + RESET);
+                                }
+                                case "book_list" -> {
+                                    JSONArray books = json.getJSONArray("books");
+                                    for (int j = 0; j < books.length(); j++) {
+                                        JSONObject book = books.getJSONObject(j);
+                                        typeWritter("ID: " + book.getInt("id") + ", Title: " + book.getString("title") + ", Author: " + book.optString("author") + ", Available: " + book.getBoolean("available"));
+                                    }
+                                }
+                                case "my_rentals" -> {
+                                    JSONArray rentals = json.getJSONArray("rentals");
+                                    for (int j = 0; j < rentals.length(); j++) {
+                                        JSONObject rental = rentals.getJSONObject(j);
+                                        typeWritter("Book ID: " + rental.getInt("book_id") + ", Title: " + rental.getString("title") + ", Rented: " + rental.getString("rental_date") + ", Due: " + rental.getString("due_date"));
+                                    }
+                                }
+                                case "file_download" -> {
+                                    String base64 = json.optString("content");
+                                    String filename = json.optString("filename");
+                                    byte[] bytes = Base64.getDecoder().decode(base64);
+                                    try (FileOutputStream fos = new FileOutputStream(filename)) {
+                                        fos.write(bytes);
+                                        typeWritter(GREEN + "Book downloaded: " + filename + RESET);
+                                    } catch (IOException e) {
+                                        typeWritter(RED + "Download failed: " + e.getMessage() + RESET);
+                                    }
+                                }
+                                default -> typeWritter("[Server] " + reply);
+                            }
+                        } catch (SocketTimeoutException ste) {
+                            //skip
+                        }
+                    }
+                }
+
+                // If loop exits normally, break out of retry
+                break;
+            } catch (IOException e) {
+                retryCount++;
+                long backoff = INITIAL_BACKOFF_MS * (long) Math.pow(2, retryCount - 1); // Exponential backoff
+                typeWritter(RED + "[!] Connection error: " + e.getMessage() + ". Retrying in " + (backoff / 1000) + " seconds... (Attempt " + retryCount + "/" + MAX_RETRIES + ")" + RESET);
+                try {
+                    Thread.sleep(backoff);
+                } catch (InterruptedException ignore) {}
             }
-         
-// Main client loop for sending messages
-while (true) {
-    typeWritter(GREEN + "> " + RESET);
-    String msg = scanner.nextLine();
-
-    if (msg.equalsIgnoreCase("exit")) break;
-    if (msg.trim().isEmpty()) {
-        typeWritter(RED + "Message cannot be empty." + RESET);
-        continue;
-    }
-
-    if (msg.startsWith("/")) {
-        String[] parts = msg.split(" ", 3);
-        if (parts.length < 3) {
-            typeWritter(RED + "Invalid command format. Use /command args" + RESET);
-            continue;
         }
 
-        JSONObject pm = new JSONObject();
-        pm.put("type", "message");
-        pm.put("to", parts[1]);
-        pm.put("body", parts[2]);
-        out.println(pm.toString());
-    } else if (msg.equalsIgnoreCase("/list_users")) {
-        JSONObject listUsers = new JSONObject();
-        listUsers.put("type", "list_users");
-        out.println(listUsers.toString());
-    } else {
-        JSONObject broadcast = new JSONObject();
-        broadcast.put("type", "broadcast");
-        broadcast.put("body", msg);
-        out.println(broadcast.toString());
-    }
-
-    // Expects 2 responses (ping + broadcast), tolerate timeouts
-    for (int i = 0; i < 2; i++) {
-        try {
-           socket.setSoTimeout(30000);
-            String reply = in.readLine();
-            if (reply == null) continue;
-
-            JSONObject json = new JSONObject(reply);
-            String type = json.optString("type");
-
-            switch (type) {
-                case "broadcast" -> typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
-                case "message" -> typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"));
-                case "info", "error" -> typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"));
-                default -> typeWritter("[Server] " + reply);
-            }
-        } catch (SocketTimeoutException ste) {
-            //skip
-        }
-    }
-}
-
-        } catch (IOException e) {
-            typeWritter(RED + "[!] Error connecting to server: " + e.getMessage() + RESET);
-        } finally {
+        if (retryCount >= MAX_RETRIES) {
+            typeWritter(RED + "[!] Max retries reached. Exiting." + RESET);
+        } else {
             typeWritter(GREEN + "[*] Connection closed." + RESET);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                typeWritter(RED + "[!] Error during sleep: " + e.getMessage() + RESET);
-            }
-            System.exit(0);
         }
+        System.exit(0);
     } // end of startClient method
 }
-             
