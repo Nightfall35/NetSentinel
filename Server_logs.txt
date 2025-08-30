@@ -4070,3 +4070,433 @@ port obtained : 9999...[0m
 [2025-08-18 05:10:13] Connection with client: /172.16.0.228 timed out due to inactivity
 [2025-08-18 05:10:13] [Elijah] disconnected
 [2025-08-18 05:10:17] [*] Beacon sent 
+[2025-08-27 05:37:14] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-08-27 05:37:14] [*] Beacon sent 
+[2025-08-27 05:37:15] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-08-27 05:37:15] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-08-27 05:37:15] [32mLoaded 3 user(s) from credentials file.[0m
+[2025-08-27 05:37:15] [35mServer awaiting connection...[0m
+[2025-08-27 05:37:24] [*] Beacon sent 
+[2025-08-27 05:37:34] [*] Beacon sent 
+[2025-08-27 05:37:44] [*] Beacon sent 
+[2025-08-27 05:37:54] [*] Beacon sent 
+[2025-08-27 05:38:04] [*] Beacon sent 
+[2025-08-27 05:38:14] [*] Beacon sent 
+[2025-08-27 05:38:24] [*] Beacon sent 
+[2025-08-27 05:38:31] [32mDeploying Beacon......[0m
+[2025-08-27 05:38:34] [*] Beacon sent 
+[2025-08-27 05:38:44] [*] Beacon sent 
+[2025-08-27 05:38:53] sent beacon to [Anonymous]: 41.63.1.124
+[2025-08-27 05:38:54] [*] Beacon sent 
+[2025-08-27 05:39:04] [*] Beacon sent 
+[2025-08-27 05:39:15] [*] Beacon sent 
+[2025-08-27 05:39:24] [32mDeploying Beacon......[0m
+[2025-08-27 05:39:25] [*] Beacon sent 
+[2025-08-27 05:39:25] Broadcast from [Anonymous] hello
+[2025-08-27 05:39:35] [*] Beacon sent 
+[2025-08-27 05:39:45] [*] Beacon sent 
+[2025-08-27 05:39:46] [Phantom] registered and logged in from /10.94.208.200
+[2025-08-27 05:39:46] sent beacon to [Phantom]: 41.63.1.124
+[2025-08-27 05:39:54] Broadcast from [Phantom] hello
+[2025-08-27 05:39:55] [*] Beacon sent 
+[2025-08-27 05:40:05] [*] Beacon sent 
+[2025-08-27 05:40:05] Broadcast from [Phantom] whats up 
+[2025-08-27 05:40:09] Broadcast from [Anonymous] hey
+[2025-08-27 05:40:15] [*] Beacon sent 
+[2025-08-27 05:40:19] Broadcast from [Phantom] you good?
+[2025-08-27 05:40:25] [*] Beacon sent 
+[2025-08-27 05:40:29] Broadcast from [Anonymous] hey mate
+[2025-08-27 05:40:35] [*] Beacon sent 
+[2025-08-27 05:40:43] Broadcast from [Anonymous] hello mate
+[2025-08-27 05:40:45] [*] Beacon sent 
+[2025-08-27 05:40:50] Broadcast from [Phantom] hi 
+[2025-08-27 05:40:55] [*] Beacon sent 
+[2025-08-27 05:41:01] Broadcast from [Phantom] hey
+[2025-08-27 05:41:05] [*] Beacon sent 
+[2025-08-27 05:41:12] Broadcast from [Phantom] whatis up?
+[2025-08-27 05:41:15] [*] Beacon sent 
+[2025-08-27 05:41:25] [*] Beacon sent 
+[2025-08-27 05:41:35] [*] Beacon sent 
+[2025-08-27 05:41:40] Broadcast from [Anonymous] help
+[2025-08-27 05:41:45] [*] Beacon sent 
+[2025-08-27 05:41:53] Connection with client: /10.94.208.200 timed out due to inactivity
+[2025-08-27 05:41:53] [Phantom] disconnected
+[2025-08-27 05:41:55] [*] Beacon sent 
+[2025-08-27 05:41:55] Connection with client: /10.94.208.200 timed out due to inactivity
+[2025-08-27 05:41:55] [Anonymous] disconnected
+[2025-08-27 11:23:41] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-08-27 11:23:41] [*] Beacon sent 
+[2025-08-27 11:23:42] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-08-27 11:23:42] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-08-27 11:23:42] [32mLoaded 4 user(s) from credentials file.[0m
+[2025-08-27 11:23:42] [35mServer awaiting connection...[0m
+[2025-08-27 11:23:51] [*] Beacon sent 
+[2025-08-27 11:24:01] [*] Beacon sent 
+[2025-08-27 11:24:11] [*] Beacon sent 
+[2025-08-27 11:24:17] [32mDeploying Beacon......[0m
+[2025-08-27 11:24:21] [*] Beacon sent 
+[2025-08-27 11:24:31] [*] Beacon sent 
+[2025-08-27 11:24:37] [32mDeploying Beacon......[0m
+[2025-08-27 11:24:41] [*] Beacon sent 
+[2025-08-27 11:24:44] sent beacon to [Anonymous]: 41.63.1.124
+[2025-08-27 11:24:51] [*] Beacon sent 
+[2025-08-27 11:24:54] [phantom] registered and logged in from /127.0.0.1
+[2025-08-27 11:24:54] sent beacon to [phantom]: 41.63.1.124
+[2025-08-27 11:25:01] [*] Beacon sent 
+[2025-08-27 11:25:04] Broadcast from [phantom] hello
+[2025-08-27 11:25:07] Ping reeceived from [phantom] - replied with pong
+[2025-08-27 11:25:11] [*] Beacon sent 
+[2025-08-27 11:25:16] Broadcast from [Anonymous] whats up
+[2025-08-27 11:25:17] Ping reeceived from [phantom] - replied with pong
+[2025-08-27 11:25:21] [*] Beacon sent 
+[2025-08-27 11:25:27] Ping reeceived from [phantom] - replied with pong
+[2025-08-27 11:25:31] [*] Beacon sent 
+[2025-08-27 11:25:37] Ping reeceived from [phantom] - replied with pong
+[2025-08-27 11:25:41] [*] Beacon sent 
+[2025-08-27 11:25:47] Ping reeceived from [phantom] - replied with pong
+[2025-08-27 11:25:51] [*] Beacon sent 
+[2025-08-27 11:25:57] Ping reeceived from [phantom] - replied with pong
+[2025-08-27 11:26:01] [*] Beacon sent 
+[2025-08-27 11:26:07] Ping reeceived from [phantom] - replied with pong
+[2025-08-27 11:26:11] [*] Beacon sent 
+[2025-08-27 11:26:16] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-08-27 11:26:16] [Anonymous] disconnected
+[2025-08-27 11:26:17] Ping reeceived from [phantom] - replied with pong
+[2025-08-27 11:26:21] [*] Beacon sent 
+[2025-08-27 11:26:27] Ping reeceived from [phantom] - replied with pong
+[2025-08-27 11:26:31] [*] Beacon sent 
+[2025-08-27 11:26:37] Ping reeceived from [phantom] - replied with pong
+[2025-08-27 11:26:41] [*] Beacon sent 
+[2025-08-27 11:43:10] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-08-27 11:43:10] [*] Beacon sent 
+[2025-08-27 11:43:11] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-08-27 11:43:11] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-08-27 11:43:11] [32mLoaded 5 user(s) from credentials file.[0m
+[2025-08-27 11:43:11] [35mServer awaiting connection...[0m
+[2025-08-27 11:43:20] [*] Beacon sent 
+[2025-08-27 11:43:30] [*] Beacon sent 
+[2025-08-27 11:43:40] [*] Beacon sent 
+[2025-08-27 11:43:46] [32mDeploying Beacon......[0m
+[2025-08-27 11:43:50] [*] Beacon sent 
+[2025-08-27 11:43:54] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-08-27 11:43:54] [Anonymous] disconnected
+[2025-08-27 11:44:00] [*] Beacon sent 
+[2025-08-27 11:44:10] [*] Beacon sent 
+[2025-08-27 11:44:20] [*] Beacon sent 
+[2025-08-27 11:44:30] [*] Beacon sent 
+[2025-08-27 11:44:40] [*] Beacon sent 
+[2025-08-27 11:44:50] [*] Beacon sent 
+[2025-08-27 11:45:00] [*] Beacon sent 
+[2025-08-27 11:45:10] [*] Beacon sent 
+[2025-08-27 11:45:20] [*] Beacon sent 
+[2025-08-27 11:45:30] [*] Beacon sent 
+[2025-08-27 11:45:39] [32mDeploying Beacon......[0m
+[2025-08-27 11:45:40] [*] Beacon sent 
+[2025-08-27 11:45:50] [*] Beacon sent 
+[2025-08-27 11:46:00] [*] Beacon sent 
+[2025-08-27 11:46:10] [*] Beacon sent 
+[2025-08-27 11:46:20] [*] Beacon sent 
+[2025-08-27 11:46:30] [*] Beacon sent 
+[2025-08-27 11:46:40] [*] Beacon sent 
+[2025-08-27 11:46:50] [*] Beacon sent 
+[2025-08-27 11:47:00] [*] Beacon sent 
+[2025-08-27 11:47:10] [*] Beacon sent 
+[2025-08-27 11:47:20] [*] Beacon sent 
+[2025-08-27 11:47:30] [*] Beacon sent 
+[2025-08-27 11:47:40] [*] Beacon sent 
+[2025-08-27 11:47:50] [*] Beacon sent 
+[2025-08-27 11:48:00] [*] Beacon sent 
+[2025-08-27 11:48:10] [*] Beacon sent 
+[2025-08-27 11:48:20] [*] Beacon sent 
+[2025-08-27 11:48:30] [*] Beacon sent 
+[2025-08-27 11:48:40] [*] Beacon sent 
+[2025-08-27 11:48:50] [*] Beacon sent 
+[2025-08-27 11:48:51] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-08-27 11:48:51] [Anonymous] disconnected
+[2025-08-27 11:48:57] [32mDeploying Beacon......[0m
+[2025-08-27 11:49:00] [*] Beacon sent 
+[2025-08-27 11:49:10] [*] Beacon sent 
+[2025-08-27 11:49:14] [cypher] registered and logged in from /127.0.0.1
+[2025-08-27 11:49:14] sent beacon to [cypher]: 41.63.1.124
+[2025-08-27 11:49:20] [*] Beacon sent 
+[2025-08-27 11:49:26] Ping reeceived from [cypher] - replied with pong
+[2025-08-27 11:49:30] [*] Beacon sent 
+[2025-08-27 11:49:34] [cypher] disconnected
+[2025-08-27 11:49:40] [*] Beacon sent 
+[2025-08-27 11:49:50] [*] Beacon sent 
+[2025-08-27 11:50:00] [*] Beacon sent 
+[2025-08-27 11:50:10] [*] Beacon sent 
+[2025-08-27 11:50:20] [*] Beacon sent 
+[2025-08-27 11:50:30] [*] Beacon sent 
+[2025-08-27 11:50:40] [*] Beacon sent 
+[2025-08-27 11:50:50] [*] Beacon sent 
+[2025-08-27 11:51:00] [*] Beacon sent 
+[2025-08-27 11:51:10] [*] Beacon sent 
+[2025-08-27 11:51:20] [*] Beacon sent 
+[2025-08-27 11:51:30] [*] Beacon sent 
+[2025-08-27 11:51:40] [*] Beacon sent 
+[2025-08-27 11:51:50] [*] Beacon sent 
+[2025-08-27 11:51:57] [32mDeploying Beacon......[0m
+[2025-08-27 11:52:00] [*] Beacon sent 
+[2025-08-27 11:52:10] [*] Beacon sent 
+[2025-08-27 11:52:19] [cyphrt] registered and logged in from /127.0.0.1
+[2025-08-27 11:52:19] sent beacon to [cyphrt]: 41.63.1.124
+[2025-08-27 11:52:20] [*] Beacon sent 
+[2025-08-27 11:52:30] [*] Beacon sent 
+[2025-08-27 11:52:32] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:52:35] Sent user list to [cyphrt]
+[2025-08-27 11:52:40] [*] Beacon sent 
+[2025-08-27 11:52:42] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:52:50] [*] Beacon sent 
+[2025-08-27 11:52:52] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:52:59] [32mDeploying Beacon......[0m
+[2025-08-27 11:53:00] [*] Beacon sent 
+[2025-08-27 11:53:02] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:53:10] [*] Beacon sent 
+[2025-08-27 11:53:12] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:53:14] [yu] registered and logged in from /127.0.0.1
+[2025-08-27 11:53:14] sent beacon to [yu]: 41.63.1.124
+[2025-08-27 11:53:20] [*] Beacon sent 
+[2025-08-27 11:53:22] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:53:27] Sent user list to [yu]
+[2025-08-27 11:53:27] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:53:30] [*] Beacon sent 
+[2025-08-27 11:53:32] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:53:37] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:53:40] [*] Beacon sent 
+[2025-08-27 11:53:42] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:53:47] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:53:48] Sent user list to [cyphrt]
+[2025-08-27 11:53:50] [*] Beacon sent 
+[2025-08-27 11:53:52] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:53:54] Sent user list to [cyphrt]
+[2025-08-27 11:53:57] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:54:00] [*] Beacon sent 
+[2025-08-27 11:54:01] Sent user list to [cyphrt]
+[2025-08-27 11:54:02] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:54:07] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:54:08] Sent user list to [cyphrt]
+[2025-08-27 11:54:10] [*] Beacon sent 
+[2025-08-27 11:54:12] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:54:16] Sent user list to [cyphrt]
+[2025-08-27 11:54:17] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:54:20] [*] Beacon sent 
+[2025-08-27 11:54:22] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:54:27] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:54:30] [*] Beacon sent 
+[2025-08-27 11:54:32] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:54:37] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:54:40] [*] Beacon sent 
+[2025-08-27 11:54:42] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:54:47] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:54:50] [*] Beacon sent 
+[2025-08-27 11:54:52] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:54:57] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:55:00] [*] Beacon sent 
+[2025-08-27 11:55:02] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:55:07] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:55:10] [*] Beacon sent 
+[2025-08-27 11:55:12] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:55:17] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:55:20] [*] Beacon sent 
+[2025-08-27 11:55:22] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:55:27] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:55:30] [*] Beacon sent 
+[2025-08-27 11:55:32] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:55:37] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:55:40] [*] Beacon sent 
+[2025-08-27 11:55:42] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:55:47] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:55:50] [*] Beacon sent 
+[2025-08-27 11:55:52] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:55:57] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:56:00] [*] Beacon sent 
+[2025-08-27 11:56:02] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:56:07] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:56:10] [*] Beacon sent 
+[2025-08-27 11:56:12] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:56:17] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:56:20] [*] Beacon sent 
+[2025-08-27 11:56:22] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:56:27] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:56:30] [*] Beacon sent 
+[2025-08-27 11:56:32] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:56:37] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:56:40] [*] Beacon sent 
+[2025-08-27 11:56:42] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:56:47] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:56:50] [*] Beacon sent 
+[2025-08-27 11:56:52] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:56:57] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:57:00] [*] Beacon sent 
+[2025-08-27 11:57:02] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:57:07] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:57:10] [*] Beacon sent 
+[2025-08-27 11:57:12] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:57:17] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:57:20] [*] Beacon sent 
+[2025-08-27 11:57:22] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:57:27] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:57:30] [*] Beacon sent 
+[2025-08-27 11:57:32] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:57:37] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:57:40] [*] Beacon sent 
+[2025-08-27 11:57:42] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:57:47] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:57:50] [*] Beacon sent 
+[2025-08-27 11:57:52] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:57:57] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:58:00] [*] Beacon sent 
+[2025-08-27 11:58:02] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:58:07] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:58:10] [*] Beacon sent 
+[2025-08-27 11:58:12] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:58:17] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:58:20] [*] Beacon sent 
+[2025-08-27 11:58:22] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:58:27] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:58:30] [*] Beacon sent 
+[2025-08-27 11:58:31] Broadcast from [cyphrt] book_list
+[2025-08-27 11:58:32] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:58:37] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:58:40] [*] Beacon sent 
+[2025-08-27 11:58:42] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:58:47] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:58:50] [*] Beacon sent 
+[2025-08-27 11:58:52] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:58:54] Broadcast from [cyphrt] info
+[2025-08-27 11:58:57] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:59:00] [*] Beacon sent 
+[2025-08-27 11:59:02] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:59:07] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:59:10] [*] Beacon sent 
+[2025-08-27 11:59:12] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:59:17] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:59:20] [*] Beacon sent 
+[2025-08-27 11:59:22] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:59:27] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:59:30] [*] Beacon sent 
+[2025-08-27 11:59:32] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:59:37] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:59:40] Broadcast from [cyphrt] file_download
+[2025-08-27 11:59:40] [*] Beacon sent 
+[2025-08-27 11:59:42] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:59:47] Ping reeceived from [yu] - replied with pong
+[2025-08-27 11:59:50] [*] Beacon sent 
+[2025-08-27 11:59:52] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 11:59:57] Ping reeceived from [yu] - replied with pong
+[2025-08-27 12:00:00] [*] Beacon sent 
+[2025-08-27 12:00:02] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 12:00:07] Ping reeceived from [yu] - replied with pong
+[2025-08-27 12:00:10] [*] Beacon sent 
+[2025-08-27 12:00:12] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 12:00:17] Ping reeceived from [yu] - replied with pong
+[2025-08-27 12:00:20] [*] Beacon sent 
+[2025-08-27 12:00:22] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 12:00:27] Ping reeceived from [yu] - replied with pong
+[2025-08-27 12:00:30] [*] Beacon sent 
+[2025-08-27 12:00:32] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 12:00:37] Ping reeceived from [yu] - replied with pong
+[2025-08-27 12:00:40] [*] Beacon sent 
+[2025-08-27 12:00:42] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 12:00:47] Ping reeceived from [yu] - replied with pong
+[2025-08-27 12:00:50] [*] Beacon sent 
+[2025-08-27 12:00:52] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 12:00:57] Ping reeceived from [yu] - replied with pong
+[2025-08-27 12:01:00] [*] Beacon sent 
+[2025-08-27 12:01:02] Ping reeceived from [cyphrt] - replied with pong
+[2025-08-27 12:01:07] Ping reeceived from [yu] - replied with pong
+[2025-08-27 12:01:10] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-08-27 12:01:10] [cyphrt] disconnected
+[2025-08-27 12:01:10] [*] Beacon sent 
+[2025-08-27 12:01:12] Connection with client: /127.0.0.1 timed out due to inactivity
+[2025-08-27 12:01:12] [yu] disconnected
+[2025-08-27 12:01:20] [*] Beacon sent 
+[2025-08-29 01:32:03] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-08-29 01:32:03] [*] Beacon sent 
+[2025-08-29 01:32:04] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-08-29 01:32:04] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-08-29 01:32:04] [32mLoaded 8 user(s) from credentials file.[0m
+[2025-08-29 01:32:04] [35mServer awaiting connection...[0m
+[2025-08-29 01:32:13] [*] Beacon sent 
+[2025-08-29 01:32:23] [*] Beacon sent 
+[2025-08-29 01:32:33] [*] Beacon sent 
+[2025-08-29 01:32:43] [*] Beacon sent 
+[2025-08-29 01:32:52] [32mDeploying Beacon......[0m
+[2025-08-29 01:32:53] [*] Beacon sent 
+[2025-08-29 01:33:03] [*] Beacon sent 
+[2025-08-29 01:33:11] [Ishmael] registered and logged in from /127.0.0.1
+[2025-08-29 01:33:11] sent beacon to [Ishmael]: 41.63.1.124
+[2025-08-29 01:33:13] [*] Beacon sent 
+[2025-08-29 01:33:21] Broadcast from [Ishmael] hey 
+[2025-08-29 01:33:23] [*] Beacon sent 
+[2025-08-29 01:33:24] Ping reeceived from [Ishmael] - replied with pong
+[2025-08-29 01:33:33] [*] Beacon sent 
+[2025-08-29 01:33:34] Ping reeceived from [Ishmael] - replied with pong
+[2025-08-29 01:33:36] [Ishmael] disconnected
+[2025-08-29 01:33:43] [*] Beacon sent 
+[2025-08-29 01:33:53] [*] Beacon sent 
+[2025-08-29 01:34:03] [*] Beacon sent 
+[2025-08-29 01:34:13] [*] Beacon sent 
+[2025-08-29 01:34:23] [*] Beacon sent 
+[2025-08-29 01:34:33] [*] Beacon sent 
+[2025-08-29 01:34:43] [*] Beacon sent 
+[2025-08-29 01:34:53] [*] Beacon sent 
+[2025-08-29 01:35:03] [*] Beacon sent 
+[2025-08-29 01:35:13] [*] Beacon sent 
+[2025-08-29 01:35:23] [*] Beacon sent 
+[2025-08-29 01:35:33] [*] Beacon sent 
+[2025-08-29 01:35:43] [*] Beacon sent 
+[2025-08-29 01:35:53] [*] Beacon sent 
+[2025-08-29 01:36:03] [*] Beacon sent 
+[2025-08-29 01:36:13] [*] Beacon sent 
+[2025-08-29 01:36:23] [*] Beacon sent 
+[2025-08-29 01:36:33] [*] Beacon sent 
+[2025-08-29 01:36:43] [*] Beacon sent 
+[2025-08-29 01:36:53] [*] Beacon sent 
+[2025-08-29 01:37:03] [*] Beacon sent 
+[2025-08-29 01:37:13] [*] Beacon sent 
+[2025-08-29 01:37:23] [*] Beacon sent 
+[2025-08-29 01:37:33] [*] Beacon sent 
+[2025-08-29 01:37:43] [*] Beacon sent 
+[2025-08-29 01:37:53] [*] Beacon sent 
+[2025-08-29 01:38:03] [*] Beacon sent 
+[2025-08-29 01:38:13] [*] Beacon sent 
+[2025-08-29 01:38:23] [*] Beacon sent 
+[2025-08-29 01:38:33] [*] Beacon sent 
+[2025-08-29 01:38:43] [*] Beacon sent 
+[2025-08-29 01:38:53] [*] Beacon sent 
+[2025-08-29 01:39:03] [*] Beacon sent 
+[2025-08-29 01:39:13] [*] Beacon sent 
+[2025-08-29 01:39:23] [*] Beacon sent 
+[2025-08-29 01:39:33] [*] Beacon sent 
+[2025-08-29 01:39:43] [*] Beacon sent 
+[2025-08-29 01:39:53] [*] Beacon sent 
+[2025-08-29 01:40:03] [*] Beacon sent 
+[2025-08-29 01:40:13] [*] Beacon sent 
+[2025-08-29 01:40:23] [*] Beacon sent 
+[2025-08-29 01:40:33] [*] Beacon sent 
+[2025-08-29 01:40:43] [*] Beacon sent 
+[2025-08-29 01:40:53] [*] Beacon sent 
+[2025-08-29 01:41:04] [*] Beacon sent 
+[2025-08-29 01:41:14] [*] Beacon sent 
+[2025-08-29 01:41:24] [*] Beacon sent 
+[2025-08-29 01:41:34] [*] Beacon sent 
+[2025-08-29 01:41:44] [*] Beacon sent 
+[2025-08-29 01:41:54] [*] Beacon sent 
+[2025-08-29 01:42:04] [*] Beacon sent 
+[2025-08-29 01:42:14] [*] Beacon sent 
+[2025-08-29 01:42:24] [*] Beacon sent 
+[2025-08-29 01:42:34] [*] Beacon sent 
+[2025-08-29 01:42:44] [*] Beacon sent 
+[2025-08-29 01:42:54] [*] Beacon sent 
+[2025-08-29 01:43:04] [*] Beacon sent 
+[2025-08-29 01:43:14] [*] Beacon sent 

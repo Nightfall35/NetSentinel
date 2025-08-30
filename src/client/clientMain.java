@@ -1,6 +1,7 @@
 package client;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -8,12 +9,11 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.util.Scanner;
 import java.util.Base64;
-import java.io.FileOutputStream;
+import java.util.Scanner;
 
-import org.json.JSONObject;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class clientMain {
 
@@ -40,7 +40,7 @@ public class clientMain {
             if (serverIp != null) {
                 startClient(serverIp);
 
-                break; // Exit loop after successful connection
+                break;
             } else {
                 typeWritter(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET);
                 try {
@@ -109,7 +109,7 @@ public class clientMain {
                 login.put("username", username);
                 login.put("password", password);
                 typeWritter(GREEN + "[*] Logging in as " + username + RESET);
-                typeWritter(GREEN + "↪ Sending login request..." + RESET);
+                typeWritter(GREEN + "Sending login request..." + RESET);
                 out.println(login.toString());
 
                 String loginReply = in.readLine();
@@ -127,7 +127,7 @@ public class clientMain {
                 if (beaconReply != null) {
                     JSONObject beacon = new JSONObject(beaconReply);
                     if ("beacon".equals(beacon.optString("type"))) {
-                        typeWritter(GREEN + "↪ Server Public IP: " + beacon.optString("public_ip") + RESET);
+                        typeWritter(GREEN + "[!] Server Public IP: " + beacon.optString("public_ip") + RESET);
                     }
                 }
 
@@ -167,47 +167,7 @@ public class clientMain {
                             continue;
                         }
 
-                        if (parts[0].equals("/rent") && parts.length >= 2) {
-                            JSONObject req = new JSONObject();
-                            req.put("type", "rent");
-                            req.put("book_id", Integer.parseInt(parts[1]));
-                            out.println(req.toString());
-                        } else if (parts[0].equals("/return") && parts.length >= 2) {
-                            JSONObject req = new JSONObject();
-                            req.put("type", "return");
-                            req.put("book_id", Integer.parseInt(parts[1]));
-                            out.println(req.toString());
-                        } else if (parts[0].equals("/download") && parts.length >= 2) {
-                            JSONObject req = new JSONObject();
-                            req.put("type", "download");
-                            req.put("book_id", Integer.parseInt(parts[1]));
-                            out.println(req.toString());
-                        } else if (msg.equalsIgnoreCase("/list_books")) {
-                            JSONObject req = new JSONObject();
-                            req.put("type", "list_books");
-                            out.println(req.toString());
-                        } else if (msg.equalsIgnoreCase("/my_rentals")) {
-                            JSONObject req = new JSONObject();
-                            req.put("type", "my_rentals");
-                            out.println(req.toString());
-                        } else if (msg.equalsIgnoreCase("/list_users")) {
-                            JSONObject listUsers = new JSONObject();
-                            listUsers.put("type", "list_users");
-                            out.println(listUsers.toString());
-                        } else {
-                            JSONObject pm = new JSONObject();
-                            pm.put("type", "message");
-                            pm.put("to", parts[1]);
-                            pm.put("body", parts[2]);
-                            out.println(pm.toString());
-                        }
-                    } else {
-                        JSONObject broadcast = new JSONObject();
-                        broadcast.put("type", "broadcast");
-                        broadcast.put("body", msg);
-                        out.println(broadcast.toString());
-                    }
-
+                      
                     // Expects responses, tolerate timeouts
                     for (int i = 0; i < 2; i++) {
                         try {
