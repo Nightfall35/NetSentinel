@@ -4515,3 +4515,64 @@ port obtained : 9999...[0m
 [2025-08-31 14:43:14] [*] Beacon sent 
 [2025-08-31 14:43:24] [*] Beacon sent 
 [2025-08-31 14:43:34] [*] Beacon sent 
+[2025-09-03 17:06:04] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-03 17:06:05] [*] Beacon sent 
+[2025-09-03 17:06:08] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-03 17:06:08] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-03 17:06:08] [32mLoaded 9 user(s) from credentials file.[0m
+[2025-09-03 17:06:08] [35mServer awaiting connection...[0m
+[2025-09-03 17:06:15] [*] Beacon sent 
+[2025-09-03 17:06:25] [*] Beacon sent 
+[2025-09-03 17:06:35] [*] Beacon sent 
+[2025-09-03 17:06:45] [32mDeploying Beacon......[0m
+[2025-09-03 17:06:45] [*] Beacon sent 
+[2025-09-03 17:06:56] [*] Beacon sent 
+[2025-09-03 17:07:06] [*] Beacon sent 
+[2025-09-03 17:07:16] [*] Beacon sent 
+[2025-09-03 17:07:25] [32mDeploying Beacon......[0m
+[2025-09-03 17:07:26] [*] Beacon sent 
+[2025-09-03 17:07:28] sent beacon to [Anonymous]: 41.63.1.124
+[2025-09-03 17:07:36] [*] Beacon sent 
+[2025-09-03 17:07:42] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:07:46] [*] Beacon sent 
+[2025-09-03 17:07:49] [Elijahcypher] registered and logged in from /10.112.72.200
+[2025-09-03 17:07:49] sent beacon to [Elijahcypher]: 41.63.1.124
+[2025-09-03 17:07:52] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:07:56] [*] Beacon sent 
+[2025-09-03 17:07:57] Sent user list to [Anonymous]
+[2025-09-03 17:08:02] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:08:02] Ping reeceived from [Elijahcypher] - replied with pong
+[2025-09-03 17:08:05] Sent user list to [Anonymous]
+[2025-09-03 17:08:06] [*] Beacon sent 
+[2025-09-03 17:08:12] Broadcast from [Anonymous] hello
+[2025-09-03 17:08:12] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:08:12] Ping reeceived from [Elijahcypher] - replied with pong
+[2025-09-03 17:08:16] [*] Beacon sent 
+[2025-09-03 17:08:20] Broadcast from [Anonymous] Hello
+[2025-09-03 17:08:22] Ping reeceived from [Elijahcypher] - replied with pong
+[2025-09-03 17:08:22] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:08:26] [*] Beacon sent 
+[2025-09-03 17:08:28] Broadcast from [Anonymous] Hello
+[2025-09-03 17:08:32] Ping reeceived from [Elijahcypher] - replied with pong
+[2025-09-03 17:08:33] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:08:36] [*] Beacon sent 
+[2025-09-03 17:08:42] Ping reeceived from [Elijahcypher] - replied with pong
+[2025-09-03 17:08:42] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:08:46] [*] Beacon sent 
+[2025-09-03 17:08:52] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:08:52] Ping reeceived from [Elijahcypher] - replied with pong
+[2025-09-03 17:08:57] [*] Beacon sent 
+[2025-09-03 17:09:02] Ping reeceived from [Elijahcypher] - replied with pong
+[2025-09-03 17:09:02] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:09:07] [*] Beacon sent 
+[2025-09-03 17:09:12] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:09:12] Ping reeceived from [Elijahcypher] - replied with pong
+[2025-09-03 17:09:17] [*] Beacon sent 
+[2025-09-03 17:09:22] Ping reeceived from [Elijahcypher] - replied with pong
+[2025-09-03 17:09:22] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-03 17:09:27] [*] Beacon sent 
+[2025-09-03 17:09:30] Connection with client: /10.112.72.200 timed out due to inactivity
+[2025-09-03 17:09:31] [Elijahcypher] disconnected
+[2025-09-03 17:09:32] Ping reeceived from [Anonymous] - replied with pong

@@ -165,6 +165,11 @@ public class clientMain {
                                         typeWritter(RED + "Download failed: " + e.getMessage() + RESET);
                                     }
                                 }
+                                case "ping" ->
+                                    out.println(new JSONObject().put("type", "pong").toString());
+                                case"pong" -> {
+                                    // Ignore pong replies
+                                }
                                 default -> typeWritter("[Server] " + reply);
                             }
                         }
