@@ -1,6 +1,5 @@
-package client;
-
-import java.io.BufferedReader;
+ import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -8,12 +7,11 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.util.Scanner;
 import java.util.Base64;
-import java.io.FileOutputStream;
+import java.util.Scanner;
 
-import org.json.JSONObject;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class clientMain {
 
@@ -21,58 +19,56 @@ public class clientMain {
     private static final String GREEN = "\u001B[92m";
     private static final String RED = "\u001B[91m";
 
-    private synchronized static void typeWritter(String message){
-        for(int i=0;i<message.length();i++){
+    private synchronized static void typeWritter(String message) {
+        for (int i = 0; i < message.length(); i++) {
             System.out.print(message.charAt(i));
-	    
+
             try {
-                Thread.sleep(60);   
+                Thread.sleep(60);
             } catch (InterruptedException e) {
                 System.out.println("failure on typewritter thread " + e.getMessage());
-            } 
-            
+            }
         }
-	System.out.println("\n");
+        System.out.println("\n");
     }
+
     public static void main(String[] args) {
         while (true) {
-            String serverIp = waitForBeacon(); 
+            String serverIp = waitForBeacon();
             if (serverIp != null) {
                 startClient(serverIp);
-
-                break; // Exit loop after successful connection
+                break;
             } else {
                 typeWritter(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET);
                 try {
                     Thread.sleep(5000);
-                } catch (InterruptedException ignore) {}
+                } catch (InterruptedException ignore) {
+                }
             }
         }
-        
     }
 
     private static String waitForBeacon() {
-            try(DatagramSocket socket = new DatagramSocket(8888)){
+        try (DatagramSocket socket = new DatagramSocket(8888)) {
             socket.setSoTimeout(10000);
             byte[] buffer = new byte[1024];
-            DatagramPacket packet = new DatagramPacket(buffer , buffer.length);
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
             typeWritter(GREEN + "[*] Listening for UDP beacon on port 8888..." + RESET);
             socket.receive(packet);
 
- 
             String beacon = new String(packet.getData(), 0, packet.getLength());
             String senderIp = packet.getAddress().getHostAddress();
 
             typeWritter(GREEN + "[*] Beacon received from " + senderIp + ": " + beacon + RESET);
 
-             return senderIp;
-            }catch(SocketTimeoutException e) {
-                 typeWritter(RED + "[!] Beacon timed out. " + RESET);
-                 return null;
-            }catch(IOException e) {
-                typeWritter(RED+"[!] Error receiving beacon: " + e.getMessage() + RESET);
-                 return null;
-            }
+            return senderIp;
+        } catch (SocketTimeoutException e) {
+            typeWritter(RED + "[!] Beacon timed out. " + RESET);
+            return null;
+        } catch (IOException e) {
+            typeWritter(RED + "[!] Error receiving beacon: " + e.getMessage() + RESET);
+            return null;
+        }
     }
 
     private static void startClient(String host) {
@@ -93,15 +89,16 @@ public class clientMain {
                 // Login
                 typeWritter(GREEN + "Enter username: " + RESET);
                 String username = scanner.nextLine().trim();
-                typeWritter(GREEN + "Enter password: " + RESET);
-                String password = scanner.nextLine().trim();
-                while (password.isEmpty()) {
-                    typeWritter(GREEN + "password cannot be empty " + RESET);
-                    password = scanner.nextLine().trim();
-                }
                 while (username.isEmpty()) {
                     typeWritter(RED + "Username cannot be empty!" + RESET);
                     username = scanner.nextLine().trim();
+                }
+
+                typeWritter(GREEN + "Enter password: " + RESET);
+                String password = scanner.nextLine().trim();
+                while (password.isEmpty()) {
+                    typeWritter(RED + "Password cannot be empty!" + RESET);
+                    password = scanner.nextLine().trim();
                 }
 
                 JSONObject login = new JSONObject();
@@ -109,7 +106,7 @@ public class clientMain {
                 login.put("username", username);
                 login.put("password", password);
                 typeWritter(GREEN + "[*] Logging in as " + username + RESET);
-                typeWritter(GREEN + "↪ Sending login request..." + RESET);
+                typeWritter(GREEN + "Sending login request..." + RESET);
                 out.println(login.toString());
 
                 String loginReply = in.readLine();
@@ -123,17 +120,9 @@ public class clientMain {
                 beaconRequest.put("type", "beacon_request");
                 out.println(beaconRequest.toString());
 
-                String beaconReply = in.readLine();
-                if (beaconReply != null) {
-                    JSONObject beacon = new JSONObject(beaconReply);
-                    if ("beacon".equals(beacon.optString("type"))) {
-                        typeWritter(GREEN + "↪ Server Public IP: " + beacon.optString("public_ip") + RESET);
-                    }
-                }
-
                 // Heartbeat thread
                 Thread heartbeatThread = new Thread(() -> {
-                    while (true) {
+                    while (!Thread.currentThread().isInterrupted()) {
                         try {
                             Thread.sleep(10000); // Every 10 seconds
                             JSONObject ping = new JSONObject();
@@ -146,99 +135,24 @@ public class clientMain {
                 });
                 heartbeatThread.start();
 
-                // Main client loop for sending messages
-                while (true) {
-                    typeWritter(GREEN + "> " + RESET);
-                    String msg = scanner.nextLine();
-
-                    if (msg.equalsIgnoreCase("exit")) {
-                        heartbeatThread.interrupt();
-                        break;
-                    }
-                    if (msg.trim().isEmpty()) {
-                        typeWritter(RED + "Message cannot be empty." + RESET);
-                        continue;
-                    }
-
-                    if (msg.startsWith("/")) {
-                        String[] parts = msg.split(" ", 3);
-                        if (parts.length < 3 && !parts[0].equals("/list_users") && !parts[0].equals("/list_books") && !parts[0].equals("/my_rentals")) {
-                            typeWritter(RED + "Invalid command format. Use /command args" + RESET);
-                            continue;
-                        }
-
-                        if (parts[0].equals("/rent") && parts.length >= 2) {
-                            JSONObject req = new JSONObject();
-                            req.put("type", "rent");
-                            req.put("book_id", Integer.parseInt(parts[1]));
-                            out.println(req.toString());
-                        } else if (parts[0].equals("/return") && parts.length >= 2) {
-                            JSONObject req = new JSONObject();
-                            req.put("type", "return");
-                            req.put("book_id", Integer.parseInt(parts[1]));
-                            out.println(req.toString());
-                        } else if (parts[0].equals("/download") && parts.length >= 2) {
-                            JSONObject req = new JSONObject();
-                            req.put("type", "download");
-                            req.put("book_id", Integer.parseInt(parts[1]));
-                            out.println(req.toString());
-                        } else if (msg.equalsIgnoreCase("/list_books")) {
-                            JSONObject req = new JSONObject();
-                            req.put("type", "list_books");
-                            out.println(req.toString());
-                        } else if (msg.equalsIgnoreCase("/my_rentals")) {
-                            JSONObject req = new JSONObject();
-                            req.put("type", "my_rentals");
-                            out.println(req.toString());
-                        } else if (msg.equalsIgnoreCase("/list_users")) {
-                            JSONObject listUsers = new JSONObject();
-                            listUsers.put("type", "list_users");
-                            out.println(listUsers.toString());
-                        } else {
-                            JSONObject pm = new JSONObject();
-                            pm.put("type", "message");
-                            pm.put("to", parts[1]);
-                            pm.put("body", parts[2]);
-                            out.println(pm.toString());
-                        }
-                    } else {
-                        JSONObject broadcast = new JSONObject();
-                        broadcast.put("type", "broadcast");
-                        broadcast.put("body", msg);
-                        out.println(broadcast.toString());
-                    }
-
-                    // Expects responses, tolerate timeouts
-                    for (int i = 0; i < 2; i++) {
-                        try {
-                            socket.setSoTimeout(3000);
-                            String reply = in.readLine();
-                            if (reply == null) continue;
-
+                // Listener thread
+                Thread listenerThread = new Thread(() -> {
+                    try {
+                        String reply;
+                        while ((reply = in.readLine()) != null) {
                             JSONObject json = new JSONObject(reply);
                             String type = json.optString("type");
 
                             switch (type) {
-                                case "broadcast" -> typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
-                                case "message" -> typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"));
-                                case "info", "error" -> typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"));
+                                case "broadcast" ->
+                                    typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
+                                case "message" ->
+                                    typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"));
+                                case "info", "error" ->
+                                    typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"));
                                 case "user_list" -> {
                                     JSONArray users = json.getJSONArray("users");
                                     typeWritter(GREEN + "Active users: " + users.toString() + RESET);
-                                }
-                                case "book_list" -> {
-                                    JSONArray books = json.getJSONArray("books");
-                                    for (int j = 0; j < books.length(); j++) {
-                                        JSONObject book = books.getJSONObject(j);
-                                        typeWritter("ID: " + book.getInt("id") + ", Title: " + book.getString("title") + ", Author: " + book.optString("author") + ", Available: " + book.getBoolean("available"));
-                                    }
-                                }
-                                case "my_rentals" -> {
-                                    JSONArray rentals = json.getJSONArray("rentals");
-                                    for (int j = 0; j < rentals.length(); j++) {
-                                        JSONObject rental = rentals.getJSONObject(j);
-                                        typeWritter("Book ID: " + rental.getInt("book_id") + ", Title: " + rental.getString("title") + ", Rented: " + rental.getString("rental_date") + ", Due: " + rental.getString("due_date"));
-                                    }
                                 }
                                 case "file_download" -> {
                                     String base64 = json.optString("content");
@@ -251,23 +165,83 @@ public class clientMain {
                                         typeWritter(RED + "Download failed: " + e.getMessage() + RESET);
                                     }
                                 }
+                                case "ping" ->
+                                    out.println(new JSONObject().put("type", "pong").toString());
+                                case"pong" -> {
+                                    // Ignore pong replies
+                                }
                                 default -> typeWritter("[Server] " + reply);
                             }
-                        } catch (SocketTimeoutException ste) {
-                            //skip
                         }
+                    } catch (Exception e) {
+                        typeWritter(RED + "[!] Listener stopped: " + e.getMessage() + RESET);
+                    }
+                });
+                listenerThread.start();
+
+                // Main client loop for sending messages
+                while (true) {
+                    typeWritter(GREEN + "> " + RESET);
+                    String msg = scanner.nextLine().trim();
+
+                    if (msg.equalsIgnoreCase("exit")) {
+                        heartbeatThread.interrupt();
+                        listenerThread.interrupt();
+                        break;
+                    }
+                    if (msg.trim().isEmpty()) {
+                        typeWritter(RED + "Message cannot be empty." + RESET);
+                        continue;
+                    }
+
+                    if (msg.startsWith("/")) {
+                        String[] parts = msg.split(" ", 3);
+                        JSONObject command = new JSONObject();
+
+                        switch (parts[0]) {
+                            case "/list_users" -> command.put("type", "list_users");
+                            case "/msg" -> {
+                                if (parts.length < 3) {
+                                    typeWritter(RED + "Usage: /msg <user> <message>" + RESET);
+                                    continue;
+                                }
+                                command.put("type", "message");
+                                command.put("to", parts[1]);
+                                command.put("body", parts[2]);
+                            }
+                            case "/broadcast" -> {
+                                if (parts.length < 2) {
+                                    typeWritter(RED + "Usage: /broadcast <message>" + RESET);
+                                    continue;
+                                }
+                                command.put("type", "broadcast");
+                                command.put("body", parts[1]);
+                            }
+                            default -> {
+                                typeWritter(RED + "Unknown command: " + parts[0] + RESET);
+                                continue;
+                            }
+                        }
+                        out.println(command.toString());
+                    } else {
+                        // Treat all non-commands as broadcasts
+                        JSONObject msgJson = new JSONObject();
+                        msgJson.put("type", "broadcast");
+                        msgJson.put("body", msg);
+                        out.println(msgJson.toString());
                     }
                 }
-
-                // If loop exits normally, break out of retry
+                // Exit retry loop once connection finishes
                 break;
             } catch (IOException e) {
                 retryCount++;
                 long backoff = INITIAL_BACKOFF_MS * (long) Math.pow(2, retryCount - 1); // Exponential backoff
-                typeWritter(RED + "[!] Connection error: " + e.getMessage() + ". Retrying in " + (backoff / 1000) + " seconds... (Attempt " + retryCount + "/" + MAX_RETRIES + ")" + RESET);
+                typeWritter(RED + "[!] Connection error: " + e.getMessage() + ". Retrying in "
+                        + (backoff / 1000) + " seconds... (Attempt " + retryCount + "/" + MAX_RETRIES + ")" + RESET);
                 try {
                     Thread.sleep(backoff);
-                } catch (InterruptedException ignore) {}
+                } catch (InterruptedException ignore) {
+                }
             }
         }
 

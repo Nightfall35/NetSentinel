@@ -27,9 +27,15 @@ public class ServerMain {
        public static final Object CLIENTS_LOCK =new Object();
 
        public static void broadcastMessage(String message) {
-              for(ClientHandler ch : clients.values()) {
-                ch.sendMessage("Server: " + message);
-              }
+
+                org.json.JSONObject broadcast =new org.json.JSONObject();   
+                broadcast.put("type","broadcast");
+                broadcast.put("from","Server");
+                broadcast.put("message",message);
+                for(ClientHandler ch : clients.values()){
+                  ch.sendMessage(broadcast.toString()); 
+                }
+              
        }
 
        public static void disconnectClient(String username) {
