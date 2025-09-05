@@ -4722,3 +4722,42 @@ port obtained : 9999...[0m
 [2025-09-05 08:00:05] [*] Beacon sent 
 [2025-09-05 08:00:12] [Ohsa] disconnected
 [2025-09-05 08:00:15] [*] Beacon sent 
+[2025-09-05 08:07:54] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-05 08:07:54] [*] Beacon sent 
+[2025-09-05 08:07:55] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-05 08:07:55] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-05 08:07:55] [32mLoaded 17 user(s) from credentials file.[0m
+[2025-09-05 08:07:55] [35mServer awaiting connection...[0m
+[2025-09-05 08:08:04] [*] Beacon sent 
+[2025-09-05 08:08:25] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-05 08:08:25] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-05 08:08:25] [32mLoaded 17 user(s) from credentials file.[0m
+[2025-09-05 08:08:25] [35mServer awaiting connection...[0m
+[2025-09-05 08:08:50] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-05 08:08:50] [*] Beacon sent 
+[2025-09-05 08:09:00] [*] Beacon sent 
+[2025-09-05 08:09:10] [*] Beacon sent 
+[2025-09-05 08:09:17] [32mDeploying Beacon......[0m
+[2025-09-05 08:09:20] [*] Beacon sent 
+[2025-09-05 08:09:30] [*] Beacon sent 
+[2025-09-05 08:09:35] [Elisha] registered and logged in from /172.16.0.120
+[2025-09-05 08:09:35] sent beacon to [Elisha]: 41.63.1.124
+[2025-09-05 08:09:37] [32mDeploying Beacon......[0m
+[2025-09-05 08:09:40] [*] Beacon sent 
+[2025-09-05 08:09:46] Broadcast from [Elisha] hello
+[2025-09-05 08:09:50] [*] Beacon sent 
+[2025-09-05 08:09:55] [hjsjas] registered and logged in from /172.16.0.120
+[2025-09-05 08:09:55] sent beacon to [hjsjas]: 41.63.1.124
+[2025-09-05 08:10:00] [*] Beacon sent 
+[2025-09-05 08:10:01] Broadcast from [hjsjas] sup
+[2025-09-05 08:10:10] Broadcast from [Elisha] nothing much
+[2025-09-05 08:10:10] [*] Beacon sent 
+[2025-09-05 08:10:18] Sent user list to [Elisha]
+[2025-09-05 08:10:20] [*] Beacon sent 
+[2025-09-05 08:10:30] [*] Beacon sent 
+[2025-09-05 08:10:40] [*] Beacon sent 
+[2025-09-05 08:10:50] [*] Beacon sent 
