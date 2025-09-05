@@ -202,12 +202,14 @@ public class clientMain {
                             }
                         }
                         out.println(command.toString());
+                        out.flush();// thssi should ensure command is sent directly
                     } else {
                         // Treat all non-commands as broadcasts
                         JSONObject msgJson = new JSONObject();
                         msgJson.put("type", "broadcast");
                         msgJson.put("body", msg);
                         out.println(msgJson.toString());
+                        out.flush();
                     }
                 }
                 // Exit retry loop once connection finishes
