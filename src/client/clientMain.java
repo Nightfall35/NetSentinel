@@ -19,6 +19,19 @@ public class clientMain {
     private static final String GREEN = "\u001B[92m";
     private static final String RED = "\u001B[91m";
 
+    private static final void loadingBar() throws InterruptedException {
+        int total = 50;
+
+        for(int i=0;i<=100;i++) {
+            
+            int progress =(i*total)/100;
+            String bar ="["+"0".repeat(progress)+" ".repeat(total-progress)+"]";
+            System.out.print("\r"+GREEN+"Loading..."+bar+" "+i+"%"+RESET);
+            Thread.sleep(100);
+        }
+        typeWritter(RESET+"\n[*] Loading complete!\n");
+    }
+
     private synchronized static void typeWritter(String message) {
         for (int i = 0; i < message.length(); i++) {
             System.out.print(message.charAt(i));
@@ -37,6 +50,7 @@ public class clientMain {
             String serverIp = waitForBeacon();
             if (serverIp != null) {
                 startClient(serverIp);
+
                 break;
             } else {
                 typeWritter(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET);
@@ -85,6 +99,7 @@ public class clientMain {
                 Scanner scanner = new Scanner(System.in)
             ) {
                 typeWritter(GREEN + "[*] Connected to server at " + host + RESET);
+                loadingBar();
 
                 // Login
                 typeWritter(GREEN + "Enter username: " + RESET);
