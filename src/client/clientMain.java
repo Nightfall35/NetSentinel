@@ -1,4 +1,4 @@
- import java.io.BufferedReader;
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -120,21 +120,6 @@ public class clientMain {
                 beaconRequest.put("type", "beacon_request");
                 out.println(beaconRequest.toString());
 
-                // Heartbeat thread
-                Thread heartbeatThread = new Thread(() -> {
-                    while (!Thread.currentThread().isInterrupted()) {
-                        try {
-                            Thread.sleep(10000); // Every 10 seconds
-                            JSONObject ping = new JSONObject();
-                            ping.put("type", "ping");
-                            out.println(ping.toString());
-                        } catch (InterruptedException e) {
-                            break; // Stop on interrupt
-                        }
-                    }
-                });
-                heartbeatThread.start();
-
                 // Listener thread
                 Thread listenerThread = new Thread(() -> {
                     try {
@@ -165,11 +150,6 @@ public class clientMain {
                                         typeWritter(RED + "Download failed: " + e.getMessage() + RESET);
                                     }
                                 }
-                                case "ping" ->
-                                    out.println(new JSONObject().put("type", "pong").toString());
-                                case"pong" -> {
-                                    // Ignore pong replies
-                                }
                                 default -> typeWritter("[Server] " + reply);
                             }
                         }
@@ -185,7 +165,6 @@ public class clientMain {
                     String msg = scanner.nextLine().trim();
 
                     if (msg.equalsIgnoreCase("exit")) {
-                        heartbeatThread.interrupt();
                         listenerThread.interrupt();
                         break;
                     }
@@ -223,12 +202,14 @@ public class clientMain {
                             }
                         }
                         out.println(command.toString());
+                        out.flush();// thssi should ensure command is sent directly
                     } else {
                         // Treat all non-commands as broadcasts
                         JSONObject msgJson = new JSONObject();
                         msgJson.put("type", "broadcast");
                         msgJson.put("body", msg);
                         out.println(msgJson.toString());
+                        out.flush();
                     }
                 }
                 // Exit retry loop once connection finishes
@@ -252,4 +233,4 @@ public class clientMain {
         }
         System.exit(0);
     } // end of startClient method
-}
+}  
