@@ -4687,3 +4687,38 @@ port obtained : 9999...[0m
 [2025-09-05 07:42:17] [Anonymous] disconnected
 [2025-09-05 07:42:18] Connection with client: /172.16.0.120 timed out due to inactivity
 [2025-09-05 07:42:18] [hey] disconnected
+[2025-09-05 07:57:15] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-05 07:57:15] [*] Beacon sent 
+[2025-09-05 07:57:15] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-05 07:57:15] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-05 07:57:15] [32mLoaded 15 user(s) from credentials file.[0m
+[2025-09-05 07:57:15] [35mServer awaiting connection...[0m
+[2025-09-05 07:57:25] [*] Beacon sent 
+[2025-09-05 07:57:31] [32mDeploying Beacon......[0m
+[2025-09-05 07:57:35] [*] Beacon sent 
+[2025-09-05 07:57:45] [*] Beacon sent 
+[2025-09-05 07:57:52] [32mDeploying Beacon......[0m
+[2025-09-05 07:57:55] [*] Beacon sent 
+[2025-09-05 07:58:05] [*] Beacon sent 
+[2025-09-05 07:58:15] [*] Beacon sent 
+[2025-09-05 07:58:25] [*] Beacon sent 
+[2025-09-05 07:58:33] [Zoe] registered and logged in from /172.16.0.120
+[2025-09-05 07:58:33] sent beacon to [Zoe]: 41.63.1.124
+[2025-09-05 07:58:35] [*] Beacon sent 
+[2025-09-05 07:58:42] [Ohsa] registered and logged in from /172.16.0.120
+[2025-09-05 07:58:42] sent beacon to [Ohsa]: 41.63.1.124
+[2025-09-05 07:58:45] [*] Beacon sent 
+[2025-09-05 07:58:47] Broadcast from [Ohsa] hey
+[2025-09-05 07:58:55] [*] Beacon sent 
+[2025-09-05 07:58:57] Broadcast from [Zoe] whats up?
+[2025-09-05 07:59:05] [*] Beacon sent 
+[2025-09-05 07:59:15] [*] Beacon sent 
+[2025-09-05 07:59:25] [*] Beacon sent 
+[2025-09-05 07:59:35] [*] Beacon sent 
+[2025-09-05 07:59:45] [*] Beacon sent 
+[2025-09-05 07:59:55] [*] Beacon sent 
+[2025-09-05 08:00:05] [*] Beacon sent 
+[2025-09-05 08:00:12] [Ohsa] disconnected
+[2025-09-05 08:00:15] [*] Beacon sent 

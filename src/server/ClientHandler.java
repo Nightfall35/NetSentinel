@@ -202,6 +202,7 @@ public class ClientHandler implements Runnable {
 
     private void send(String json) {
         out.println(json);
+        out.flush(); // Ensure immediate sending
     }
 
     private void sendError(String msg) {
