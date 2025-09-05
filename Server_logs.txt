@@ -4659,3 +4659,31 @@ port obtained : 9999...[0m
 [2025-09-03 17:26:39] [*] Beacon sent 
 [2025-09-03 17:26:39] Connection with client: /10.112.72.200 timed out due to inactivity
 [2025-09-03 17:26:39] [Rui] disconnected
+[2025-09-05 07:40:56] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-05 07:40:56] [*] Beacon sent 
+[2025-09-05 07:40:57] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-05 07:40:57] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-05 07:40:57] [32mLoaded 14 user(s) from credentials file.[0m
+[2025-09-05 07:40:57] [35mServer awaiting connection...[0m
+[2025-09-05 07:41:06] [*] Beacon sent 
+[2025-09-05 07:41:16] [*] Beacon sent 
+[2025-09-05 07:41:26] [*] Beacon sent 
+[2025-09-05 07:41:33] [32mDeploying Beacon......[0m
+[2025-09-05 07:41:36] [*] Beacon sent 
+[2025-09-05 07:41:46] [*] Beacon sent 
+[2025-09-05 07:41:53] [32mDeploying Beacon......[0m
+[2025-09-05 07:41:53] sent beacon to [Anonymous]: 41.63.1.124
+[2025-09-05 07:41:56] [*] Beacon sent 
+[2025-09-05 07:42:06] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-05 07:42:06] [*] Beacon sent 
+[2025-09-05 07:42:08] [hey] registered and logged in from /172.16.0.120
+[2025-09-05 07:42:08] sent beacon to [hey]: 41.63.1.124
+[2025-09-05 07:42:13] Broadcast from [Anonymous] hey
+[2025-09-05 07:42:16] Ping reeceived from [Anonymous] - replied with pong
+[2025-09-05 07:42:16] [*] Beacon sent 
+[2025-09-05 07:42:17] Connection with client: /172.16.0.120 timed out due to inactivity
+[2025-09-05 07:42:17] [Anonymous] disconnected
+[2025-09-05 07:42:18] Connection with client: /172.16.0.120 timed out due to inactivity
+[2025-09-05 07:42:18] [hey] disconnected
