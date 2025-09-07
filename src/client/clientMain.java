@@ -45,21 +45,42 @@ public class clientMain {
        }
        Random  rand =new Random();
        for(int i =0;i<message.length();i++){
-        for(int j =0;j<3;j++){
-            System.out.print((char)(rand.nextInt(94) +33));
-            System.out.flush();
-            try {
-                Thread.sleep(20);
-            } catch (InterruptedException e) {
+            for(int j =0;j<3;j++){
+                System.out.print((char)(rand.nextInt(94) +33));
+                System.out.flush();
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
                 System.out.print("\b");
-            }
-            System.out.print(message.charAt(i));
-           try {
-             Thread.sleep(30);  
-           } catch (InterruptedException w){}
-        } 
-       }
-     }   
+                }
+                System.out.print(message.charAt(i));
+                try {
+                    Thread.sleep(30);  
+                } catch (InterruptedException w){} 
+            }  
+       } 
+       System.out.println("\n");
+    }   
+
+    private static String encrypt(String data, String key) throws Exception {
+        SecretKeySpec spec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cypher.ENCRYPT_MODE, spec);
+        byte[] encrypted = cipher.doFinal(data.getBytes("UTF-8"));
+        return Base64.getEncoder().encodeToString(encrypted);
+    }
+    
+    private static String decrypt(String encrypted, String key) throws Exception {
+        SecretKeySpec spec =new SecretKeySpec(key.getBytes("UTF-8"),"AES")P;
+        Cipher cipher =Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cipher.DECRYPT_MODE,spec);
+        byte[] decoded =Base64.getDecoder().decode(encrypted);
+        byte[] original =cipher.doFinal(decoded);
+        return new String(original,"UTF-8");    
+    }
+
+
+
         
 
 
