@@ -9,9 +9,16 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.Base64;
 import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Random;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class clientMain {
 
@@ -29,23 +36,34 @@ public class clientMain {
             System.out.print("\r"+GREEN+"Loading..."+bar+" "+i+"%"+RESET);
             Thread.sleep(100);
         }
-        typeWritter(RESET+"\n[*] Loading complete!\n");
+        typeWritter(RESET+"\n[*] Loading complete!\n",false);
     }
 
-    private synchronized static void typeWritter(String message) {
-        for (int i = 0; i < message.length(); i++) {
-            System.out.print(message.charAt(i));
-
+    private synchronized static void typeWritter(String message,boolean fast) {
+       if(fast){
+        System.out.println(message + "\n");
+       }
+       Random  rand =new Random();
+       for(int i =0;i<message.length();i++){
+        for(int j =0;j<3;j++){
+            System.out.print((char)(rand.nextInt(94) +33));
+            System.out.flush();
             try {
-                Thread.sleep(60);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
-                System.out.println("failure on typewritter thread " + e.getMessage());
+                System.out.print("\b");
             }
-        }
-        System.out.println("\n");
-    }
+            System.out.print(message.charAt(i));
+           try {
+             Thread.sleep(30);  
+           } catch (InterruptedException w){}
+        } 
+       }
+     }   
+        
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws InterruptedException {
         while (true) {
             String serverIp = waitForBeacon();
             if (serverIp != null) {
@@ -85,7 +103,7 @@ public class clientMain {
         }
     }
 
-    private static void startClient(String host) {
+    private static void startClient(String host) throws InterruptedException{
         int port = 9999;
         int retryCount = 0;
         final int MAX_RETRIES = 5;
@@ -238,7 +256,10 @@ public class clientMain {
                     Thread.sleep(backoff);
                 } catch (InterruptedException ignore) {
                 }
-            }
+            }catch (InterruptedException r) {
+                Thread.currentThread().interrupt(); // preserve interrupt status
+                typeWritter(RED + "[!] Sleep interrupted: " + r.getMessage() + RESET);
+        }
         }
 
         if (retryCount >= MAX_RETRIES) {

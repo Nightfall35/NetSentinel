@@ -4761,3 +4761,28 @@ port obtained : 9999...[0m
 [2025-09-05 08:10:30] [*] Beacon sent 
 [2025-09-05 08:10:40] [*] Beacon sent 
 [2025-09-05 08:10:50] [*] Beacon sent 
+[2025-09-05 08:24:54] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-05 08:24:54] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-05 08:24:54] [32mLoaded 19 user(s) from credentials file.[0m
+[2025-09-05 08:24:54] [35mServer awaiting connection...[0m
+[2025-09-05 08:25:47] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-05 08:25:47] [*] Beacon sent 
+[2025-09-05 08:25:57] [*] Beacon sent 
+[2025-09-05 08:26:07] [*] Beacon sent 
+[2025-09-05 08:26:17] [*] Beacon sent 
+[2025-09-05 08:33:55] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-05 08:33:55] [*] Beacon sent 
+[2025-09-05 08:34:00] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-05 08:34:00] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-05 08:34:00] [32mLoaded 19 user(s) from credentials file.[0m
+[2025-09-05 08:34:00] [35mServer awaiting connection...[0m
+[2025-09-05 08:34:05] [*] Beacon sent 
+[2025-09-05 08:34:15] [*] Beacon sent 
+[2025-09-05 08:34:22] [32mDeploying Beacon......[0m
+[2025-09-05 08:34:25] [*] Beacon sent 
+[2025-09-05 08:34:35] [*] Beacon sent 
+[2025-09-05 08:34:45] [*] Beacon sent 
