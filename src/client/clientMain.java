@@ -65,7 +65,7 @@ public class clientMain {
     private static String encrypt(String data, String key) throws Exception {
         SecretKeySpec spec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cypher.ENCRYPT_MODE, spec);
+        cipher.init(Cipher.ENCRYPT_MODE, spec);
         byte[] encrypted = cipher.doFinal(data.getBytes("UTF-8"));
         return Base64.getEncoder().encodeToString(encrypted);
     }
@@ -157,6 +157,7 @@ public class clientMain {
                 typeWritter(GREEN + "[*] Logging in as " + username + RESET,false);
                 typeWritter(GREEN + "Sending login request..." + RESET,false);
                 out.println(login.toString());
+                out.flush();
 
                 String loginReply = in.readLine();
                 if (loginReply == null) {
@@ -205,8 +206,8 @@ public class clientMain {
                                     try {
                                         String eString =json.optString("body");
                                         String key = json.optString("Key");
-                                        String decrypted = decrypt(encrypted,key);
-                                        typeWritter("[Encrypted from " +json.optString("from")+"] " , true);
+                                        String decrypted = decrypt(eString,key);
+                                        typeWritter("[Encrypted from " +json.optString("from")+"] " + decrypted , true);
                                     } catch (Exception e) {
                                         typeWritter(RED + "Decryption failed: " + e.getMessage() + RESET,true);
                                     }

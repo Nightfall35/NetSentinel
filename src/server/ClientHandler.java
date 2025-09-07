@@ -52,7 +52,7 @@ public class ClientHandler implements Runnable {
 
 
                      long currentTime = System.currentTimeMillis();
-                     if(currentTime - lastMessageTime <MIN_MESSAGE_INTERVAL && !type.equals("login")){
+                     if(currentTime - lastMessageTime <MIN_MESSAGE_INTERVAL_MS && !type.equals("login")){
                         sendError("Message rate limit exceeded. Please wait before sending another message.");
                         continue;
                      }
@@ -168,7 +168,8 @@ public class ClientHandler implements Runnable {
             return;
         }
 
-        String expectedHash = ServerMain.passwords.get(requestedUsername);
+        String[] userData = ServerMain.passwords.get(requestedUsername);
+        String expectedHash = (userData != null) ? userData[1] : null;
         String providedHash = ServerMain.hashPassword(password);
 
         synchronized (ServerMain.CLIENTS_LOCK) {
@@ -176,7 +177,7 @@ public class ClientHandler implements Runnable {
                 // User does not exist - register new user
                 try {
                     appendUserToFile(requestedUsername, providedHash);
-                    ServerMain.passwords.put(requestedUsername, providedHash);
+                    ServerMain.passwords.put(requestedUsername, new String[]{providedHash, "0", "Script Kiddie"});
                     this.username = requestedUsername;
                     ServerMain.clients.put(username, this);
                     ServerLogger.log("[" + username + "] registered and logged in from " + client.getInetAddress());
@@ -272,7 +273,7 @@ public class ClientHandler implements Runnable {
         broadcastMsg.put("from","Anonymous");
         broadcastMsg.put("body",body);
 
-        synchronized (ServerMain.CLEINTS_LOCK) {
+        synchronized (ServerMain.CLIENTS_LOCK) {
             for(ClientHandler handler : ServerMain.clients.values()) {
                 if (!handler.username.equals(this.username)) {
                     handler.send(broadcastMsg.toString());
