@@ -3,6 +3,7 @@ package server;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -12,18 +13,28 @@ import java.net.SocketException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+
 public class ClientHandler implements Runnable {
     private String username = "Anonymous";
     private final Socket client;
     private PrintWriter out;
 
+    private long lastMessageTime = 0;
+    private static final long MIN_MESSAGE_INTERVAL_MS = 1000;
+
+
     public ClientHandler(Socket client) throws SocketException {
         this.client = client;
-        client.setSoTimeout(60000);
+        client.setSoTimeout(30000);
     }
 
     @Override
     public void run() {
+        ServerLogger.log("Running clientHandler v2.0 (no ping/pong)");
         try (
             BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
             PrintWriter writer = new PrintWriter(client.getOutputStream(), true)
@@ -32,27 +43,56 @@ public class ClientHandler implements Runnable {
             String input;
 
             while ((input = in.readLine()) != null) {
-                JSONObject message = new JSONObject(input);
-                String type = message.getString("type");
+                ServerLogger.log("Received from [" + username + "]: " + input);
+                try {
+                     JSONObject message = new JSONObject(input);
+                     String type = message.getString("type");
 
-                switch (type) {
-                    case "login":
-                        handleLogin(message);
-                        break;
-                    case "message":
-                        handlePrivateMessage(message);
-                        break;
-                    case "broadcast":
-                        handleBroadcast(message);
-                        break;
-                    case "beacon_request":
-                        handleBeaconRequest();
-                        break;
-                    case "list_users":
-                        handleListUsers();
-                        break;
-                    default:
-                        sendError("Unknown message type: " + type);
+
+                     long currentTime = System.currentTimeMillis();
+                     if(currentTime - lastMessageTime <MIN_MESSAGE_INTERVAL && !type.equals("login")){
+                        sendError("Message rate limit exceeded. Please wait before sending another message.");
+                        continue;
+                     }
+                     lastMessageTime = currentTime;
+
+                      switch (type) {
+                         case "login":
+                            handleLogin(message);
+                            break;
+                        case "message":
+                             handlePrivateMessage(message);
+                              break;
+                         case "broadcast":
+                              handleBroadcast(message);
+                              break;
+                        case "beacon_request":
+                             handleBeaconRequest();
+                              break;
+                       case "list_users":
+                              handleListUsers();
+                              break;
+                        case "encrypted_message":
+                            handleEncryptedMessage(message);
+                            break;
+                        case "anon_broadcast":
+                            handleAnonBroadcast(message);
+                            break;
+                        case "rank":
+                            handleRank();
+                            break;
+                        case "upload_challengr":
+                            handleChallengeUpload(message);
+                            break;
+                        case"solve":
+                            handleChallengeSolve(message);
+                            break;
+                        default:
+                             sendError("Unknown message type: " + type);
+                         }
+                   
+                } catch (org.json.JSONException e) {
+                    sendError("Invalid message format.");
                 }
             }
         } catch (IOException e) {
@@ -66,6 +106,41 @@ public class ClientHandler implements Runnable {
                 client.close();
             } catch (IOException ignore) {}
         }
+    }
+
+    private void handleRank() {
+        String[] userData = ServerMain.passwords.get(username);
+        if(userData == null) {
+           sendInfo("cRED: " + userData[1] + ", Rank: " + userData[2]);
+        }else {
+            sendError("User data not found.");
+        }
+
+    }
+   
+      private void updateCred(String user, int points) throws IOException {
+        Map<String, String[]> users = new HashMap<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(":");
+                users.put(parts[0], parts);
+            }
+        }
+        String[] userData = users.get(user);
+        int newCred = Integer.parseInt(userData[2]) + points;
+        String newRank = newCred >= 1000 ? "Elite" : newCred >= 500 ? "Hacker" : "Script Kiddie";
+        userData[2] = String.valueOf(newCred);
+        userData[3] = newRank;
+        users.put(user, userData);
+        try (FileWriter fw = new FileWriter("users.txt")) {
+            for (String[] data : users.values()) {
+                fw.write(String.join(":", data) + "\n");
+            }
+        }
+        ServerMain.passwords.put(user, new String[]{userData[1], userData[2], userData[3]});
+        sendInfo("Cred updated: +" + points + ". New rank: " + newRank);
+        ServerLogger.log("[" + user + "] Cred: " + newCred + ", Rank: " + newRank);
     }
 
     private void handleListUsers() {
@@ -166,6 +241,80 @@ public class ClientHandler implements Runnable {
 
         ServerLogger.log("Broadcast from [" + username + "] " + body);
     }
+   
+    private void handleEncryptedMessage(JSONObject message) {
+        String to = message.optString("to");
+        String body = message.optString("body");
+        String encKey = message.optString("enc_key");
+
+        ClientHandler recipient = ServerMain.clients.get(to);
+        if (recipient != null) {
+            JSONObject reply = new JSONObject();
+            reply.put("type", "encrypted_message");
+            reply.put("from", username);
+            reply.put("body", body);
+            reply.put("enc_key", encKey);
+            recipient.send(reply.toString());
+
+            ServerLogger.log("encrypted message from [" + username + "] to [" + to + "]: " + body);
+        } else {
+            sendError("user '" + to + "' not found.");
+        }
+    }
+
+    private void handleAnonBroadcast(JSONObject message) {
+        String body = message.optString("body");
+
+        JSONObject broadcastMsg = new JSONObject();
+        broadcastMsg.put("type","broadcast");
+        broadcastMsg.put("from","Anonymous");
+        broadcastMsg.put("body",body);
+
+        synchronized (ServerMain.CLEINTS_LOCK) {
+            for(ClientHandler handler : ServerMain.clients.values()) {
+                if (!handler.username.equals(this.username)) {
+                    handler.send(broadcastMsg.toString());
+                }
+            }
+
+        }
+        ServerLogger.log("Anonymous broadcast from [" + username + "] " + body);
+    }
+    
+    private void handleChallengeUpload(JSONObject message) throws IOException {
+        String filename = message.optString("filename");
+        String content = message.optString("content");
+        String flag = message.optString("flag");
+        try (FileOutputStream fos = new FileOutputStream("challenges/" + filename)) {
+            fos.write(Base64.getDecoder().decode(content));
+        }
+        try (FileWriter fw = new FileWriter("challenges.txt", true);
+             PrintWriter pw = new PrintWriter(fw)) {
+            pw.println(filename + ":" + flag + ":" + username);
+        }
+        updateCred(username, 50);
+        ServerLogger.log("Challenge uploaded by [" + username + "]: " + filename);
+        sendInfo("Challenge uploaded: " + filename);
+    }
+
+    private void handleChallengeSolve(JSONObject message) throws IOException {
+        String filename = message.optString("filename");
+        String submittedFlag = message.optString("flag");
+        try (BufferedReader reader = new BufferedReader(new FileReader("challenges.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(":");
+                if (parts[0].equals(filename) && parts[1].equals(submittedFlag)) {
+                    updateCred(username, 100);
+                    sendInfo("Flag correct! Cred +100");
+                    ServerLogger.log("[" + username + "] solved challenge: " + filename);
+                    return;
+                }
+            }
+        }
+        sendError("Incorrect flag or challenge not found.");
+    }
+
 
     private void handleBeaconRequest() {
         try (BufferedReader reader = new BufferedReader(new FileReader("public_ip.txt"))) {
