@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.SocketException;
+import java.io.File;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,6 +17,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.Base64;
 
 
 public class ClientHandler implements Runnable {
@@ -285,14 +287,48 @@ public class ClientHandler implements Runnable {
         String filename = message.optString("filename");
         String content = message.optString("content");
         String flag = message.optString("flag");
+
+        if(filename == null || filename.trim().isEmpty() || content ==null || content.trim().isEmpty() || flag == null || flag.trim().isEmpty()) {
+            sendError("Filename,content , and flag cannot be empty.");
+            return;
+        }
+
+        File challengesDir = new File("challenges");
+        if(!challengesDir.exists() && !challengesDir.mkdirs()) {
+            sendError("Failed to create challenges directory.");
+            return;
+        }
+
+        if(!filename.matches("^[a-zA-Z0-9._-]+$") || filename.contains("..")) {
+            sendError("Invalid filename. Only alphanumeric characters, dots, underscores, and hyphens are allowed.");
+            return;
+        }
+
+        
         try (FileOutputStream fos = new FileOutputStream("challenges/" + filename)) {
-            fos.write(Base64.getDecoder().decode(content));
+           try{
+                 fos.write(Base64.getDecoder().decode(content));
+              } catch(IllegalArgumentException e) {
+                 sendError("Content is not valid base64.");
+                 return;
+              }
         }
-        try (FileWriter fw = new FileWriter("challenges.txt", true);
-             PrintWriter pw = new PrintWriter(fw)) {
-            pw.println(filename + ":" + flag + ":" + username);
+
+        String hashedFlag = ServerMain.hashPassword(flag);
+
+        synchronized (ServerMain.CLIENTS_LOCK) {
+            try (FileWriter fw = new FileWriter("challenges.txt", true);
+                 PrintWriter pw = new PrintWriter(fw)) {
+                pw.println(filename + ":" + hashedFlag+ ":" + username);
+            }
         }
+
+       try{ 
         updateCred(username, 50);
+       }catch(IOException e) {
+        sendError("Failed to update cred: " + e.getMessage());
+        return;
+       }
         ServerLogger.log("Challenge uploaded by [" + username + "]: " + filename);
         sendInfo("Challenge uploaded: " + filename);
     }
@@ -300,21 +336,77 @@ public class ClientHandler implements Runnable {
     private void handleChallengeSolve(JSONObject message) throws IOException {
         String filename = message.optString("filename");
         String submittedFlag = message.optString("flag");
+
+        if(filename == null || filename.trim().isEmpty() || submittedFlag == null || submittedFlag.trim().isEmpty()) {
+            sendError("Filename and flag cannot be empty.");
+            return;
+        }
+
+        if(!filename.matches("^[a-zA-Z0-9._-]+$") || filename.contains("..")) {
+            sendError("Invalid filename. Only alphanumeric characters, dots, underscores, and hyphens are allowed.");
+            return;
+        }
+
+        if(hasSolvedChallenge(username, filename)) {
+            sendError("You have already solved this challenge.");
+            return;
+        }
+
+        String hashedSubmittedFlag = ServerMain.hashPassword(submittedFlag);
+
+      synchronized(ServerMain.CLIENTS_LOCK) {
         try (BufferedReader reader = new BufferedReader(new FileReader("challenges.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(":");
+
+                if(parts.length < 3) {
+                    ServerLogger.log("Malformed line in challenges.txt: " + line);
+                    continue;
+                }
                 if (parts[0].equals(filename) && parts[1].equals(submittedFlag)) {
-                    updateCred(username, 100);
+                    markChallengeSolved(username, filename);
+                    try{
+                       updateCred(username, 100);
+                    }catch(IOException e) {
+                        sendError("Failed to update cred: " + e.getMessage());
+                        return;
+                    }
                     sendInfo("Flag correct! Cred +100");
                     ServerLogger.log("[" + username + "] solved challenge: " + filename);
                     return;
                 }
             }
         }
+     }
         sendError("Incorrect flag or challenge not found.");
     }
 
+    private boolean hasSolvedChallenge(String username, String filename) throws IOException {
+        File solvedFile = new File("solved_challenges.txt");
+        if(!solvedFile.exists()) {
+            return false;
+        }
+        try(BufferedReader reader = new BufferedReader(new FileReader(solvedFile))) {
+            String line;
+            while((line = reader.readLine()) != null) {
+                String[] parts = line.split(":");
+                if(parts.length == 2 && parts[0].equals(username) && parts[1].equals(filename)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void markChallengeSolved(String username, String filename) throws IOException {
+        synchronized (ServerMain.CLIENTS_LOCK) {
+            try(FileWriter fw = new FileWriter("solved_challenges.txt", true);
+                PrintWriter pw = new PrintWriter(fw)) {
+                pw.println(username + ":" + filename);
+            }
+        }
+    }
 
     private void handleBeaconRequest() {
         try (BufferedReader reader = new BufferedReader(new FileReader("public_ip.txt"))) {
