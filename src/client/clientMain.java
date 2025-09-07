@@ -304,6 +304,15 @@ public class clientMain {
 
                                 }
                             }
+                            case "/solve" -> {
+                                if(parts.length <3) {
+                                    typeWritter(RED + "Usage: /solve <challenge_id> <solution>" + RESET,false);
+                                    continue;
+                                }
+                                command.put("type","solve_challenge");
+                                command.put("challenge_id",parts[1]);
+                                command.put("solution",parts[2]);
+                            }
                             default -> {
                                 typeWritter(RED + "Unknown command: " + parts[0] + RESET,false);
                                 continue;
@@ -326,21 +335,21 @@ public class clientMain {
                 retryCount++;
                 long backoff = INITIAL_BACKOFF_MS * (long) Math.pow(2, retryCount - 1); // Exponential backoff
                 typeWritter(RED + "[!] Connection error: " + e.getMessage() + ". Retrying in "
-                        + (backoff / 1000) + " seconds... (Attempt " + retryCount + "/" + MAX_RETRIES + ")" + RESET);
+                        + (backoff / 1000) + " seconds... (Attempt " + retryCount + "/" + MAX_RETRIES + ")" + RESET,false);
                 try {
                     Thread.sleep(backoff);
                 } catch (InterruptedException ignore) {
                 }
             }catch (InterruptedException r) {
                 Thread.currentThread().interrupt(); // preserve interrupt status
-                typeWritter(RED + "[!] Sleep interrupted: " + r.getMessage() + RESET);
+                typeWritter(RED + "[!] Sleep interrupted: " + r.getMessage() + RESET,false);
         }
         }
 
         if (retryCount >= MAX_RETRIES) {
-            typeWritter(RED + "[!] Max retries reached. Exiting." + RESET);
+            typeWritter(RED + "[!] Max retries reached. Exiting." + RESET,false);
         } else {
-            typeWritter(GREEN + "[*] Connection closed." + RESET);
+            typeWritter(GREEN + "[*] Connection closed." + RESET,false);
         }
         System.exit(0);
     } // end of startClient method
