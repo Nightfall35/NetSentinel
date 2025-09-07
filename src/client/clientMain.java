@@ -222,7 +222,7 @@ public class clientMain {
 
                 // Main client loop for sending messages
                 while (true) {
-                    typeWritter(GREEN + "> " + RESET);
+                    typeWritter(GREEN + "> " + RESET,false);
                     String msg = scanner.nextLine().trim();
 
                     if (msg.equalsIgnoreCase("exit")) {
@@ -230,7 +230,7 @@ public class clientMain {
                         break;
                     }
                     if (msg.trim().isEmpty()) {
-                        typeWritter(RED + "Message cannot be empty." + RESET);
+                        typeWritter(RED + "Message cannot be empty." + RESET,false);
                         continue;
                     }
 
@@ -242,7 +242,7 @@ public class clientMain {
                             case "/list_users" -> command.put("type", "list_users");
                             case "/msg" -> {
                                 if (parts.length < 3) {
-                                    typeWritter(RED + "Usage: /msg <user> <message>" + RESET);
+                                    typeWritter(RED + "Usage: /msg <user> <message>" + RESET,false);
                                     continue;
                                 }
                                 command.put("type", "message");
@@ -251,14 +251,61 @@ public class clientMain {
                             }
                             case "/broadcast" -> {
                                 if (parts.length < 2) {
-                                    typeWritter(RED + "Usage: /broadcast <message>" + RESET);
+                                    typeWritter(RED + "Usage: /broadcast <message>" + RESET,false);
                                     continue;
                                 }
                                 command.put("type", "broadcast");
                                 command.put("body", parts[1]);
                             }
+                            case "/encrypt" -> {
+                                if (parts.length <2 ) {
+                                    typeWritter(RED + "Usage: /encrypt <message>" + RESET,false);
+                                    continue;
+                                }
+                                try {
+                                   String recipient = parts[1];
+                                   String key =parts[2];
+                                   String plainText = parts[3];
+                                   String encrypted = encrypt(plainText, key);
+                                   command.put("type","encrypted_message");
+                                   command.put("to",recipient);
+                                   command.put("body",encrypted);
+                                   command.put("key",key);
+                                } catch (Exception e) {
+                                    typeWritter(RED+ "Encryption failed: " +e.getMessage() +RESET, false);
+                                    continue;
+                                }
+                            }
+                            case "/anon" ->{
+                                if(parts.length<2) {
+                                    typeWritter(RED + "Usage: /anon <message>" + RESET,false);
+                                    continue;
+                                }
+                                command.put("type","anon_broadcast");
+                                command.put("body",parts[1]);
+                            }
+                            case "/rank" ->
+                                command.put("type", "rank_request");
+                            case "/upload_challenge" -> {
+                                if(parts.length <3) {
+                                    typeWritter(RED + "Usage: /upload_challenge <filename> <flag>" + RESET,false);
+                                    continue;
+                                }
+                                try {
+                                    String filename = parts[1];
+                                    String flag = parts[2];
+                                    byte[] fileBytes = Files.readAllBytes(Paths.get(filename));
+                                    command.put("type","upload_challenge"); 
+                                    command.put("filename",filename);
+                                    command.put("content",Base64.getEncoder().encodeToString(fileBytes));
+                                    command.put("flag",flag);
+                                } catch (IOException e) {
+                                    typeWritter(RED + "UPLOAD FAILED: " +e.getMessage() +RESET, false);
+
+                                }
+                            }
                             default -> {
-                                typeWritter(RED + "Unknown command: " + parts[0] + RESET);
+                                typeWritter(RED + "Unknown command: " + parts[0] + RESET,false);
                                 continue;
                             }
                         }
