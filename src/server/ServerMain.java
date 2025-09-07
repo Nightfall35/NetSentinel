@@ -22,7 +22,7 @@ public class ServerMain {
        private static final String PURPLE ="\u001B[35m";
 
        // 
-       public static Map<String, String> passwords = new ConcurrentHashMap<>();
+       public static Map<String, String[]> passwords = new ConcurrentHashMap<>();
        public static Map<String, ClientHandler> clients =new ConcurrentHashMap<>();
        public static final Object CLIENTS_LOCK =new Object();
 
@@ -56,6 +56,8 @@ public class ServerMain {
            // Load user credentials from file
            loadUserCredentials("users.txt");
 
+           new File("challenges").mkdirs(); // create challenges directory if it doesn't exist
+           usersFile("challenges.txt");
            // shutdown hook for graceful client disconnect
            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                ServerLogger.log(PURPLE + "\n[!] Server shutting down. Disconnecting all clients..." + RESET);
@@ -92,7 +94,9 @@ public class ServerMain {
                    if (parts.length == 2) {
                        String username = parts[0].trim();
                        String hash = parts[1].trim();
-                       passwords.put(username, hash);
+                       String cred = parts.length > 2? parts[2].trim() : "0";
+                       String rank = parts.length >3 ? parts[3].trim() : "Script kiddie";
+                       passwords.put(username, new String[]{hash,cred,rank});
                        count++;
                    }
                }

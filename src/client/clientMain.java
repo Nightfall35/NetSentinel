@@ -9,9 +9,16 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.Base64;
 import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Random;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class clientMain {
 
@@ -19,27 +26,68 @@ public class clientMain {
     private static final String GREEN = "\u001B[92m";
     private static final String RED = "\u001B[91m";
 
-    private synchronized static void typeWritter(String message) {
-        for (int i = 0; i < message.length(); i++) {
-            System.out.print(message.charAt(i));
+    private static final void loadingBar() throws InterruptedException {
+        int total = 50;
 
-            try {
-                Thread.sleep(60);
-            } catch (InterruptedException e) {
-                System.out.println("failure on typewritter thread " + e.getMessage());
-            }
+        for(int i=0;i<=100;i++) {
+            
+            int progress =(i*total)/100;
+            String bar ="["+"0".repeat(progress)+" ".repeat(total-progress)+"]";
+            System.out.print("\r"+GREEN+"Loading..."+bar+" "+i+"%"+RESET);
+            Thread.sleep(100);
         }
-        System.out.println("\n");
+        typeWritter(RESET+"\n[*] Loading complete!\n",false);
     }
 
-    public static void main(String[] args) {
+    private synchronized static void typeWritter(String message,boolean fast) {
+       if(fast){
+        System.out.println(message + "\n");
+       }
+       Random  rand =new Random();
+       for(int i =0;i<message.length();i++){
+            for(int j =0;j<3;j++){
+                System.out.print((char)(rand.nextInt(94) +33));
+                System.out.flush();
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                System.out.print("\b");
+                }
+                System.out.print(message.charAt(i));
+                try {
+                    Thread.sleep(30);  
+                } catch (InterruptedException w){} 
+            }  
+       } 
+       System.out.println("\n");
+    }   
+
+    private static String encrypt(String data, String key) throws Exception {
+        SecretKeySpec spec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, spec);
+        byte[] encrypted = cipher.doFinal(data.getBytes("UTF-8"));
+        return Base64.getEncoder().encodeToString(encrypted);
+    }
+    
+    private static String decrypt(String encrypted, String key) throws Exception {
+        SecretKeySpec spec =new SecretKeySpec(key.getBytes("UTF-8"),"AES");
+        Cipher cipher =Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cipher.DECRYPT_MODE,spec);
+        byte[] decoded =Base64.getDecoder().decode(encrypted);
+        byte[] original =cipher.doFinal(decoded);
+        return new String(original,"UTF-8");    
+    }
+
+    public static void main(String[] args) throws InterruptedException {
         while (true) {
             String serverIp = waitForBeacon();
             if (serverIp != null) {
                 startClient(serverIp);
+
                 break;
             } else {
-                typeWritter(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET);
+                typeWritter(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET,false);
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException ignore) {
@@ -53,25 +101,25 @@ public class clientMain {
             socket.setSoTimeout(10000);
             byte[] buffer = new byte[1024];
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-            typeWritter(GREEN + "[*] Listening for UDP beacon on port 8888..." + RESET);
+            typeWritter(GREEN + "[*] Listening for UDP beacon on port 8888..." + RESET,false);
             socket.receive(packet);
 
             String beacon = new String(packet.getData(), 0, packet.getLength());
             String senderIp = packet.getAddress().getHostAddress();
 
-            typeWritter(GREEN + "[*] Beacon received from " + senderIp + ": " + beacon + RESET);
+            typeWritter(GREEN + "[*] Beacon received from " + senderIp + ": " + beacon + RESET,false);
 
             return senderIp;
         } catch (SocketTimeoutException e) {
-            typeWritter(RED + "[!] Beacon timed out. " + RESET);
+            typeWritter(RED + "[!] Beacon timed out. " + RESET,false);
             return null;
         } catch (IOException e) {
-            typeWritter(RED + "[!] Error receiving beacon: " + e.getMessage() + RESET);
+            typeWritter(RED + "[!] Error receiving beacon: " + e.getMessage() + RESET,false);
             return null;
         }
     }
 
-    private static void startClient(String host) {
+    private static void startClient(String host) throws InterruptedException{
         int port = 9999;
         int retryCount = 0;
         final int MAX_RETRIES = 5;
@@ -84,20 +132,21 @@ public class clientMain {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                 Scanner scanner = new Scanner(System.in)
             ) {
-                typeWritter(GREEN + "[*] Connected to server at " + host + RESET);
+                typeWritter(GREEN + "[*] Connected to server at " + host + RESET,false);
+                loadingBar();
 
                 // Login
-                typeWritter(GREEN + "Enter username: " + RESET);
+                typeWritter(GREEN + "Enter username: " + RESET,false);
                 String username = scanner.nextLine().trim();
                 while (username.isEmpty()) {
-                    typeWritter(RED + "Username cannot be empty!" + RESET);
+                    typeWritter(RED + "Username cannot be empty!" + RESET,false);
                     username = scanner.nextLine().trim();
                 }
 
-                typeWritter(GREEN + "Enter password: " + RESET);
+                typeWritter(GREEN + "Enter password: " + RESET,false);
                 String password = scanner.nextLine().trim();
                 while (password.isEmpty()) {
-                    typeWritter(RED + "Password cannot be empty!" + RESET);
+                    typeWritter(RED + "Password cannot be empty!" + RESET,false);
                     password = scanner.nextLine().trim();
                 }
 
@@ -105,13 +154,14 @@ public class clientMain {
                 login.put("type", "login");
                 login.put("username", username);
                 login.put("password", password);
-                typeWritter(GREEN + "[*] Logging in as " + username + RESET);
-                typeWritter(GREEN + "Sending login request..." + RESET);
+                typeWritter(GREEN + "[*] Logging in as " + username + RESET,false);
+                typeWritter(GREEN + "Sending login request..." + RESET,false);
                 out.println(login.toString());
+                out.flush();
 
                 String loginReply = in.readLine();
                 if (loginReply == null) {
-                    typeWritter(RED + "[!] No login response received." + RESET);
+                    typeWritter(RED + "[!] No login response received." + RESET,false);
                     return;
                 }
                 System.out.println(GREEN + "[Server] " + loginReply + RESET);
@@ -119,25 +169,27 @@ public class clientMain {
                 JSONObject beaconRequest = new JSONObject();
                 beaconRequest.put("type", "beacon_request");
                 out.println(beaconRequest.toString());
+                out.flush();
 
                 // Listener thread
                 Thread listenerThread = new Thread(() -> {
                     try {
                         String reply;
                         while ((reply = in.readLine()) != null) {
+                            typeWritter(GREEN+"[DEBUG] Received message at " + System.currentTimeMillis() + ": " +reply + RESET, true);
                             JSONObject json = new JSONObject(reply);
                             String type = json.optString("type");
 
                             switch (type) {
                                 case "broadcast" ->
-                                    typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"));
+                                    typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"),true);
                                 case "message" ->
-                                    typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"));
+                                    typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"),true);
                                 case "info", "error" ->
-                                    typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"));
+                                    typeWritter("[" + type.toUpperCase() + "] " + json.optString("body"),true);
                                 case "user_list" -> {
                                     JSONArray users = json.getJSONArray("users");
-                                    typeWritter(GREEN + "Active users: " + users.toString() + RESET);
+                                    typeWritter(GREEN + "Active users: " + users.toString() + RESET,true);
                                 }
                                 case "file_download" -> {
                                     String base64 = json.optString("content");
@@ -145,23 +197,33 @@ public class clientMain {
                                     byte[] bytes = Base64.getDecoder().decode(base64);
                                     try (FileOutputStream fos = new FileOutputStream(filename)) {
                                         fos.write(bytes);
-                                        typeWritter(GREEN + "Book downloaded: " + filename + RESET);
+                                        typeWritter(GREEN + "Book downloaded: " + filename + RESET,true);
                                     } catch (IOException e) {
-                                        typeWritter(RED + "Download failed: " + e.getMessage() + RESET);
+                                        typeWritter(RED + "Download failed: " + e.getMessage() + RESET,true);
                                     }
                                 }
-                                default -> typeWritter("[Server] " + reply);
+                                case"encrypted_message"->{
+                                    try {
+                                        String eString =json.optString("body");
+                                        String key = json.optString("Key");
+                                        String decrypted = decrypt(eString,key);
+                                        typeWritter("[Encrypted from " +json.optString("from")+"] " + decrypted , true);
+                                    } catch (Exception e) {
+                                        typeWritter(RED + "Decryption failed: " + e.getMessage() + RESET,true);
+                                    }
+                                }
+                                default -> typeWritter("[ERROR] Unknown message type: " + type +RESET,true);
                             }
                         }
                     } catch (Exception e) {
-                        typeWritter(RED + "[!] Listener stopped: " + e.getMessage() + RESET);
+                        typeWritter(RED + "[!] Listener stopped: " + e.getMessage() + RESET,false);
                     }
                 });
                 listenerThread.start();
 
                 // Main client loop for sending messages
                 while (true) {
-                    typeWritter(GREEN + "> " + RESET);
+                    typeWritter(GREEN + "> " + RESET,false);
                     String msg = scanner.nextLine().trim();
 
                     if (msg.equalsIgnoreCase("exit")) {
@@ -169,7 +231,7 @@ public class clientMain {
                         break;
                     }
                     if (msg.trim().isEmpty()) {
-                        typeWritter(RED + "Message cannot be empty." + RESET);
+                        typeWritter(RED + "Message cannot be empty." + RESET,false);
                         continue;
                     }
 
@@ -181,7 +243,7 @@ public class clientMain {
                             case "/list_users" -> command.put("type", "list_users");
                             case "/msg" -> {
                                 if (parts.length < 3) {
-                                    typeWritter(RED + "Usage: /msg <user> <message>" + RESET);
+                                    typeWritter(RED + "Usage: /msg <user> <message>" + RESET,false);
                                     continue;
                                 }
                                 command.put("type", "message");
@@ -190,14 +252,70 @@ public class clientMain {
                             }
                             case "/broadcast" -> {
                                 if (parts.length < 2) {
-                                    typeWritter(RED + "Usage: /broadcast <message>" + RESET);
+                                    typeWritter(RED + "Usage: /broadcast <message>" + RESET,false);
                                     continue;
                                 }
                                 command.put("type", "broadcast");
                                 command.put("body", parts[1]);
                             }
+                            case "/encrypt" -> {
+                                if (parts.length <2 ) {
+                                    typeWritter(RED + "Usage: /encrypt <message>" + RESET,false);
+                                    continue;
+                                }
+                                try {
+                                   String recipient = parts[1];
+                                   String key =parts[2];
+                                   String plainText = parts[3];
+                                   String encrypted = encrypt(plainText, key);
+                                   command.put("type","encrypted_message");
+                                   command.put("to",recipient);
+                                   command.put("body",encrypted);
+                                   command.put("key",key);
+                                } catch (Exception e) {
+                                    typeWritter(RED+ "Encryption failed: " +e.getMessage() +RESET, false);
+                                    continue;
+                                }
+                            }
+                            case "/anon" ->{
+                                if(parts.length<2) {
+                                    typeWritter(RED + "Usage: /anon <message>" + RESET,false);
+                                    continue;
+                                }
+                                command.put("type","anon_broadcast");
+                                command.put("body",parts[1]);
+                            }
+                            case "/rank" ->
+                                command.put("type", "rank_request");
+                            case "/upload_challenge" -> {
+                                if(parts.length <3) {
+                                    typeWritter(RED + "Usage: /upload_challenge <filename> <flag>" + RESET,false);
+                                    continue;
+                                }
+                                try {
+                                    String filename = parts[1];
+                                    String flag = parts[2];
+                                    byte[] fileBytes = Files.readAllBytes(Paths.get(filename));
+                                    command.put("type","upload_challenge"); 
+                                    command.put("filename",filename);
+                                    command.put("content",Base64.getEncoder().encodeToString(fileBytes));
+                                    command.put("flag",flag);
+                                } catch (IOException e) {
+                                    typeWritter(RED + "UPLOAD FAILED: " +e.getMessage() +RESET, false);
+
+                                }
+                            }
+                            case "/solve" -> {
+                                if(parts.length <3) {
+                                    typeWritter(RED + "Usage: /solve <challenge_id> <solution>" + RESET,false);
+                                    continue;
+                                }
+                                command.put("type","solve_challenge");
+                                command.put("challenge_id",parts[1]);
+                                command.put("solution",parts[2]);
+                            }
                             default -> {
-                                typeWritter(RED + "Unknown command: " + parts[0] + RESET);
+                                typeWritter(RED + "Unknown command: " + parts[0] + RESET,false);
                                 continue;
                             }
                         }
@@ -218,18 +336,21 @@ public class clientMain {
                 retryCount++;
                 long backoff = INITIAL_BACKOFF_MS * (long) Math.pow(2, retryCount - 1); // Exponential backoff
                 typeWritter(RED + "[!] Connection error: " + e.getMessage() + ". Retrying in "
-                        + (backoff / 1000) + " seconds... (Attempt " + retryCount + "/" + MAX_RETRIES + ")" + RESET);
+                        + (backoff / 1000) + " seconds... (Attempt " + retryCount + "/" + MAX_RETRIES + ")" + RESET,false);
                 try {
                     Thread.sleep(backoff);
                 } catch (InterruptedException ignore) {
                 }
-            }
+            }catch (InterruptedException r) {
+                Thread.currentThread().interrupt(); // preserve interrupt status
+                typeWritter(RED + "[!] Sleep interrupted: " + r.getMessage() + RESET,false);
+        }
         }
 
         if (retryCount >= MAX_RETRIES) {
-            typeWritter(RED + "[!] Max retries reached. Exiting." + RESET);
+            typeWritter(RED + "[!] Max retries reached. Exiting." + RESET,false);
         } else {
-            typeWritter(GREEN + "[*] Connection closed." + RESET);
+            typeWritter(GREEN + "[*] Connection closed." + RESET,false);
         }
         System.exit(0);
     } // end of startClient method
