@@ -12,8 +12,12 @@ import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.Random;
 import java.util.Scanner;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class clientMain {
 
@@ -134,7 +138,7 @@ public class clientMain {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                 Scanner scanner = new Scanner(System.in)
             ) {
-                typeWritter(GREEN + "[*] Connected to server at " + host + RESET,false);
+                typeWritter(GREEN + "[*] Connecting to server at " + host + RESET,false);
                 loadingBar();
 
                 // Login

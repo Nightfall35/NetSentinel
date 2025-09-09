@@ -4935,3 +4935,72 @@ port obtained : 9999...[0m
 [2025-09-09 06:44:54] [*] Beacon sent 
 [2025-09-09 06:44:59] Connection with client: /172.16.0.131 timed out due to inactivity
 [2025-09-09 06:44:59] [Anonymous] disconnected
+[2025-09-09 06:56:58] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-09 06:56:58] [*] Beacon sent 
+[2025-09-09 06:56:59] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-09 06:56:59] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-09 06:56:59] [32mLoaded 22 user(s) from credentials file.[0m
+[2025-09-09 06:56:59] [32mUser credentials file already exists: challenges.txt[0m
+[2025-09-09 06:56:59] [32mUser credentials file found: challenges.txt[0m
+[2025-09-09 06:56:59] [35mServer awaiting connection...[0m
+[2025-09-09 06:57:08] [*] Beacon sent 
+[2025-09-09 06:57:18] [*] Beacon sent 
+[2025-09-09 06:57:28] [*] Beacon sent 
+[2025-09-09 06:57:38] [*] Beacon sent 
+[2025-09-09 06:57:48] [*] Beacon sent 
+[2025-09-09 06:57:58] [*] Beacon sent 
+[2025-09-09 06:58:09] [*] Beacon sent 
+[2025-09-09 06:58:19] [*] Beacon sent 
+[2025-09-09 06:58:29] [*] Beacon sent 
+[2025-09-09 06:58:39] [*] Beacon sent 
+[2025-09-09 06:58:49] [*] Beacon sent 
+[2025-09-09 06:58:59] [*] Beacon sent 
+[2025-09-09 06:59:02] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-09 06:59:02] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-09 06:59:02] [32mLoaded 22 user(s) from credentials file.[0m
+[2025-09-09 06:59:02] [32mUser credentials file already exists: challenges.txt[0m
+[2025-09-09 06:59:02] [32mUser credentials file found: challenges.txt[0m
+[2025-09-09 06:59:03] [31mServer error:Address already in use: bind[0m
+[2025-09-09 06:59:03] [35m
+[!] Server shutting down. Disconnecting all clients...[0m
+[2025-09-09 06:59:04] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-09 06:59:04] [*] Beacon sent 
+[2025-09-09 06:59:14] [*] Beacon sent 
+[2025-09-09 06:59:19] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-09 06:59:19] [*] Beacon sent 
+[2025-09-09 06:59:39] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-09 06:59:39] [*] Beacon sent 
+[2025-09-09 06:59:39] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-09 06:59:39] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-09 06:59:39] [32mLoaded 22 user(s) from credentials file.[0m
+[2025-09-09 06:59:39] [32mUser credentials file already exists: challenges.txt[0m
+[2025-09-09 06:59:39] [32mUser credentials file found: challenges.txt[0m
+[2025-09-09 06:59:40] [35mServer awaiting connection...[0m
+[2025-09-09 06:59:47] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-09 06:59:47] [*] Beacon sent 
+[2025-09-09 06:59:49] [*] Beacon sent 
+[2025-09-09 06:59:59] [*] Beacon sent 
+[2025-09-09 07:00:09] [*] Beacon sent 
+[2025-09-09 07:00:19] [32mDeploying Beacon......[0m
+[2025-09-09 07:00:19] Running clientHandler v2.0 (no ping/pong)
+[2025-09-09 07:00:19] [*] Beacon sent 
+[2025-09-09 07:00:29] [*] Beacon sent 
+[2025-09-09 07:00:39] [*] Beacon sent 
+[2025-09-09 07:00:49] Connection with client: /172.16.0.131 timed out due to inactivity
+[2025-09-09 07:00:49] [Anonymous] disconnected
+[2025-09-09 07:00:49] [*] Beacon sent 
+[2025-09-09 07:00:59] [*] Beacon sent 
+[2025-09-09 07:01:09] [*] Beacon sent 
+[2025-09-09 07:01:19] [*] Beacon sent 
+[2025-09-09 07:01:29] [*] Beacon sent 
+[2025-09-09 07:01:39] [*] Beacon sent 
+[2025-09-09 07:01:49] [*] Beacon sent 
+[2025-09-09 07:01:59] [*] Beacon sent 
+[2025-09-09 07:02:09] [*] Beacon sent 
+[2025-09-09 07:02:19] [*] Beacon sent 
