@@ -4786,3 +4786,152 @@ port obtained : 9999...[0m
 [2025-09-05 08:34:25] [*] Beacon sent 
 [2025-09-05 08:34:35] [*] Beacon sent 
 [2025-09-05 08:34:45] [*] Beacon sent 
+[2025-09-07 11:54:49] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-07 11:54:49] [*] Beacon sent 
+[2025-09-07 11:54:50] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-07 11:54:50] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-07 11:54:50] [32mLoaded 19 user(s) from credentials file.[0m
+[2025-09-07 11:54:50] [32mUser credentials file created: challenges.txt[0m
+[2025-09-07 11:54:50] [32mUser credentials file found: challenges.txt[0m
+[2025-09-07 11:54:50] [35mServer awaiting connection...[0m
+[2025-09-07 11:54:59] [*] Beacon sent 
+[2025-09-07 11:55:09] [*] Beacon sent 
+[2025-09-07 11:55:18] [32mDeploying Beacon......[0m
+[2025-09-07 11:55:18] Running clientHandler v2.0 (no ping/pong)
+[2025-09-07 11:55:19] [*] Beacon sent 
+[2025-09-07 11:55:29] [*] Beacon sent 
+[2025-09-07 11:55:31] Received from [Anonymous]: {"password":"kl","type":"login","username":"kl"}
+[2025-09-07 11:55:31] [kl] registered and logged in from /10.66.7.200
+[2025-09-07 11:55:32] Received from [kl]: {"type":"beacon_request"}
+[2025-09-07 11:55:39] [*] Beacon sent 
+[2025-09-07 11:55:42] Received from [kl]: {"type":"ping"}
+[2025-09-07 11:55:49] [*] Beacon sent 
+[2025-09-07 11:55:52] Received from [kl]: {"type":"ping"}
+[2025-09-07 11:55:59] [*] Beacon sent 
+[2025-09-07 11:56:02] Received from [kl]: {"type":"ping"}
+[2025-09-07 11:56:03] Connection with client: /10.66.7.200 timed out due to inactivity
+[2025-09-07 11:56:03] [kl] disconnected
+[2025-09-07 11:56:09] [*] Beacon sent 
+[2025-09-07 11:56:19] [*] Beacon sent 
+[2025-09-09 06:40:26] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-09 06:40:27] [*] Beacon sent 
+[2025-09-09 06:40:27] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-09 06:40:27] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-09 06:40:27] [32mLoaded 20 user(s) from credentials file.[0m
+[2025-09-09 06:40:27] [32mUser credentials file already exists: challenges.txt[0m
+[2025-09-09 06:40:27] [32mUser credentials file found: challenges.txt[0m
+[2025-09-09 06:40:28] [35mServer awaiting connection...[0m
+[2025-09-09 06:40:37] [*] Beacon sent 
+[2025-09-09 06:40:43] [32mDeploying Beacon......[0m
+[2025-09-09 06:40:43] Running clientHandler v2.0 (no ping/pong)
+[2025-09-09 06:40:47] [*] Beacon sent 
+[2025-09-09 06:40:54] [32mDeploying Beacon......[0m
+[2025-09-09 06:40:54] Running clientHandler v2.0 (no ping/pong)
+[2025-09-09 06:40:57] [*] Beacon sent 
+[2025-09-09 06:41:06] Received from [Anonymous]: {"password":"jaksasj","type":"login","username":"Cipherv"}
+[2025-09-09 06:41:06] [Cipherv] registered and logged in from /172.16.0.131
+[2025-09-09 06:41:07] Received from [Cipherv]: {"type":"beacon_request"}
+[2025-09-09 06:41:07] [*] Beacon sent 
+[2025-09-09 06:41:12] Received from [Anonymous]: {"password":"nskjas","type":"login","username":"Ci[herj"}
+[2025-09-09 06:41:12] [Ci[herj] registered and logged in from /172.16.0.131
+[2025-09-09 06:41:12] Received from [Ci[herj]: {"type":"beacon_request"}
+[2025-09-09 06:41:15] Received from [Ci[herj]: {"type":"broadcast","body":"hey"}
+[2025-09-09 06:41:15] Broadcast from [Ci[herj] hey
+[2025-09-09 06:41:17] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:41:17] [*] Beacon sent 
+[2025-09-09 06:41:22] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:41:26] Received from [Ci[herj]: {"type":"broadcast","body":"whats up "}
+[2025-09-09 06:41:26] Broadcast from [Ci[herj] whats up 
+[2025-09-09 06:41:27] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:41:27] [*] Beacon sent 
+[2025-09-09 06:41:30] Received from [Cipherv]: {"type":"broadcast","body":"hey"}
+[2025-09-09 06:41:30] Broadcast from [Cipherv] hey
+[2025-09-09 06:41:32] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:41:37] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:41:37] [*] Beacon sent 
+[2025-09-09 06:41:37] Received from [Cipherv]: {"type":"broadcast","body":"whats up "}
+[2025-09-09 06:41:42] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:41:47] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:41:47] [*] Beacon sent 
+[2025-09-09 06:41:48] Received from [Cipherv]: {"type":"broadcast","body":"none much "}
+[2025-09-09 06:41:48] Broadcast from [Cipherv] none much 
+[2025-09-09 06:41:52] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:41:57] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:41:57] [*] Beacon sent 
+[2025-09-09 06:41:57] Received from [Ci[herj]: {"type":"broadcast","body":"none muc"}
+[2025-09-09 06:41:57] Broadcast from [Ci[herj] none muc
+[2025-09-09 06:42:02] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:42:03] Received from [Ci[herj]: {"type":"broadcast","body":"jska"}
+[2025-09-09 06:42:03] Broadcast from [Ci[herj] jska
+[2025-09-09 06:42:07] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:42:07] [*] Beacon sent 
+[2025-09-09 06:42:12] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:42:17] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:42:17] [*] Beacon sent 
+[2025-09-09 06:42:22] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:42:27] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:42:27] [*] Beacon sent 
+[2025-09-09 06:42:32] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:42:37] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:42:37] [*] Beacon sent 
+[2025-09-09 06:42:42] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:42:47] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:42:47] [*] Beacon sent 
+[2025-09-09 06:42:52] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:42:57] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:42:57] [*] Beacon sent 
+[2025-09-09 06:43:02] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:43:07] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:43:07] [*] Beacon sent 
+[2025-09-09 06:43:09] [32mDeploying Beacon......[0m
+[2025-09-09 06:43:09] Running clientHandler v2.0 (no ping/pong)
+[2025-09-09 06:43:12] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:43:17] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:43:17] [*] Beacon sent 
+[2025-09-09 06:43:22] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:43:27] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:43:27] [*] Beacon sent 
+[2025-09-09 06:43:32] Received from [Ci[herj]: {"type":"ping"}
+[2025-09-09 06:43:36] Connection with client: /172.16.0.131 timed out due to inactivity
+[2025-09-09 06:43:36] [Anonymous] disconnected
+[2025-09-09 06:43:37] Received from [Cipherv]: {"type":"ping"}
+[2025-09-09 06:43:37] [*] Beacon sent 
+[2025-09-09 06:43:40] Connection with client: /172.16.0.131 timed out due to inactivity
+[2025-09-09 06:43:40] Connection with client: /172.16.0.131 timed out due to inactivity
+[2025-09-09 06:43:40] [Ci[herj] disconnected
+[2025-09-09 06:43:40] [Cipherv] disconnected
+[2025-09-09 06:43:49] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-09 06:43:49] [*] Beacon sent 
+[2025-09-09 06:43:50] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-09 06:43:50] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-09 06:43:50] [32mLoaded 22 user(s) from credentials file.[0m
+[2025-09-09 06:43:50] [32mUser credentials file already exists: challenges.txt[0m
+[2025-09-09 06:43:50] [32mUser credentials file found: challenges.txt[0m
+[2025-09-09 06:43:50] [35mServer awaiting connection...[0m
+[2025-09-09 06:43:59] [*] Beacon sent 
+[2025-09-09 06:44:06] [32mDeploying Beacon......[0m
+[2025-09-09 06:44:06] Running clientHandler v2.0 (no ping/pong)
+[2025-09-09 06:44:09] [*] Beacon sent 
+[2025-09-09 06:44:11] Connection with client: /172.16.0.131 timed out due to inactivity
+[2025-09-09 06:44:11] [Anonymous] disconnected
+[2025-09-09 06:44:44] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-09 06:44:44] [*] Beacon sent 
+[2025-09-09 06:44:44] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-09 06:44:44] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-09 06:44:44] [32mLoaded 22 user(s) from credentials file.[0m
+[2025-09-09 06:44:44] [32mUser credentials file already exists: challenges.txt[0m
+[2025-09-09 06:44:44] [32mUser credentials file found: challenges.txt[0m
+[2025-09-09 06:44:44] [35mServer awaiting connection...[0m
+[2025-09-09 06:44:50] [32mDeploying Beacon......[0m
+[2025-09-09 06:44:50] Running clientHandler v2.0 (no ping/pong)
+[2025-09-09 06:44:54] [*] Beacon sent 
+[2025-09-09 06:44:59] Connection with client: /172.16.0.131 timed out due to inactivity
+[2025-09-09 06:44:59] [Anonymous] disconnected

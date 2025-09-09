@@ -7,16 +7,11 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.util.Base64;
-import java.util.Scanner;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.Random;
-
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
+import java.util.Scanner;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -26,7 +21,7 @@ public class clientMain {
     private static final String GREEN = "\u001B[92m";
     private static final String RED = "\u001B[91m";
 
-    private static final void loadingBar() throws InterruptedException {
+    private static  void loadingBar() throws InterruptedException {
         int total = 50;
 
         for(int i=0;i<=100;i++) {
@@ -42,24 +37,31 @@ public class clientMain {
     private synchronized static void typeWritter(String message,boolean fast) {
        if(fast){
         System.out.println(message + "\n");
+        return;
        }
        Random  rand =new Random();
        for(int i =0;i<message.length();i++){
+        char realChar = message.charAt(i);
+
             for(int j =0;j<3;j++){
                 System.out.print((char)(rand.nextInt(94) +33));
                 System.out.flush();
                 try {
                     Thread.sleep(20);
                 } catch (InterruptedException e) {
-                System.out.print("\b");
+                     Thread.currentThread().interrupt();
                 }
-                System.out.print(message.charAt(i));
-                try {
-                    Thread.sleep(30);  
-                } catch (InterruptedException w){} 
+                System.out.print("\b");
             }  
+            System.out.print(realChar);
+            System.out.flush();
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+                 Thread.currentThread().interrupt();   
+            } 
        } 
-       System.out.println("\n");
+         System.out.println("\n");
     }   
 
     private static String encrypt(String data, String key) throws Exception {
