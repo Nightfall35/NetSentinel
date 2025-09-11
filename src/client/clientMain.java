@@ -26,7 +26,7 @@ public class clientMain {
     private static final String GREEN = "\u001B[92m";
     private static final String RED = "\u001B[91m";
 
-    private static  void loadingBar() throws InterruptedException {
+    private static void loadingBar() throws InterruptedException {
         int total = 50;
 
         for(int i=0;i<=100;i++) {
@@ -94,7 +94,7 @@ public class clientMain {
 
                 break;
             } else {
-                typeWritter(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET,23);
+                typeWritter(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET,false);
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException ignore) {
@@ -213,12 +213,24 @@ public class clientMain {
                                 case"encrypted_message"->{
                                     try {
                                         String eString =json.optString("body");
-                                        String key = json.optString("Key");
+                                        String key = json.optString("key");
                                         String decrypted = decrypt(eString,key);
                                         typeWritter("[Encrypted from " +json.optString("from")+"] " + decrypted , true);
                                     } catch (Exception e) {
                                         typeWritter(RED + "Decryption failed: " + e.getMessage() + RESET,true);
                                     }
+                                }
+                                case "leaderboard" -> {
+                                    JSONArray leaderboard = json.getJSONArray("leaderboard");
+                                    int page = json.getInt("page");
+                                    int totalPages = json.getInt("total_pages");
+                                    StringBuilder lb = new StringBuilder("leaderboard ( Page " + page + "/" + totalPages + "):\n");
+                                    for (int i = 0; i < leaderboard.length(); i++) {
+                                        JSONObject entry = leaderboard.getJSONObject(i);
+                                        lb.append(String.format("%d. %s (Cred: %s, Rank: %s)\n",
+                                                i + 1 + (page -1 ) * 5,entry.getString("username"),entry.getString("cred"),entry.getString("rank")));
+                                    }
+                                    typeWritter(GREEN + lb.toString() + RESET, true);
                                 }
                                 default -> typeWritter("[ERROR] Unknown message type: " + type +RESET,true);
                             }
@@ -244,7 +256,7 @@ public class clientMain {
                     }
 
                     if (msg.startsWith("/")) {
-                        String[] parts = msg.split(" ", 3);
+                        String[] parts = msg.split(" ", 4);
                         JSONObject command = new JSONObject();
 
                         switch (parts[0]) {
@@ -275,8 +287,8 @@ public class clientMain {
                                 command.put("body", parts[1]);
                             }
                             case "/encrypt" -> {
-                                if (parts.length <2 ) {
-                                    typeWritter(RED + "Usage: /encrypt <message>" + RESET,false);
+                                if (parts.length < 4) {
+                                    typeWritter(RED + "Usage: /encrypt <user> <key> <message>" + RESET,false);
                                     continue;
                                 }
                                 try {
@@ -302,7 +314,7 @@ public class clientMain {
                                 command.put("body",parts[1]);
                             }
                             case "/rank" ->
-                                command.put("type", "rank_request");
+                                command.put("type", "rank");
                             case "/upload_challenge" -> {
                                 if(parts.length <3) {
                                     typeWritter(RED + "Usage: /upload_challenge <filename> <flag>" + RESET,false);
@@ -318,17 +330,16 @@ public class clientMain {
                                     command.put("flag",flag);
                                 } catch (IOException e) {
                                     typeWritter(RED + "UPLOAD FAILED: " +e.getMessage() +RESET, false);
-
                                 }
                             }
                             case "/solve" -> {
                                 if(parts.length <3) {
-                                    typeWritter(RED + "Usage: /solve <challenge_id> <solution>" + RESET,false);
+                                    typeWritter(RED + "Usage: /solve <filename> <flag>" + RESET,false);
                                     continue;
                                 }
-                                command.put("type","solve_challenge");
-                                command.put("challenge_id",parts[1]);
-                                command.put("solution",parts[2]);
+                                command.put("type","solve");
+                                command.put("filename",parts[1]);
+                                command.put("flag",parts[2]);
                             }
                             default -> {
                                 typeWritter(RED + "Unknown command: " + parts[0] + RESET,false);
@@ -336,9 +347,8 @@ public class clientMain {
                             }
                         }
                         out.println(command.toString());
-                        out.flush();// thssi should ensure command is sent directly
+                        out.flush();
                     } else {
-                        // Treat all non-commands as broadcasts
                         JSONObject msgJson = new JSONObject();
                         msgJson.put("type", "broadcast");
                         msgJson.put("body", msg);
@@ -346,11 +356,10 @@ public class clientMain {
                         out.flush();
                     }
                 }
-                // Exit retry loop once connection finishes
                 break;
             } catch (IOException e) {
                 retryCount++;
-                long backoff = INITIAL_BACKOFF_MS * (long) Math.pow(2, retryCount - 1); // Exponential backoff
+                long backoff = INITIAL_BACKOFF_MS * (long) Math.pow(2, retryCount - 1);
                 typeWritter(RED + "[!] Connection error: " + e.getMessage() + ". Retrying in "
                         + (backoff / 1000) + " seconds... (Attempt " + retryCount + "/" + MAX_RETRIES + ")" + RESET,false);
                 try {
@@ -358,9 +367,9 @@ public class clientMain {
                 } catch (InterruptedException ignore) {
                 }
             }catch (InterruptedException r) {
-                Thread.currentThread().interrupt(); // preserve interrupt status
+                Thread.currentThread().interrupt();
                 typeWritter(RED + "[!] Sleep interrupted: " + r.getMessage() + RESET,false);
-        }
+            }
         }
 
         if (retryCount >= MAX_RETRIES) {
@@ -369,5 +378,5 @@ public class clientMain {
             typeWritter(GREEN + "[*] Connection closed." + RESET,false);
         }
         System.exit(0);
-    } // end of startClient method
-}  
+    }
+}

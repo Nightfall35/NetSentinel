@@ -3,7 +3,6 @@ package server;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -21,7 +20,6 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.Base64;
 
-
 public class ClientHandler implements Runnable {
     private String username = "Anonymous";
     private final Socket client;
@@ -29,7 +27,6 @@ public class ClientHandler implements Runnable {
 
     private long lastMessageTime = 0;
     private static final long MIN_MESSAGE_INTERVAL_MS = 1000;
-
 
     public ClientHandler(Socket client) throws SocketException {
         this.client = client;
@@ -52,52 +49,50 @@ public class ClientHandler implements Runnable {
                      JSONObject message = new JSONObject(input);
                      String type = message.getString("type");
 
-
                      long currentTime = System.currentTimeMillis();
-                     if(currentTime - lastMessageTime <MIN_MESSAGE_INTERVAL_MS && !type.equals("login")){
-                        sendError("Message rate limit exceeded. Please wait before sending another message.");
-                        continue;
+                     if (currentTime - lastMessageTime < MIN_MESSAGE_INTERVAL_MS && !type.equals("login")) {
+                         sendError("Message rate limit exceeded. Please wait before sending another message.");
+                         continue;
                      }
                      lastMessageTime = currentTime;
 
                       switch (type) {
-                        case "leaderboard":
-                            handleBoard();
-                            break;
                          case "login":
-                            handleLogin(message);
-                            break;
-                        case "message":
+                             handleLogin(message);
+                             break;
+                         case "message":
                              handlePrivateMessage(message);
-                              break;
+                             break;
                          case "broadcast":
-                              handleBroadcast(message);
-                              break;
-                        case "beacon_request":
+                             handleBroadcast(message);
+                             break;
+                         case "beacon_request":
                              handleBeaconRequest();
-                              break;
-                       case "list_users":
-                              handleListUsers();
-                              break;
-                        case "encrypted_message":
-                            handleEncryptedMessage(message);
-                            break;
-                        case "anon_broadcast":
-                            handleAnonBroadcast(message);
-                            break;
-                        case "rank":
-                            handleRank();
-                            break;
-                        case "upload_challengr":
-                            handleChallengeUpload(message);
-                            break;
-                        case"solve":
-                            handleChallengeSolve(message);
-                            break;
-                        default:
+                             break;
+                         case "list_users":
+                             handleListUsers();
+                             break;
+                         case "encrypted_message":
+                             handleEncryptedMessage(message);
+                             break;
+                         case "anon_broadcast":
+                             handleAnonBroadcast(message);
+                             break;
+                         case "rank":
+                             handleRank();
+                             break;
+                         case "upload_challenge":
+                             handleChallengeUpload(message);
+                             break;
+                         case "solve":
+                             handleChallengeSolve(message);
+                             break;
+                         case "leaderboard":
+                             handleLeaderboard(message);
+                             break;
+                         default:
                              sendError("Unknown message type: " + type);
-                         }
-                   
+                      }
                 } catch (org.json.JSONException e) {
                     sendError("Invalid message format.");
                 }
@@ -117,15 +112,14 @@ public class ClientHandler implements Runnable {
 
     private void handleRank() {
         String[] userData = ServerMain.passwords.get(username);
-        if(userData == null) {
-           sendInfo("cRED: " + userData[1] + ", Rank: " + userData[2]);
-        }else {
+        if (userData != null) {
+            sendInfo("Cred: " + userData[1] + ", Rank: " + userData[2]);
+        } else {
             sendError("User data not found.");
         }
-
     }
-   
-      private void updateCred(String user, int points) throws IOException {
+
+    private void updateCred(String user, int points) throws IOException {
         Map<String, String[]> users = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
             String line;
@@ -174,12 +168,11 @@ public class ClientHandler implements Runnable {
         }
 
         String[] userData = ServerMain.passwords.get(requestedUsername);
-        String expectedHash = (userData != null) ? userData[1] : null;
+        String expectedHash = (userData != null) ? userData[0] : null;
         String providedHash = ServerMain.hashPassword(password);
 
         synchronized (ServerMain.CLIENTS_LOCK) {
             if (expectedHash == null) {
-                // User does not exist - register new user
                 try {
                     appendUserToFile(requestedUsername, providedHash);
                     ServerMain.passwords.put(requestedUsername, new String[]{providedHash, "0", "Script Kiddie"});
@@ -191,7 +184,6 @@ public class ClientHandler implements Runnable {
                     sendError("Failed to register new user: " + e.getMessage());
                 }
             } else {
-                // User exists - check password
                 if (!expectedHash.equals(providedHash)) {
                     sendError("Invalid password.");
                     return;
@@ -211,7 +203,7 @@ public class ClientHandler implements Runnable {
     private void appendUserToFile(String username, String hashedPassword) throws IOException {
         try (FileWriter fw = new FileWriter("users.txt", true);
              PrintWriter pw = new PrintWriter(fw)) {
-            pw.println(username + ":" + hashedPassword);
+            pw.println(username + ":" + hashedPassword + ":0:Script Kiddie");
         }
     }
 
@@ -253,7 +245,7 @@ public class ClientHandler implements Runnable {
     private void handleEncryptedMessage(JSONObject message) {
         String to = message.optString("to");
         String body = message.optString("body");
-        String encKey = message.optString("enc_key");
+        String key = message.optString("key");
 
         ClientHandler recipient = ServerMain.clients.get(to);
         if (recipient != null) {
@@ -261,7 +253,7 @@ public class ClientHandler implements Runnable {
             reply.put("type", "encrypted_message");
             reply.put("from", username);
             reply.put("body", body);
-            reply.put("enc_key", encKey);
+            reply.put("key", key);
             recipient.send(reply.toString());
 
             ServerLogger.log("encrypted message from [" + username + "] to [" + to + "]: " + body);
@@ -325,7 +317,7 @@ public class ClientHandler implements Runnable {
         synchronized (ServerMain.CLIENTS_LOCK) {
             try (FileWriter fw = new FileWriter("challenges.txt", true);
                  PrintWriter pw = new PrintWriter(fw)) {
-                pw.println(filename + ":" + hashedFlag+ ":" + username);
+                pw.println(filename + ":" + hashedFlag + ":" + username);
             }
         }
 
@@ -370,7 +362,7 @@ public class ClientHandler implements Runnable {
                     ServerLogger.log("Malformed line in challenges.txt: " + line);
                     continue;
                 }
-                if (parts[0].equals(filename) && parts[1].equals(submittedFlag)) {
+                if (parts[0].equals(filename) && parts[1].equals(hashedSubmittedFlag)) {
                     markChallengeSolved(username, filename);
                     try{
                        updateCred(username, 100);
@@ -405,10 +397,10 @@ public class ClientHandler implements Runnable {
         return false;
     }
 
-    private void handleBoard(JSONObject message) throws IOException {
+    private void handleLeaderboard(JSONObject message) throws IOException {
         int page = message.optInt("page",1);
-        if(page<1) {
-            sendError("Page number does not exist.");
+        if(page < 1) {
+            sendError("Page number must be positive.");
             return;
         }
         List<String[]> sortedUsers = new ArrayList<>();
@@ -425,12 +417,12 @@ public class ClientHandler implements Runnable {
         int pageSize = 5;
         int start = (page - 1) * pageSize;
         int end = Math.min(start + pageSize, sortedUsers.size());
-        if(start >= sortedUsers.size()) {
-            sendError("Page" + page + " does not exist.");
+        if (start >= sortedUsers.size()) {
+            sendError("Page " + page + " is empty.");
             return;
         }
         JSONArray leaderboard = new JSONArray();
-        for(int i = start; i < end; i++ ) {
+        for(int i = start; i < end; i++) {
             JSONObject entry = new JSONObject();
             entry.put("username", sortedUsers.get(i)[0]);
             entry.put("cred", sortedUsers.get(i)[1]);
@@ -439,12 +431,11 @@ public class ClientHandler implements Runnable {
         }
         JSONObject response = new JSONObject();
         response.put("type", "leaderboard");
-        response.put("leaderboard", page);
+        response.put("leaderboard", leaderboard);
         response.put("page", page);
-        response.put("total_pages", (int)Math.ceil((double)sortedUsers.size() / pageSize));
+        response.put("total_pages", (int) Math.ceil((double) sortedUsers.size() / pageSize));
         send(response.toString());
         ServerLogger.log("Sent leaderboard page " + page + " to [" + username + "]");
-
     }
 
     private void markChallengeSolved(String username, String filename) throws IOException {
@@ -487,11 +478,9 @@ public class ClientHandler implements Runnable {
         out.flush();
     }
 
-    // Utility Methods below
-
     private void send(String json) {
         out.println(json);
-        out.flush(); // Ensure immediate sending
+        out.flush();
     }
 
     private void sendError(String msg) {
