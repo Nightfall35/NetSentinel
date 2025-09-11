@@ -10,6 +10,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.SocketException;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -59,6 +61,9 @@ public class ClientHandler implements Runnable {
                      lastMessageTime = currentTime;
 
                       switch (type) {
+                        case "leaderboard":
+                            handleBoard();
+                            break;
                          case "login":
                             handleLogin(message);
                             break;
@@ -398,6 +403,48 @@ public class ClientHandler implements Runnable {
             }
         }
         return false;
+    }
+
+    private void handleBoard(JSONObject message) throws IOException {
+        int page = message.optInt("page",1);
+        if(page<1) {
+            sendError("Page number does not exist.");
+            return;
+        }
+        List<String[]> sortedUsers = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
+            String line;
+            while((line = reader.readLine()) != null) {
+                String[] parts = line.split(":");
+                if(parts.length >= 4) {
+                    sortedUsers.add(new String[]{parts[0], parts[2], parts[3]});
+                }
+            }
+        }
+        sortedUsers.sort((a,b) -> Integer.compare(Integer.parseInt(b[1]), Integer.parseInt(a[1])));
+        int pageSize = 5;
+        int start = (page - 1) * pageSize;
+        int end = Math.min(start + pageSize, sortedUsers.size());
+        if(start >= sortedUsers.size()) {
+            sendError("Page" + page + " does not exist.");
+            return;
+        }
+        JSONArray leaderboard = new JSONArray();
+        for(int i = start; i < end; i++ ) {
+            JSONObject entry = new JSONObject();
+            entry.put("username", sortedUsers.get(i)[0]);
+            entry.put("cred", sortedUsers.get(i)[1]);
+            entry.put("rank", sortedUsers.get(i)[2]);
+            leaderboard.put(entry);
+        }
+        JSONObject response = new JSONObject();
+        response.put("type", "leaderboard");
+        response.put("leaderboard", page);
+        response.put("page", page);
+        response.put("total_pages", (int)Math.ceil((double)sortedUsers.size() / pageSize));
+        send(response.toString());
+        ServerLogger.log("Sent leaderboard page " + page + " to [" + username + "]");
+
     }
 
     private void markChallengeSolved(String username, String filename) throws IOException {

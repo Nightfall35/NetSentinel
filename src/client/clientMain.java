@@ -1,3 +1,5 @@
+package client;
+
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,7 +14,6 @@ import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.Random;
 import java.util.Scanner;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -93,7 +94,7 @@ public class clientMain {
 
                 break;
             } else {
-                typeWritter(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET,false);
+                typeWritter(RED + "[!] Beacon failed, retrying in 5 seconds..." + RESET,23);
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException ignore) {
@@ -189,6 +190,7 @@ public class clientMain {
                             switch (type) {
                                 case "broadcast" ->
                                     typeWritter("[Broadcast from " + json.optString("from") + "] " + json.optString("body"),true);
+                                    
                                 case "message" ->
                                     typeWritter("[Private from " + json.optString("from") + "] " + json.optString("body"),true);
                                 case "info", "error" ->
@@ -256,6 +258,14 @@ public class clientMain {
                                 command.put("to", parts[1]);
                                 command.put("body", parts[2]);
                             }
+                            case "/leaderboard":
+                                command.put("type", "leaderboard");
+                                if(parts.length > 1 && parts[1].matches("\\d+")) {
+                                    command.put("page", Integer.parseInt(parts[1]));
+                                }else {
+                                    command.put("page",1);
+                                }
+                                break;
                             case "/broadcast" -> {
                                 if (parts.length < 2) {
                                     typeWritter(RED + "Usage: /broadcast <message>" + RESET,false);
