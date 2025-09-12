@@ -5078,3 +5078,37 @@ port obtained : 9999...[0m
 [2025-09-09 07:39:29] [*] Beacon sent 
 [2025-09-09 07:39:31] Connection with client: /172.17.16.1 timed out due to inactivity
 [2025-09-09 07:39:31] [Anonymous] disconnected
+[2025-09-12 01:17:36] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-12 01:17:36] [*] Beacon sent 
+[2025-09-12 01:17:37] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-12 01:17:37] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-12 01:17:37] [32mLoaded 22 user(s) from credentials file.[0m
+[2025-09-12 01:17:37] [32mUser credentials file already exists: challenges.txt[0m
+[2025-09-12 01:17:37] [32mUser credentials file found: challenges.txt[0m
+[2025-09-12 01:17:37] [32mUser credentials file created: solved_challenges.txt[0m
+[2025-09-12 01:17:37] [32mUser credentials file found: solved_challenges.txt[0m
+[2025-09-12 01:17:37] [35mServer awaiting connection...[0m
+[2025-09-12 01:17:46] [*] Beacon sent 
+[2025-09-12 01:17:56] [32mDeploying Beacon......[0m
+[2025-09-12 01:17:56] Running clientHandler v2.0 (no ping/pong)
+[2025-09-12 01:17:56] [*] Beacon sent 
+[2025-09-12 01:18:06] [*] Beacon sent 
+[2025-09-12 01:18:16] [*] Beacon sent 
+[2025-09-12 01:18:26] Connection with client: /172.16.0.60 timed out due to inactivity
+[2025-09-12 01:18:26] [Anonymous] disconnected
+[2025-09-12 01:18:26] [*] Beacon sent 
+[2025-09-12 01:18:36] [*] Beacon sent 
+[2025-09-12 01:19:14] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-12 01:19:14] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-12 01:19:14] [32mLoaded 22 user(s) from credentials file.[0m
+[2025-09-12 01:19:14] [32mUser credentials file already exists: challenges.txt[0m
+[2025-09-12 01:19:14] [32mUser credentials file found: challenges.txt[0m
+[2025-09-12 01:19:14] [32mUser credentials file already exists: solved_challenges.txt[0m
+[2025-09-12 01:19:14] [32mUser credentials file found: solved_challenges.txt[0m
+[2025-09-12 01:19:14] [35mServer awaiting connection...[0m
+[2025-09-12 01:19:19] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-12 01:19:19] [*] Beacon sent 
