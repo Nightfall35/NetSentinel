@@ -270,14 +270,14 @@ public class clientMain {
                                 command.put("to", parts[1]);
                                 command.put("body", parts[2]);
                             }
-                            case "/leaderboard":
+                            case "/leaderboard" -> {
                                 command.put("type", "leaderboard");
                                 if(parts.length > 1 && parts[1].matches("\\d+")) {
                                     command.put("page", Integer.parseInt(parts[1]));
                                 }else {
                                     command.put("page",1);
                                 }
-                                break;
+                            }
                             case "/broadcast" -> {
                                 if (parts.length < 2) {
                                     typeWritter(RED + "Usage: /broadcast <message>" + RESET,false);
