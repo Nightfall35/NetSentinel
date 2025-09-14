@@ -5112,3 +5112,16 @@ port obtained : 9999...[0m
 [2025-09-12 01:19:14] [35mServer awaiting connection...[0m
 [2025-09-12 01:19:19] [*] Starting UDP beacon pulses to all clients every 10S...
 [2025-09-12 01:19:19] [*] Beacon sent 
+[2025-09-13 08:48:26] [*] Starting UDP beacon pulses to all clients every 10S...
+[2025-09-13 08:48:26] [*] Beacon sent 
+[2025-09-13 08:48:27] [35mServer initialized
+Acquiring port...
+port obtained : 9999...[0m
+[2025-09-13 08:48:27] [31m[!] Error creating or checking user credentials file: The filename, directory name, or volume label syntax is incorrect[0m
+[2025-09-13 08:48:27] [32mLoaded 22 user(s) from credentials file.[0m
+[2025-09-13 08:48:27] [32mUser credentials file already exists: challenges.txt[0m
+[2025-09-13 08:48:27] [32mUser credentials file found: challenges.txt[0m
+[2025-09-13 08:48:27] [32mUser credentials file already exists: solved_challenges.txt[0m
+[2025-09-13 08:48:27] [32mUser credentials file found: solved_challenges.txt[0m
+[2025-09-13 08:48:27] [35mServer awaiting connection...[0m
+[2025-09-13 08:48:36] [*] Beacon sent 
