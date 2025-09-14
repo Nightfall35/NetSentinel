@@ -16,6 +16,7 @@ import java.util.Random;
 import java.util.Scanner;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java .util.Arrays;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -266,9 +267,15 @@ public class clientMain {
                                     typeWritter(RED + "Usage: /msg <user> <message>" + RESET,false);
                                     continue;
                                 }
+                                String recipient = parts[1];
+                                if (recipient.equals(username)) {
+                                    typeWritter(RED + "You cannot message yourself!" + RESET,false);
+                                    continue;
+                                }
+                                String body = parts.length == 3 ? parts[2] : parts[2];
                                 command.put("type", "message");
-                                command.put("to", parts[1]);
-                                command.put("body", parts[2]);
+                                command.put("to", recipient);
+                                command.put("body", body.trim());
                             }
                             case "/leaderboard" -> {
                                 command.put("type", "leaderboard");
@@ -283,8 +290,9 @@ public class clientMain {
                                     typeWritter(RED + "Usage: /broadcast <message>" + RESET,false);
                                     continue;
                                 }
+                                String body = parts.length == 2 ? parts[1] : parts[1];
                                 command.put("type", "broadcast");
-                                command.put("body", parts[1]);
+                                command.put("body", body.trim());
                             }
                             case "/encrypt" -> {
                                 if (parts.length < 4) {
@@ -299,7 +307,7 @@ public class clientMain {
                                    command.put("type","encrypted_message");
                                    command.put("to",recipient);
                                    command.put("body",encrypted);
-                                   command.put("key",key);
+                                   command.put("key",key);// key is a security risk as its being leaked to server but this is just a demo
                                 } catch (Exception e) {
                                     typeWritter(RED+ "Encryption failed: " +e.getMessage() +RESET, false);
                                     continue;
@@ -310,8 +318,9 @@ public class clientMain {
                                     typeWritter(RED + "Usage: /anon <message>" + RESET,false);
                                     continue;
                                 }
+                                String body = parts.length == 2 ? parts[1] : parts[1];
                                 command.put("type","anon_broadcast");
-                                command.put("body",parts[1]);
+                                command.put("body",body.trim());
                             }
                             case "/rank" ->
                                 command.put("type", "rank");
