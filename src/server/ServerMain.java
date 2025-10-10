@@ -114,8 +114,8 @@ public class ServerMain {
                 String[] parts = line.split(":", 2);
                 if (parts.length == 2) {
                     String username = parts[0].trim();
-                    String filename = parts[1].trim();
-                    solvedChallenges.computeIfAbsent(username, k -> ConcurrentHashMap.newKeySet()).add(filename);
+                    String filenames = parts[1].trim();
+                    solvedChallenges.computeIfAbsent(username, k -> ConcurrentHashMap.newKeySet()).add(filenames);
                     count++;
                 }
             }
